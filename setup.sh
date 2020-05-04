@@ -14,7 +14,7 @@ fi
 
 
 # dependencies
-echo "Installing dependencies..."
+echo "[*] Installing dependencies..."
 apt -y install vim-gtk xclip tmux
 
 
@@ -57,7 +57,7 @@ fi
 
 
 # vim
-echo "Installing vim plugins..."
+echo "[*] Installing vim plugins..."
 mkdir -p /etc/vim/plugins
 cp -R vim-plugins/* /etc/vim/plugins/
 
@@ -68,7 +68,7 @@ fi
 
 
 # dotfiles
-echo "Setting up dotfiles..."
+echo "[*] Setting up dotfiles..."
 cp dotfiles/.tmux.conf ~/
 cp dotfiles/.Xdefaults ~/.Xdefaults
 cp dotfiles/vimrc.local /etc/vim/
@@ -82,3 +82,5 @@ else
 	cp dotfiles/.bashrc.remote ~/.bashrc
 fi
 
+
+echo "[+] All done"
