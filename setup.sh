@@ -16,7 +16,9 @@ fi
 # dependencies
 echo "[*] Installing dependencies..."
 apt -y install vim-gtk xclip tmux
-
+if [ ! $REMOTE ]; then
+	apt -y install suckless-tools
+fi
 
 # non-remote stuff
 if [ ! $REMOTE ]; then
@@ -72,12 +74,16 @@ cp dotfiles/.tmux.conf ~/
 cp dotfiles/.Xdefaults ~/
 cp dotfiles/.bash_aliases ~/
 cp dotfiles/vimrc.local /etc/vim/
+# LOCAL ONLY
 if [ ! $REMOTE ]; then
+	cp dotfiles/.dmenu_run_aliases.sh ~/
+	cp dotfiles/.run_spacemacs.sh ~/
 	cp dotfiles/.spacemacs ~/
 	cp dotfiles/.bashrc ~/
 	if [ -f ~/.config/openbox/lubuntu-rc.xml ]; then
 		cp dotfiles/lubuntu_openbox.xml ~/.config/openbox/lubuntu-rc.xml
 	fi
+# REMOTE ONLY
 else
 	cp dotfiles/.bashrc.remote ~/.bashrc
 fi
