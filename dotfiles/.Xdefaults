@@ -1,3 +1,4 @@
+URxvt.termName: rxvt-256color
 URxvt.iconFile: /usr/share/icons/Papirus-Dark/32x32/apps/terminal-tango.svg
 ! URxvt.iconFile: /usr/share/icons/Papirus-Dark/32x32/categories/com.gexperts.Terminix.svg
 ! URxvt.iconFile: /usr/share/icons/custom/terminal.svg
@@ -38,6 +39,7 @@ URxvt.boldFont:         xft:SauceCodePro Nerd Font:bold:pixelsize=14:antialias=t
 URxvt.scrollBar:	false
 URxvt.cursorColor:	white
 URxvt.geometry:         80x24
+URxvt.cursorBlink: false
 
 !! Common Keybinds for Navigations
 URxvt.keysym.M-k: command:\033]720;1\007
@@ -48,7 +50,7 @@ URxvt.keysym.M-l: \033[1;5C
 URxvt.keysym.M-h: \033[1;5D
 
 !! Extensions
-URxvt.perl-ext-common:	default,matcher,resize-font,url-select,keyboard-select
+URxvt.perl-ext-common:	default,matcher,tabbedex,resize-font,url-select,keyboard-select
 URxvt.colorUL:		#4682B4
 !! url-select
 URxvt.keysym.M-u:	perl:url-select:select_next
@@ -77,6 +79,18 @@ URxvt.keysym.C-M-v:    builtin-string:
 ! I dont know why, but I needed to use hex keysym values to get it to work
 URxvt.keysym.C-S-0x43: eval:selection_to_clipboard
 URxvt.keysym.C-S-0x56: eval:paste_clipboard
+
+!! tabbedex
+URxvt.tabbedex.autohide:    true
+URxvt.tabbedex.tabbar-fg:   2
+URxvt.tabbedex.tabbar-bg:   0
+URxvt.tabbedex.tab-fg:      3
+URxvt.tabbedex.tab-bg:      0
+URxvt.tabbedex.title:       yes
+URxvt.tabbedex.new-button:  no
+URxvt.keysym.Control-t: perl:tabbedex:new_tab
+URxvt.keysym.Control-Tab: perl:tabbedex:next_tab
+URxvt.keysym.Control-Shift-Tab: perl:tabbedex:prev_tab
 
 ! rofi.color-enabled:	true
 ! rofi.color-window:	#000, #000, #000

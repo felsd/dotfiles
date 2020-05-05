@@ -32,8 +32,7 @@ if [ ! $REMOTE ]; then
 	fi
 
 	echo "[*] Installing urxvt plugins..."
-	mkdir -p ~/.urxvt/ext
-	cp urxvt-ext/* ~/.urxvt/ext/
+	cp -R dotfiles/.urxvt ~/.urxvt
 
 	echo "[*] Setting urxvt as default terminal..."
 	update-alternatives --set x-terminal-emulator /usr/bin/urxvt
@@ -70,7 +69,8 @@ fi
 # dotfiles
 echo "[*] Setting up dotfiles..."
 cp dotfiles/.tmux.conf ~/
-cp dotfiles/.Xdefaults ~/.Xdefaults
+cp dotfiles/.Xdefaults ~/
+cp dotfiles/.bash_aliases ~/
 cp dotfiles/vimrc.local /etc/vim/
 if [ ! $REMOTE ]; then
 	cp dotfiles/.spacemacs ~/
