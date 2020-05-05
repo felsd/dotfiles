@@ -71,7 +71,8 @@ fi
 # dotfiles
 echo "[*] Setting up dotfiles..."
 cp dotfiles/.tmux.conf ~/
-cp dotfiles/.Xdefaults ~/
+cp dotfiles/.Xresources ~/
+xrdb ~/.Xresources
 cp dotfiles/.bash_aliases ~/
 cp dotfiles/vimrc.local /etc/vim/
 # LOCAL ONLY
