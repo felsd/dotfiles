@@ -46,7 +46,7 @@
   <theme>
     <!--  Lubuntu specific : Theme = Lubuntu and font = Ubuntu
   -->
-    <name>Lubuntu Arc</name>
+    <name>Artwiz-boxed</name>
     <titleLayout>NLIMC</titleLayout>
     <!--
     available characters are NDSLIMC, each can occur at most once.
@@ -61,57 +61,57 @@
     <keepBorder>yes</keepBorder>
     <animateIconify>yes</animateIconify>
     <font place="ActiveWindow">
-      <name>Ubuntu Medium</name>
-      <size>11</size>
+      <name>Monospace</name>
+      <size>14</size>
       <!-- font size in points -->
-      <weight>bold</weight>
+      <weight>Bold</weight>
       <!-- 'bold' or 'normal' -->
-      <slant>normal</slant>
+      <slant>Normal</slant>
       <!-- 'italic' or 'normal' -->
     </font>
     <font place="InactiveWindow">
-      <name>Ubuntu Medium</name>
-      <size>11</size>
+      <name>Monospace</name>
+      <size>14</size>
       <!-- font size in points -->
-      <weight>bold</weight>
+      <weight>Bold</weight>
       <!-- 'bold' or 'normal' -->
-      <slant>normal</slant>
+      <slant>Normal</slant>
       <!-- 'italic' or 'normal' -->
     </font>
     <font place="MenuHeader">
-      <name>Ubuntu</name>
-      <size>11</size>
+      <name>Monospace</name>
+      <size>14</size>
       <!-- font size in points -->
-      <weight>normal</weight>
+      <weight>Normal</weight>
       <!-- 'bold' or 'normal' -->
-      <slant>normal</slant>
+      <slant>Normal</slant>
       <!-- 'italic' or 'normal' -->
     </font>
     <font place="MenuItem">
-      <name>Ubuntu</name>
-      <size>11</size>
+      <name>Monospace</name>
+      <size>14</size>
       <!-- font size in points -->
-      <weight>normal</weight>
+      <weight>Normal</weight>
       <!-- 'bold' or 'normal' -->
-      <slant>normal</slant>
+      <slant>Normal</slant>
       <!-- 'italic' or 'normal' -->
     </font>
     <font place="ActiveOnScreenDisplay">
-      <name>Ubuntu Medium</name>
-      <size>11</size>
+      <name>Monospace</name>
+      <size>12</size>
       <!-- font size in points -->
-      <weight>bold</weight>
+      <weight>Bold</weight>
       <!-- 'bold' or 'normal' -->
-      <slant>normal</slant>
+      <slant>Normal</slant>
       <!-- 'italic' or 'normal' -->
     </font>
     <font place="InactiveOnScreenDisplay">
-      <name>Ubuntu Medium</name>
-      <size>11</size>
+      <name>Monospace</name>
+      <size>12</size>
       <!-- font size in points -->
-      <weight>bold</weight>
+      <weight>Bold</weight>
       <!-- 'bold' or 'normal' -->
-      <slant>normal</slant>
+      <slant>Normal</slant>
       <!-- 'italic' or 'normal' -->
     </font>
   </theme>
@@ -457,7 +457,7 @@
         <width>50%</width>
       </action>
       <action name="Execute">
-        <command>tile_man --tbar_screen 1 --tbar_h 26</command>
+        <command>tile_man --tbar_screen 1</command>
       </action>
     </keybind>
     <!-- 
@@ -472,24 +472,24 @@
         <width>50%</width>
       </action>
       <action name="Execute">
-        <command>tile_man --tbar_screen 1 --tbar_h 26</command>
+        <command>tile_man --tbar_screen 1</command>
       </action>
     </keybind>
     <!--
 	 # dmenu
     -->
     <keybind key="W-P">
-        <action name="Execute">
-					<command>~/.dmenu_run_aliases.sh -fn "xft:SauceCodePro Nerd Font:pixelsize=17:antialias=true:hinting=true"</command>
-        </action>
+      <action name="Execute">
+        <command>~/.dmenu_run_aliases.sh -fn "xft:SauceCodePro Nerd Font:pixelsize=19:antialias=true:hinting=true"</command>
+      </action>
     </keybind>
     <!--
 	 # kpmenu
     -->
     <keybind key="W-O">
-        <action name="Execute">
-            <command>kpmenu</command>
-        </action>
+      <action name="Execute">
+        <command>kpmenu</command>
+      </action>
     </keybind>
     <!-- 
         # HalfUpperScreen
