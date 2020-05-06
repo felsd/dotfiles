@@ -17,7 +17,7 @@ fi
 echo "[*] Installing dependencies..."
 apt -y install vim-gtk xclip tmux
 if [ ! $REMOTE ]; then
-	apt -y install suckless-tools
+	apt -y install suckless-tools shellcheck
 fi
 
 # non-remote stuff
