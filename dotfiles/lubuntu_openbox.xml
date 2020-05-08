@@ -354,7 +354,7 @@
     <!--
         # Close window
     -->
-    <keybind key="W-W">
+    <keybind key="A-Q">
       <action name="Close"/>
     </keybind>
     <!--
