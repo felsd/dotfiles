@@ -4,7 +4,8 @@ URxvt.iconFile: /usr/share/icons/Papirus-Dark/32x32/apps/terminal-tango.svg
 ! URxvt.iconFile: /usr/share/icons/custom/terminal.svg
 
 !! black
-URxvt.color0: #1b1918
+!! URxvt.color0: #1b1918
+URxvt.color0: #222222
 URxvt.color8: #766e6b
 !! red
 URxvt.color1: #f22c40
@@ -24,18 +25,21 @@ URxvt.color13: #6666ea
 !! cyan
 URxvt.color6: #00ad9c
 URxvt.color14: #00ad9c
-!! white
+!! gray
 URxvt.color7: #a8a19f
+!! white
 URxvt.color15: #f1efee
 
 URxvt.intensityStyles:	false
-URxvt.background:       [88]#000000
+URxvt.background:       [65]#000000
 URxvt.depth:		32
 URxvt.foreground:       #ffffff
 URxvt.foreground_bold:  #a8a19f
 URxvt.cursor:           #a8a19f
-URxvt.font:             xft:SauceCodePro Nerd Font:pixelsize=14:antialias=true:hinting=true
-URxvt.boldFont:         xft:SauceCodePro Nerd Font:bold:pixelsize=14:antialias=true:hinting=true
+/* URxvt.font:             xft:SauceCodePro Nerd Font:pixelsize=14:antialias=true:hinting=true */
+/* URxvt.boldFont:         xft:SauceCodePro Nerd Font:bold:pixelsize=14:antialias=true:hinting=true */
+URxvt.font:             xft:monospace:size=12:anialias=true
+URxvt.boldFont:         xft:monospace:size=12:antialias=true
 URxvt.scrollBar:	false
 URxvt.cursorColor:	white
 URxvt.geometry:         80x24
@@ -82,17 +86,17 @@ URxvt.keysym.C-S-0x56: eval:paste_clipboard
 
 !! tabbedex
 URxvt.tabbedex.autohide:    true
-URxvt.tabbedex.tabbar-fg:   2
+URxvt.tabbedex.tabbar-fg:   15
 URxvt.tabbedex.tabbar-bg:   0
 URxvt.tabbedex.tab-fg:      3
 URxvt.tabbedex.tab-bg:      0
-URxvt.tabbedex.title:       yes
+URxvt.tabbedex.title:       no
 URxvt.tabbedex.new-button:  no
 URxvt.keysym.Control-t: perl:tabbedex:new_tab
 URxvt.keysym.Control-Tab: perl:tabbedex:next_tab
-URxvt.keysym.Control-Shift-Tab: perl:tabbedex:prev_tab
+URxvt.keysym.Control-Shift-ISO_Left_Tab: perl:tabbedex:prev_tab
 
-! rofi.color-enabled:	true
+! rofi.color-enable:	true
 ! rofi.color-window:	#000, #000, #000
 ! rofi.color-normal:	#111, #819396, #222, #008ed4, #ffffff
 ! rofi.color-active:	#002b37, #008ed4, #003643, #008ed4, #66c6ff

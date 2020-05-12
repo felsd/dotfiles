@@ -134,3 +134,6 @@ function vterm_printf(){
     fi
 }
 
+# autocompletion
+source /usr/share/git/completion/git-completion.bash
+source /etc/bash_completion.d/ssh
