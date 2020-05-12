@@ -491,6 +491,56 @@
         <command>kpmenu</command>
       </action>
     </keybind>
+
+    <!--
+	 # Focus windows 1-9
+    -->
+    <keybind key="A-1">
+      <action name="Execute">
+        <command>wmctrl_focus --window 0</command>
+      </action>
+    </keybind>
+    <keybind key="A-2">
+      <action name="Execute">
+        <command>wmctrl_focus --window 1</command>
+      </action>
+    </keybind>
+    <keybind key="A-3">
+      <action name="Execute">
+        <command>wmctrl_focus --window 2</command>
+      </action>
+    </keybind>
+    <keybind key="A-4">
+      <action name="Execute">
+        <command>wmctrl_focus --window 3</command>
+      </action>
+    </keybind>
+    <keybind key="A-5">
+      <action name="Execute">
+        <command>wmctrl_focus --window 4</command>
+      </action>
+    </keybind>
+    <keybind key="A-6">
+      <action name="Execute">
+        <command>wmctrl_focus --window 5</command>
+      </action>
+    </keybind>
+    <keybind key="A-7">
+      <action name="Execute">
+        <command>wmctrl_focus --window 6</command>
+      </action>
+    </keybind>
+    <keybind key="A-8">
+      <action name="Execute">
+        <command>wmctrl_focus --window 7</command>
+      </action>
+    </keybind>
+    <keybind key="A-9">
+      <action name="Execute">
+        <command>wmctrl_focus --window 8</command>
+      </action>
+    </keybind>
+
     <!-- 
         # HalfUpperScreen
     -->
