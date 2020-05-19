@@ -1,5 +1,5 @@
 #!/bin/bash
-brightness=$(echo -e "10%\n20%\n30%\n40%\n50%\n60%\n70%\n80%\n90%\n100%" | dmenu -i -fn "Source Code Pro Medium:size=12:antialias=true" -p "Display brightness")
+brightness=$(echo -e "10%\n20%\n30%\n40%\n50%\n60%\n70%\n80%\n90%\n100%" | dmenu -i -fn "Misc Tamsyn:pixelsize=17" -p "Display brightness")
 case $brightness in
   10%)
     xbacklight -set 10
