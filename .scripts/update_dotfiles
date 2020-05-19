@@ -33,3 +33,7 @@ cp ~/.config/dunst/dunstrc ~/dotfiles/.config/dunst/
 mkdir -p ~/dotfiles/.config/ranger
 cp ~/.config/ranger/rc.conf ~/dotfiles/.config/ranger/
 
+# vim plugin directory
+rm -rf ~/dotfiles/.vim-plugins
+cp -R ~/.vim-plugins ~/dotfiles/
+
