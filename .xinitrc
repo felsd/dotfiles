@@ -58,7 +58,6 @@ export SSH_AUTH_SOCK
 
 # autostart
 urxvtd -q &
-# emacs --daemon=instance1 &
 xcompmgr &
 dwmblocks &
 dunst &
@@ -90,7 +89,7 @@ bash ~/.themes/active_theme/.fehbg
 setxkbmap us altgr-intl
 
 # add local fonts
-xset +fp /home/daniel/.local/share/fonts
+xset +fp ~/.local/share/fonts
 xset fp rehash
 
 # exec dwm
