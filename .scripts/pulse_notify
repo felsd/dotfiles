@@ -1,0 +1,3 @@
+#!/bin/bash
+# Notify dwmblocks that the audio level has changed
+pkill -RTMIN+3 dwmblocks

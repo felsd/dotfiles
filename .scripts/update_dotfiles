@@ -1,0 +1,35 @@
+#!/bin/bash
+
+# dotfiles
+cp ~/.bash_aliases ~/dotfiles/
+cp ~/.bash_profile ~/dotfiles/
+cp ~/.bashrc ~/dotfiles/
+cp ~/.spacemacs ~/dotfiles/
+cp ~/.tmux.conf ~/dotfiles/
+cp ~/.vimrc ~/dotfiles/
+cp ~/.xinitrc ~/dotfiles/
+cp ~/.Xresources ~/dotfiles/
+
+# .dwm directory
+mkdir -p ~/dotfiles/.dwm
+cp ~/.dwm/autostart_blocking.sh ~/dotfiles/.dwm
+cp ~/.dwm/autostart.sh ~/dotfiles/.dwm/
+
+# .scripts directory
+mkdir -p ~/dotfiles/.scripts
+cp ~/.scripts/* ~/dotfiles/.scripts/
+
+# my themes
+rm -rf ~/dotfiles/.themes
+cp -R ~/.themes ~/dotfiles/
+
+# .config directory
+mkdir -p ~/dotfiles/.config
+# dunst
+mkdir -p ~/dotfiles/.config/dunst
+cp ~/.config/dunst/dunstrc ~/dotfiles/.config/dunst/
+# TODO kpmenu
+# ranger
+mkdir -p ~/dotfiles/.config/ranger
+cp ~/.config/ranger/rc.conf ~/dotfiles/.config/ranger/
+

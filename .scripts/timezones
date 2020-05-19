@@ -1,0 +1,30 @@
+#!/bin/bash
+# Show current time of timezones I care about
+# called on click from dwm_time
+
+# no prompt
+PS1=
+
+print_center(){
+    local x
+    local y
+    text="$*"
+    x=$(( ($(tput cols) - ${#text}) / 2))
+    echo -ne "\E[6n";read -sdR y; y=$(echo -ne "${y#*[}" | cut -d';' -f1)
+    echo -ne "\033[${y};${x}f$*"
+}
+
+#echo -e "\e[?1000;1006;1015h" # Enable mouse tracking
+#bind "\e[<0;3;21M" "exit"
+
+printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
+print_center " $(timedatectl | awk '/Time zone:/ {print $3}'):\t$(date +'%H:%M')\n"
+
+printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
+print_center " Europe/Vienna:\t$(TZ=':Europe/Vienna' date +'%H:%M')\n"
+
+printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
+
+# exit on mouse click or enter
+echo -e "\e[?1000h"
+while read -n 6; do clear;exit; done

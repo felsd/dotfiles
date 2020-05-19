@@ -1,0 +1,120 @@
+URxvt.termName: rxvt-256color
+! URxvt.iconFile: /usr/share/icons/Papirus-Dark/32x32/apps/terminal-tango.svg
+! URxvt.iconFile: /usr/share/icons/Papirus-Dark/32x32/categories/com.gexperts.Terminix.svg
+! URxvt.iconFile: /usr/share/icons/custom/terminal.svg
+
+!! black
+!! URxvt.color0: #1b1918
+URxvt.color0: #222222
+URxvt.color8: #766e6b
+!! red
+URxvt.color1: #f22c40
+URxvt.color9: #f22c40
+!! green
+URxvt.color2: #5ab738
+URxvt.color10: #5ab738
+!! yellow
+URxvt.color3: #d5911a
+URxvt.color11: #d5911a
+!! blue
+URxvt.color4: #407ee7
+URxvt.color12: #407ee7
+!! magenta
+URxvt.color5: #6666ea
+URxvt.color13: #6666ea
+!! cyan
+URxvt.color6: #00ad9c
+URxvt.color14: #00ad9c
+!! gray
+URxvt.color7: #a8a19f
+!! white
+URxvt.color15: #f1efee
+
+URxvt.intensityStyles:	false
+URxvt.background:       [70]#000000
+URxvt.depth:            32
+URxvt.foreground:       #ffffff
+URxvt.foreground_bold:  #a8a19f
+URxvt.cursor:           #a8a19f
+
+/* URxvt.font:             xft:monospace:size=12:antialias=true:hinting=true */
+/* URxvt.boldFont:         xft:monospace:size=12:antialias=true:hinting=true */
+! URxvt.font:             xft:Source Code Pro:size=12:antialias=true:hinting=true
+! URxvt.boldFont:         xft:Source Code Pro:size=12:antialias=true:hinting=true
+! URxvt.font: -*-tamsyn-medium-r-*-*-20-*-*-*-*-*-*-*
+! URxvt.boldFont: -*-tamsyn-medium-r-*-*-20-*-*-*-*-*-*-*
+URxvt*font: -*-tamsyn-medium-r-*-*-20-*-*-*-*-*-*-*
+! URxvt*font: xft:tamsyn:size=20
+
+URxvt.scrollBar:	false
+URxvt.cursorColor:	white
+URxvt.geometry:         80x24
+URxvt.cursorBlink: false
+URxvt.copyCommand: xclip -i -selection clipboard
+URxvt.pasteCommand: xclip -o -selection clipboard
+URxvt*dynamicColors: on
+
+!! Common Keybinds for Navigations
+URxvt.keysym.M-k: command:\033]720;1\007
+URxvt.keysym.M-j: command:\033]721;1\007
+! URxvt.keysym.M-u: command:\033]720;5\007
+! URxvt.keysym.M-d: command:\033]721;25\007
+URxvt.keysym.M-l: \033[1;5C
+URxvt.keysym.M-h: \033[1;5D
+
+!! Extensions
+URxvt.perl-ext-common:	default,matcher,tabbedex,resize-font,url-select,keyboard-select
+URxvt.colorUL:		#4682B4
+!! url-select
+URxvt.keysym.M-u:	perl:url-select:select_next
+URxvt.url-select.launcher: chromium
+URxvt.url-select.underline: true
+!! keyboard-select:
+URxvt.keysym.M-a: perl:keyboard-select:activate
+URxvt.keyboard-select.clipboard: true
+!! resize-font
+URxvt.resize-font.smaller:	C-minus
+URxvt.resize-font.bigger:	C-equal
+URxvt.resize-font.reset:        C-0
+!! Matcher
+URxvt.url-launcher:	linkhandler
+URxvt.matcher.button:	1
+
+!! Disable ISO 14755 unicode input so we can use Ctrl-Shift bindings
+URxvt.iso14755:        false
+URxvt.iso14755_52:     false
+
+!! Disable Ctrl-Alt-c & Ctrl-Alt-v bindings (optional)
+URxvt.keysym.C-M-c:    builtin-string:
+URxvt.keysym.C-M-v:    builtin-string:
+
+! Bind Ctrl-Shift-c & Ctrl-Shift-v to copy and paste
+! I dont know why, but I needed to use hex keysym values to get it to work
+URxvt.keysym.C-S-0x43: eval:selection_to_clipboard
+URxvt.keysym.C-S-0x56: eval:paste_clipboard
+
+!! tabbedex
+URxvt.tabbedex.autohide:    true
+URxvt.tabbedex.tabbar-fg:   15
+URxvt.tabbedex.tabbar-bg:   0
+URxvt.tabbedex.tab-fg:      3
+URxvt.tabbedex.tab-bg:      0
+URxvt.tabbedex.title:       no
+URxvt.tabbedex.new-button:  no
+URxvt.keysym.Control-t: perl:tabbedex:new_tab
+URxvt.keysym.Control-Tab: perl:tabbedex:next_tab
+URxvt.keysym.Control-Shift-ISO_Left_Tab: perl:tabbedex:prev_tab
+
+! rofi.color-enable:	true
+! rofi.color-window:	#000, #000, #000
+! rofi.color-normal:	#111, #819396, #222, #008ed4, #ffffff
+! rofi.color-active:	#002b37, #008ed4, #003643, #008ed4, #66c6ff
+! rofi.color-urgent:	#002b37, #da4281, #003643, #008ed4, #890661
+
+! rofi.fake-transparency:	true
+! rofi.lines:		3
+! rofi.bw:		0
+! rofi.opacity:		"10"
+! rofi.hide-scrollbar:	true
+! rofi.width:		30
+

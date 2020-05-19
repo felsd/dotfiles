@@ -1,0 +1,3 @@
+#!/bin/bash
+sudo cryptsetup open /dev/sdb1 seagate
+sudo mount /dev/mapper/seagate /mnt/seagate

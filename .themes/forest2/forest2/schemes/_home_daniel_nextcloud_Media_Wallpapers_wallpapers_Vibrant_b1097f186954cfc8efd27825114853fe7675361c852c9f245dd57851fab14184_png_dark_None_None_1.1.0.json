@@ -1,0 +1,27 @@
+{
+    "wallpaper": "/home/daniel/nextcloud/Media/Wallpapers/wallpapers/Vibrant/b1097f186954cfc8efd27825114853fe7675361c852c9f245dd57851fab14184.png",
+    "alpha": "70",
+    "special": {
+        "background": "#040A33",
+        "foreground": "#a2e9d0",
+        "cursor": "#a2e9d0"
+    },
+    "colors": {
+        "color0": "#040A33",
+        "color1": "#C1355D",
+        "color2": "#396087",
+        "color3": "#467090",
+        "color4": "#2B7DF6",
+        "color5": "#3FBCA8",
+        "color6": "#4B9E9D",
+        "color7": "#a2e9d0",
+        "color8": "#71a391",
+        "color9": "#C1355D",
+        "color10": "#396087",
+        "color11": "#467090",
+        "color12": "#2B7DF6",
+        "color13": "#3FBCA8",
+        "color14": "#4B9E9D",
+        "color15": "#a2e9d0"
+    }
+}

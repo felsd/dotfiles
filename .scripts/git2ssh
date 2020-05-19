@@ -1,0 +1,21 @@
+#!/usr/bin/python
+# Updates https git repo urls to ssh
+import os
+import re
+import subprocess
+
+origin = subprocess.check_output(["git", "remote", "-v"]).decode("utf-8")
+origin = origin.split("\n")[0]
+origin = re.split(r"\s", origin)[1]
+print(f"Current origin: {origin}")
+if not origin.startswith("http"):
+    print("Nothing to do")
+    os._exit(0)
+if "@" in origin:
+    new_origin = f"git@{origin.split('@')[1]}"
+else:
+    new_origin = f"git@{origin.replace('https://', '')}"
+new_origin = new_origin.replace("bitbucket.org/", "bitbucket.org:")
+new_origin = new_origin.replace("github.com/", "github.com:")
+print(f"Changing origin to {new_origin}")
+subprocess.call(["git", "remote", "set-url", "origin", new_origin])

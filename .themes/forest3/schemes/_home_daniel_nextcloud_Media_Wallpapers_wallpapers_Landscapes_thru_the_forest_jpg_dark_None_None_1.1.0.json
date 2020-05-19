@@ -1,0 +1,27 @@
+{
+    "wallpaper": "/home/daniel/nextcloud/Media/Wallpapers/wallpapers/Landscapes/thru_the_forest.jpg",
+    "alpha": "70",
+    "special": {
+        "background": "#090a0a",
+        "foreground": "#adc0cf",
+        "cursor": "#adc0cf"
+    },
+    "colors": {
+        "color0": "#090a0a",
+        "color1": "#526854",
+        "color2": "#857A5A",
+        "color3": "#658C35",
+        "color4": "#6F8E58",
+        "color5": "#94B067",
+        "color6": "#4F708F",
+        "color7": "#adc0cf",
+        "color8": "#798690",
+        "color9": "#526854",
+        "color10": "#857A5A",
+        "color11": "#658C35",
+        "color12": "#6F8E58",
+        "color13": "#94B067",
+        "color14": "#4F708F",
+        "color15": "#adc0cf"
+    }
+}

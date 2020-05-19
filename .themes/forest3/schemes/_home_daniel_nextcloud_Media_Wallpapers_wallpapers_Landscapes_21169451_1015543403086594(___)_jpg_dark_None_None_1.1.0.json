@@ -1,0 +1,27 @@
+{
+    "wallpaper": "/home/daniel/nextcloud/Media/Wallpapers/wallpapers/Landscapes/21169451_1015543403086594(...).jpg",
+    "alpha": "70",
+    "special": {
+        "background": "#121212",
+        "foreground": "#d8d7d4",
+        "cursor": "#d8d7d4"
+    },
+    "colors": {
+        "color0": "#121212",
+        "color1": "#414238",
+        "color2": "#516825",
+        "color3": "#5B6354",
+        "color4": "#738753",
+        "color5": "#8A926A",
+        "color6": "#A5A59E",
+        "color7": "#d8d7d4",
+        "color8": "#979694",
+        "color9": "#414238",
+        "color10": "#516825",
+        "color11": "#5B6354",
+        "color12": "#738753",
+        "color13": "#8A926A",
+        "color14": "#A5A59E",
+        "color15": "#d8d7d4"
+    }
+}

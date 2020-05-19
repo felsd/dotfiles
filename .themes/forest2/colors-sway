@@ -1,0 +1,21 @@
+set $wallpaper /home/daniel/nextcloud/Media/Wallpapers/eric-jacob-G0miZ5OYaXI-unsplash.jpg
+
+set $background #2f2e1f
+set $foreground #ebe1d0
+
+set $color0 #2f2e1f
+set $color1 #B1B6AD
+set $color2 #CBB991
+set $color3 #C5BDA6
+set $color4 #BDC2BA
+set $color5 #DBC59C
+set $color6 #D0C7B0
+set $color7 #ebe1d0
+set $color8 #a49d91
+set $color9 #B1B6AD
+set $color10 #CBB991
+set $color11 #C5BDA6
+set $color12 #BDC2BA
+set $color13 #DBC59C
+set $color14 #D0C7B0
+set $color15 #ebe1d0

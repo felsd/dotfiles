@@ -1,0 +1,27 @@
+{
+    "wallpaper": "/home/daniel/nextcloud/Media/Wallpapers/wallpapers/Titans/ghidorah.png",
+    "alpha": "70",
+    "special": {
+        "background": "#0D1712",
+        "foreground": "#d7d8d6",
+        "cursor": "#d7d8d6"
+    },
+    "colors": {
+        "color0": "#0D1712",
+        "color1": "#7D827D",
+        "color2": "#717B84",
+        "color3": "#7B848A",
+        "color4": "#8A9194",
+        "color5": "#989EA4",
+        "color6": "#ACAFB2",
+        "color7": "#d7d8d6",
+        "color8": "#969795",
+        "color9": "#7D827D",
+        "color10": "#717B84",
+        "color11": "#7B848A",
+        "color12": "#8A9194",
+        "color13": "#989EA4",
+        "color14": "#ACAFB2",
+        "color15": "#d7d8d6"
+    }
+}

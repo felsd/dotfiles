@@ -1,0 +1,27 @@
+{
+    "wallpaper": "/home/daniel/nextcloud/Media/Wallpapers/xpbg.jpg",
+    "alpha": "70",
+    "special": {
+        "background": "#1a1d17",
+        "foreground": "#cbdbef",
+        "cursor": "#cbdbef"
+    },
+    "colors": {
+        "color0": "#1a1d17",
+        "color1": "#88BB0A",
+        "color2": "#3E59AC",
+        "color3": "#1C70EE",
+        "color4": "#3F85EB",
+        "color5": "#649CF1",
+        "color6": "#90B4F1",
+        "color7": "#cbdbef",
+        "color8": "#8e99a7",
+        "color9": "#88BB0A",
+        "color10": "#3E59AC",
+        "color11": "#1C70EE",
+        "color12": "#3F85EB",
+        "color13": "#649CF1",
+        "color14": "#90B4F1",
+        "color15": "#cbdbef"
+    }
+}

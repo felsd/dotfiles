@@ -1,0 +1,23 @@
+" Special
+let wallpaper  = "/home/daniel/nextcloud/Media/Wallpapers/reflection-of-trees-on-water-2563129.jpg"
+let background = "#0c0a09"
+let foreground = "#f4e4cc"
+let cursor     = "#f4e4cc"
+
+" Colors
+let color0  = "#0c0a09"
+let color1  = "#8B766C"
+let color2  = "#AF8F76"
+let color3  = "#466383"
+let color4  = "#847D85"
+let color5  = "#A3928D"
+let color6  = "#D5AF95"
+let color7  = "#f4e4cc"
+let color8  = "#aa9f8e"
+let color9  = "#8B766C"
+let color10 = "#AF8F76"
+let color11 = "#466383"
+let color12 = "#847D85"
+let color13 = "#A3928D"
+let color14 = "#D5AF95"
+let color15 = "#f4e4cc"

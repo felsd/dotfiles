@@ -1,0 +1,27 @@
+{
+    "wallpaper": "/home/daniel/nextcloud/Media/Wallpapers/Windows-XP-wallpaper-2.jpg",
+    "alpha": "70",
+    "special": {
+        "background": "#181f0c",
+        "foreground": "#cfdbef",
+        "cursor": "#cfdbef"
+    },
+    "colors": {
+        "color0": "#181f0c",
+        "color1": "#3267E2",
+        "color2": "#497AEC",
+        "color3": "#738EA0",
+        "color4": "#6793F0",
+        "color5": "#8FA2A7",
+        "color6": "#92B0F0",
+        "color7": "#cfdbef",
+        "color8": "#9099a7",
+        "color9": "#3267E2",
+        "color10": "#497AEC",
+        "color11": "#738EA0",
+        "color12": "#6793F0",
+        "color13": "#8FA2A7",
+        "color14": "#92B0F0",
+        "color15": "#cfdbef"
+    }
+}

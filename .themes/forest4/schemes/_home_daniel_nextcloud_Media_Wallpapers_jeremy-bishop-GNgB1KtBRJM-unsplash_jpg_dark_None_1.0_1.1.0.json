@@ -1,0 +1,27 @@
+{
+    "wallpaper": "/home/daniel/nextcloud/Media/Wallpapers/jeremy-bishop-GNgB1KtBRJM-unsplash.jpg",
+    "alpha": "70",
+    "special": {
+        "background": "#0D0C08",
+        "foreground": "#ded9d3",
+        "cursor": "#ded9d3"
+    },
+    "colors": {
+        "color0": "#0D0C08",
+        "color1": "#dc5e00",
+        "color2": "#f57400",
+        "color3": "#00fe4c",
+        "color4": "#ff860c",
+        "color5": "#ff9e3d",
+        "color6": "#ffb873",
+        "color7": "#ded9d3",
+        "color8": "#9b9793",
+        "color9": "#dc5e00",
+        "color10": "#f57400",
+        "color11": "#00fe4c",
+        "color12": "#ff860c",
+        "color13": "#ff9e3d",
+        "color14": "#ffb873",
+        "color15": "#ded9d3"
+    }
+}

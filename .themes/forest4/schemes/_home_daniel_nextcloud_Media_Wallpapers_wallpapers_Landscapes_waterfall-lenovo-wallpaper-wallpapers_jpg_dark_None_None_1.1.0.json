@@ -1,0 +1,27 @@
+{
+    "wallpaper": "/home/daniel/nextcloud/Media/Wallpapers/wallpapers/Landscapes/waterfall-lenovo-wallpaper-wallpapers.jpg",
+    "alpha": "70",
+    "special": {
+        "background": "#0E0A09",
+        "foreground": "#d7e0de",
+        "cursor": "#d7e0de"
+    },
+    "colors": {
+        "color0": "#0E0A09",
+        "color1": "#2BBE13",
+        "color2": "#EFAE4A",
+        "color3": "#155FC0",
+        "color4": "#C0669A",
+        "color5": "#159CF4",
+        "color6": "#56B9E3",
+        "color7": "#d7e0de",
+        "color8": "#969c9b",
+        "color9": "#2BBE13",
+        "color10": "#EFAE4A",
+        "color11": "#155FC0",
+        "color12": "#C0669A",
+        "color13": "#159CF4",
+        "color14": "#56B9E3",
+        "color15": "#d7e0de"
+    }
+}

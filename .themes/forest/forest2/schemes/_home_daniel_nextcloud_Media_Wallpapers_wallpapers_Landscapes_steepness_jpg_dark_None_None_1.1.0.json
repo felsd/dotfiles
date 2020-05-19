@@ -1,0 +1,27 @@
+{
+    "wallpaper": "/home/daniel/nextcloud/Media/Wallpapers/wallpapers/Landscapes/steepness.jpg",
+    "alpha": "70",
+    "special": {
+        "background": "#0C0B11",
+        "foreground": "#c0dccd",
+        "cursor": "#c0dccd"
+    },
+    "colors": {
+        "color0": "#0C0B11",
+        "color1": "#4F706D",
+        "color2": "#3B827E",
+        "color3": "#5F8B7A",
+        "color4": "#2F7C82",
+        "color5": "#6DA38D",
+        "color6": "#6CBAAD",
+        "color7": "#c0dccd",
+        "color8": "#869a8f",
+        "color9": "#4F706D",
+        "color10": "#3B827E",
+        "color11": "#5F8B7A",
+        "color12": "#2F7C82",
+        "color13": "#6DA38D",
+        "color14": "#6CBAAD",
+        "color15": "#c0dccd"
+    }
+}
