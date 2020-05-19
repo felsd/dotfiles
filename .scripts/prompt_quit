@@ -6,9 +6,12 @@ choice=$(echo -e "Nothing\nKill DWM\nReboot\nShutdown" | dmenu -fn "Misc Tamsyn:
 case $choice in
   "Kill DWM")
     pkill dwm
+    ;;
   "Reboot")
     sudo reboot
+    ;;
   "Shutdown")
     sudo shutdown now
+    ;;
 esac
 

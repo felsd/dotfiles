@@ -1,0 +1,11 @@
+# applications
+super + c
+  chromium
+super + g
+  galculator
+super + r
+  urxvtc -e /bin/bash -c ranger
+super + k
+  keepassxc
+super + t
+  torbrowser-launcher

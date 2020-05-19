@@ -44,3 +44,6 @@ autocmd FileType python setlocal shiftwidth=4 softtabstop=2 expandtab
 
 " Run xrdb after editing Xdefaults or Xresources
 autocmd BufWritePost ~/.Xresources,~/.Xdefaults !xrdb %
+
+" Restart sxhkd after changing the bindings
+autocmd BufWritePost *sxhkdrc !pkill sxhkd && sxhkd &

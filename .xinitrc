@@ -63,6 +63,7 @@ dwmblocks &
 dunst &
 unclutter &
 numlockx &
+sxhkd &
 pactl subscribe | grep --line-buffered "sink" | xargs -n1 pulse_notify &
 dwm_nextcloud_watcher &
 
