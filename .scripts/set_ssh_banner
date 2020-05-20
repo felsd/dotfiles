@@ -68,3 +68,5 @@ fi
 EOF
 )
 echo "$ua" > /etc/update-motd.d/50-reboot-required
+
+chmod +x /etc/update-motd.d/*
