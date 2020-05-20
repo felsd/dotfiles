@@ -19,6 +19,7 @@ function apply_scripts {
     cp ~/dotfiles/.scripts/apply_dotfiles_remote ~/.scripts/
     cp ~/dotfiles/.scripts/git2ssh ~/.scripts/
     cp ~/dotfiles/.scripts/set_ssh_banner ~/.scripts/
+    chmod +x ~/.scripts/*
 }
 
 apply_dotfiles
