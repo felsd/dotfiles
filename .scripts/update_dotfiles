@@ -40,4 +40,3 @@ cp ~/.config/sxhkd/sxhkdrc ~/dotfiles/.config/sxhkd/
 rm -rf ~/dotfiles/.vim-plugins
 cp -R ~/.vim-plugins ~/dotfiles/
 
-
