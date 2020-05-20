@@ -39,6 +39,7 @@ alias gadd="git add"
 alias gco="git commit -m "
 alias gpu="git push"
 alias gcl="git clone"
+alias gpl="git pull"
 
 # emacs
 alias emacs="emacsclient -nw -s instance1"

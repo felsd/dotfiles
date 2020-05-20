@@ -7,8 +7,9 @@ if [ ! -e /etc/update-motd.d/ ]; then
   exit
 fi
 
-# remove /etc/motd
+# remove /etc/motd and existing entries in update-motd.d
 rm /etc/motd
+rm -rf /etc/update-motd.d/*
 
 # install neofetch if necessary
 if [ ! -e /usr/bin/neofetch ]; then
