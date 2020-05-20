@@ -1,0 +1,70 @@
+#!/bin/bash
+# set up a ssh banner with neofetch and available updates
+
+# check if 
+if [ ! -e /etc/update-motd.d/ ]; then
+  echo "/etc/update-motd.d/ is not available on this system"
+  # exit
+fi
+
+# install neofetch if necessary
+if [ ! -e /usr/bin/neofetch ]; then
+    # debian/ubuntu
+    if [ -e /usr/bin/apt ]; then
+        sudo apt update && sudo apt install -y neofetch
+    # arch
+    elif [ -e /usr/bin/apt ]; then
+        sudo pacman -S neofetch
+    fi
+fi
+
+# 10-neofetch
+nf=$(cat <<EOF
+#!/bin/sh
+neofetch
+EOF
+)
+echo "$nf" > /etc/update-motd.d/10-neofetch
+
+# 20-updates-available
+ua=$(cat <<EOF
+#!/bin/sh
+stamp="/var/lib/update-notifier/updates-available"
+[ ! -r "$stamp" ] || cat "$stamp"
+EOF
+)
+echo "$ua" > /etc/update-motd.d/20-updates-available
+
+# 30-release-upgrade
+ru=$(cat <<EOF
+#!/bin/sh
+# if the current release is under development there won't be a new one
+if [ "$(lsb_release -sd | cut -d' ' -f4)" = "(development" ]; then
+    exit 0
+fi
+if [ -x /usr/lib/ubuntu-release-upgrader/release-upgrade-motd ]; then
+    exec /usr/lib/ubuntu-release-upgrader/release-upgrade-motd
+fi
+EOF
+)
+echo "$ua" > /etc/update-motd.d/30-release-upgrade
+
+# 40-unattended-upgrades
+uu=$(cat <<EOF
+#!/bin/sh
+if [ -x /usr/share/unattended-upgrades/update-motd-unattended-upgrades ]; then
+    exec /usr/share/unattended-upgrades/update-motd-unattended-upgrades
+fi
+EOF
+)
+echo "$ua" > /etc/update-motd.d/40-unattended-upgrades
+
+# 50-reboot-required
+rr=$(cath <<EOF
+#!/bin/sh
+if [ -x /usr/lib/update-notifier/update-motd-reboot-required ]; then
+    exec /usr/lib/update-notifier/update-motd-reboot-required
+fi
+EOF
+)
+echo "$ua" > /etc/update-motd.d/50-reboot-required
