@@ -1,0 +1,25 @@
+#!/bin/bash
+
+function apply_dotfiles {
+    cp ~/dotfiles/.bashrc.remote ~/.bashrc
+    cp ~/dotfiles/.bash_aliases ~/
+    cp ~/dotfiles/.tmux.conf ~/
+    cp ~/dotfiles/.vimrc ~/
+}
+
+function apply_vim_plugins {
+    rm -rf ~/.vim-plugins
+    cp -R .vim-plugins/ ~/
+    curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+}
+
+function apply_scripts {
+    mkdir -p ~/.scripts
+    cp ~/dotfiles/.scripts/apply_dotfiles_remote ~/.scripts/
+    cp ~/dotfiles/.scripts/git2ssh ~/.scripts/
+}
+
+apply_dotfiles
+apply_vim_plugins
+apply_scripts
