@@ -4,8 +4,11 @@
 # check if 
 if [ ! -e /etc/update-motd.d/ ]; then
   echo "/etc/update-motd.d/ is not available on this system"
-  # exit
+  exit
 fi
+
+# remove /etc/motd
+rm /etc/motd
 
 # install neofetch if necessary
 if [ ! -e /usr/bin/neofetch ]; then
