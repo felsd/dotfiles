@@ -97,8 +97,6 @@ function vterm_printf(){
 source /usr/share/git/completion/git-completion.bash
 source /etc/bash_completion.d/ssh
 
-export EDITOR=/usr/bin/vim
-
 # color theme
 cat ~/.themes/active_theme/sequences
 clear

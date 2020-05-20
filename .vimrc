@@ -47,3 +47,4 @@ autocmd BufWritePost ~/.Xresources,~/.Xdefaults !xrdb %
 
 " Restart sxhkd after changing the bindings
 autocmd BufWritePost *sxhkdrc !pkill sxhkd && sxhkd &
+
