@@ -1,0 +1,21 @@
+set $wallpaper /home/daniel/nextcloud/Media/Wallpapers/wallpapers/Etc/burj.jpg
+
+set $background #010016
+set $foreground #9ac9d7
+
+set $color0 #010016
+set $color1 #C43E63
+set $color2 #E84F66
+set $color3 #FE6E67
+set $color4 #FE956A
+set $color5 #FCDB76
+set $color6 #23479B
+set $color7 #9ac9d7
+set $color8 #6b8c96
+set $color9 #C43E63
+set $color10 #E84F66
+set $color11 #FE6E67
+set $color12 #FE956A
+set $color13 #FCDB76
+set $color14 #23479B
+set $color15 #9ac9d7

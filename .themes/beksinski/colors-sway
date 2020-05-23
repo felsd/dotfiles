@@ -1,0 +1,21 @@
+set $wallpaper /home/daniel/nextcloud/Media/Wallpapers/wallpapers/Art/Zdzisław Beksiński/1342985169850.jpg
+
+set $background #050403
+set $foreground #c2a79c
+
+set $color0 #050403
+set $color1 #76442F
+set $color2 #764F47
+set $color3 #945431
+set $color4 #A45B35
+set $color5 #9C6134
+set $color6 #AB6335
+set $color7 #c2a79c
+set $color8 #87746d
+set $color9 #76442F
+set $color10 #764F47
+set $color11 #945431
+set $color12 #A45B35
+set $color13 #9C6134
+set $color14 #AB6335
+set $color15 #c2a79c

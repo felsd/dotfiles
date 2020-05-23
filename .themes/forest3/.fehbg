@@ -1,0 +1,2 @@
+#!/bin/sh
+feh --no-fehbg --bg-fill '/home/daniel/nextcloud/Media/Wallpapers/chris-lawton-6tfO1M8_gas-unsplash.jpg' 

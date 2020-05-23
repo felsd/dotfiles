@@ -1,0 +1,2 @@
+#!/bin/sh
+feh --no-fehbg --bg-fill '/home/daniel/nextcloud/Media/Wallpapers/wallpapers/Etc/burj.jpg' 

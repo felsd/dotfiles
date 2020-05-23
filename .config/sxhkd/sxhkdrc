@@ -1,11 +1,15 @@
 # applications
 super + c
   chromium
+super + p
+  chromium --incognito
 super + g
   galculator
 super + r
-  urxvtc -e /bin/bash -c ranger
+  urxvtc -e /bin/bash -c "xrdb ~/.Xresources && ranger ~/" 
 super + k
   keepassxc
 super + t
-  torbrowser-launcher
+  thunderbird
+super + v
+  virtualbox

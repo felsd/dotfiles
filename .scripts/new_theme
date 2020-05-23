@@ -1,0 +1,11 @@
+#!/bin/bash
+
+THEME_NAME=$1
+if [ ! $THEME_NAME ]; then
+    printf "Theme name: "
+    read THEME_NAME
+fi
+
+mkdir -p ~/.themes/$THEME_NAME
+cp -R ~/.cache/wal/* ~/.themes/$THEME_NAME/
+cp ~/.fehbg ~/.themes/$THEME_NAME

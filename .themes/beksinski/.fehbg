@@ -1,0 +1,2 @@
+#!/bin/sh
+feh --no-fehbg --bg-fill '/home/daniel/nextcloud/Media/Wallpapers/wallpapers/Art/Zdzisław Beksiński/1342985169850.jpg' 

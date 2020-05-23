@@ -14,7 +14,9 @@ alias gt="cd /tmp"
 alias gp="cd ~/python_projects"
 alias gn="cd ~/nextcloud"
 alias gs="cd ~/.scripts"
+alias gx="cd ~/.Xresources.d/"
 alias ..="cd .."
+alias notes="ranger ~/notes/"
 
 # General commands
 alias pm="sudo pacman"
@@ -32,14 +34,18 @@ alias dfh="df -H"
 alias ll="ls -alF"
 alias la="ls -A"
 alias l="ls -CF"
+alias dush="du -sh"
 
 # git
-alias gst="git status"
+alias gsa="git status"
 alias gadd="git add"
 alias gco="git commit -m "
 alias gpu="git push"
 alias gcl="git clone"
 alias gpl="git pull"
+alias gdiff="git diff"
+alias gchk="git checkout"
+alias glog="git log --graph --pretty=format:'%Cred%h%Creset %ad %s %C(yellow)%d%Creset %C(bold blue)<%an>%Creset' --date=short"
 
 # emacs
 alias emacs="emacsclient -nw -s instance1"
@@ -55,17 +61,25 @@ alias vba="vim ~/.bash_aliases"
 alias vbrc="vim ~/.bashrc"
 alias vxr="vim ~/.Xresources"
 alias vvrc="vim ~/.vimrc"
+alias vsx="vim ~/.config/sxhkd/sxhkdrc"
 
 # python
 alias py=python
+alias p=python
 alias pe=pipenv
 
 # other programs and scripts
 function cheat() {
     curl "https://cheat.sh/$@"
 }
+function walt() {
+    wal -a $1 -i $2
+}
+colour() {
+    printf '\e]11;%s\a' $@
+}
 alias rn=ranger
 alias dc="bash ~/python_projects/dict_cc/dict_cc $@"
 alias myip="curl https://api.ipify.org"
 alias ntka="python -m nuitka --follow-imports"
-
+alias torrent=qbittorrent-nox

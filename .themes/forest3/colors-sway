@@ -1,0 +1,21 @@
+set $wallpaper /home/daniel/nextcloud/Media/Wallpapers/chris-lawton-6tfO1M8_gas-unsplash.jpg
+
+set $background #181c1d
+set $foreground #f6eddf
+
+set $color0 #181c1d
+set $color1 #7A807E
+set $color2 #A28B70
+set $color3 #C6A578
+set $color4 #A5978B
+set $color5 #D0B296
+set $color6 #EBCFB2
+set $color7 #f6eddf
+set $color8 #aca59c
+set $color9 #7A807E
+set $color10 #A28B70
+set $color11 #C6A578
+set $color12 #A5978B
+set $color13 #D0B296
+set $color14 #EBCFB2
+set $color15 #f6eddf

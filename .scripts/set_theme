@@ -1,5 +1,5 @@
 #!/bin/bash
-THEME_DIR=~/.themes/$@/
+THEME_DIR=~/.themes/$@
 if [ -e $THEME_DIR ]; then
   echo exists
   ln -snf $THEME_DIR ~/.themes/active_theme

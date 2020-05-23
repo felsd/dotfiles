@@ -1,0 +1,21 @@
+set $wallpaper /home/daniel/nextcloud/Media/Wallpapers/WE_ART_CRUSHIFORM_21-1.jpg
+
+set $background #090E10
+set $foreground #f3e3db
+
+set $color0 #090E10
+set $color1 #4D5961
+set $color2 #9C8159
+set $color3 #75929B
+set $color4 #7D8CA2
+set $color5 #939CAD
+set $color6 #EDBFAF
+set $color7 #f3e3db
+set $color8 #aa9e99
+set $color9 #4D5961
+set $color10 #9C8159
+set $color11 #75929B
+set $color12 #7D8CA2
+set $color13 #939CAD
+set $color14 #EDBFAF
+set $color15 #f3e3db

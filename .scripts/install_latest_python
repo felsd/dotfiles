@@ -1,0 +1,41 @@
+#!/bin/bash
+# Installs the latest version of Python on Debian/Ubuntu
+
+function install_dependencies {
+    apt install build-essential zlib1g-dev \
+        libncurses5-dev libgdbm-dev libnss3-dev libssl-dev \
+        libreadline-dev libffi-dev wget curl git bzip2 libbz2-dev \
+        libbluetooth-dev libbz2-dev libdb-dev libexpat1-dev libffi-dev \
+        libgdbm-dev liblzma-dev libmpdec-dev libncursesw5-dev \
+        libreadline-dev libsqlite3-dev libssl-dev zlib1g-dev \
+        libpcre3 libpcre3-dev 
+}
+
+LATEST_PYTHON=($(curl -q https://www.python.org/downloads/ 2> /dev/null | \
+    awk -F\" '/www.python.org\/ftp\/.*xz/ {print $2}'))
+
+DOWNLOAD_LINK="${LATEST_PYTHON[1]}"
+if [[ $DOWNLOAD_LINK =~ ^https.*xz$ ]]; then
+    echo "Installing dependencies"
+    install_dependencies
+
+    echo "Downloading $DOWNLOAD_LINK"
+    wget -q "$DOWNLOAD_LINK" -O python.tar.xz
+    echo "Extracting python.tar.xz"
+    rm -rf Python-*
+    tar -xf python.tar.xz
+    echo "Compiling"
+    cd Python-* || echo "ERROR" && exit
+    ./configure --enable-optimizations
+    make -j 8
+    make altinstall
+    cd ..
+    echo "Cleaning up"
+    rm -rf Python-*
+    rm python.tar.xz
+    echo "Done!"
+else
+    echo "Could not find download link, exiting"
+    exit 1
+fi
+

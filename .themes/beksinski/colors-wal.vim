@@ -1,0 +1,23 @@
+" Special
+let wallpaper  = "/home/daniel/nextcloud/Media/Wallpapers/wallpapers/Art/Zdzisław Beksiński/1342985169850.jpg"
+let background = "#050403"
+let foreground = "#c2a79c"
+let cursor     = "#c2a79c"
+
+" Colors
+let color0  = "#050403"
+let color1  = "#76442F"
+let color2  = "#764F47"
+let color3  = "#945431"
+let color4  = "#A45B35"
+let color5  = "#9C6134"
+let color6  = "#AB6335"
+let color7  = "#c2a79c"
+let color8  = "#87746d"
+let color9  = "#76442F"
+let color10 = "#764F47"
+let color11 = "#945431"
+let color12 = "#A45B35"
+let color13 = "#9C6134"
+let color14 = "#AB6335"
+let color15 = "#c2a79c"

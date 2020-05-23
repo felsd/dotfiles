@@ -1,0 +1,2 @@
+#!/bin/sh
+feh --no-fehbg --bg-center '/home/daniel/nextcloud/Media/Wallpapers/Houses_Skyscrapers_Synthwave_by_Romain_Trystram_562738_3840x1602.jpg' 

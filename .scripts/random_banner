@@ -1,0 +1,11 @@
+#!/bin/sh
+# generate a random banner with figlet
+# fonts are available at ftp://ftp.figlet.org/pub/figlet/fonts/
+FONT="$(find /usr/share/figlet/fonts/*.flf \
+    /usr/share/figlet/fonts/contributed/*.flf \
+    /usr/share/figlet/fonts/international/*.flf \
+    /usr/share/figlet/fonts/ms-dos/*.flf \
+    | awk '/\.flf/ { print $1 }' | sort -R | tail -1)"
+figlet -f "$FONT" "$@"
+echo "font: $FONT"
+

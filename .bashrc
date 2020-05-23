@@ -97,6 +97,9 @@ function vterm_printf(){
 source /usr/share/git/completion/git-completion.bash
 source /etc/bash_completion.d/ssh
 
+# magic-space
+bind Space:magic-space
+
 # color theme
-cat ~/.themes/active_theme/sequences
+#cat ~/.themes/active_theme/sequences
 clear
