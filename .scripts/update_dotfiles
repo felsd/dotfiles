@@ -36,7 +36,3 @@ cp ~/.config/ranger/rc.conf ~/.dotfiles/.config/ranger/
 mkdir -p ~/.dotfiles/.config/sxhkd
 cp ~/.config/sxhkd/sxhkdrc ~/.dotfiles/.config/sxhkd/
 
-# vim plugin directory
-rm -rf ~/.dotfiles/.vim
-cp -R ~/.vim ~/.dotfiles/
-

@@ -73,7 +73,7 @@ function cheat() {
     curl "https://cheat.sh/$@"
 }
 function walt() {
-    wal -a $1 -i $2
+    wal -a "$1" -i "$2"
 }
 colour() {
     printf '\e]11;%s\a' $@

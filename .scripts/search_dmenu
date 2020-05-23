@@ -1,0 +1,22 @@
+#!/bin/bash
+SE="$(echo -e "DuckDuckGo\nGoogle\nGithub\n" \
+    | dmenu -fn "Misc Tamsyn:pixelsize=17" -p "Select search engine")"
+if [ -z "$SE" ]; then
+    exit
+fi
+
+Q="$(printf "" | dmenu -fn "Misc Tamsyn:pixelsize=17" -p "Search Query")"
+if [ -z "$Q" ]; then
+    exit
+fi
+case $SE in
+    "DuckDuckGo")
+        chromium "https://duckduckgo.com/?q=$Q&ia=web"
+        ;;
+    "Google")
+        chromium "https://www.google.com/search?q=$Q"
+        ;;
+    "Github")
+        chromium "https://github.com/search?q=$Q"
+        ;;
+esac

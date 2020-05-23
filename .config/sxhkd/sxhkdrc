@@ -3,12 +3,16 @@ super + c
   chromium
 super + p
   chromium --incognito
+super + f
+  search_dmenu
 super + g
   galculator
 super + r
   urxvtc -e /bin/bash -c "xrdb ~/.Xresources && ranger ~/" 
 super + k
   keepassxc
+super + s
+  ssh_dmenu
 super + t
   thunderbird
 super + v

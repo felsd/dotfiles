@@ -5,17 +5,17 @@ Plug 'vim-python/python-syntax'
 Plug 'gko/vim-coloresque'
 Plug 'preservim/nerdtree'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'tpope/vim-commentary'
+Plug 'itchyny/lightline.vim'
 call plug#end()
 
-
-source ~/.vim/tcomment/autoload/tcomment.vim
-source ~/.vim/tcomment/plugin/tcomment.vim
-
+" KEYBINDING
 " Set leaderkey to space
 let mapleader = " "
-
 " Exit insert mode with fd
 imap fd <Esc>
+" Reload syntax highlighting
+noremap <F5> <Esc>:filetype detect<CR>
 
 " Enable clipboard
 set clipboard=unnamedplus
@@ -64,4 +64,7 @@ hi Visual ctermbg=0 ctermfg=15 cterm=reverse term=reverse
 map <C-o> :NERDTreeToggle<CR>
 
 " Neomake
-call neomake#configure#automake('w')
+call neomake#configure#automake('wn', 200)
+
+
+set laststatus=2

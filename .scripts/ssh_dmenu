@@ -1,0 +1,6 @@
+#!/bin/bash
+HOST=$(grep '^Host' ~/.ssh/config | grep -v '[?*]' | cut -d ' ' -f 2- \
+    |dmenu -fn "Misc Tamsyn:pixelsize=17" -p "Choose a server")
+if [ -n "$HOST" ]; then
+    urxvtc -e "/bin/bash" -c "ssh $HOST"
+fi
