@@ -1,22 +1,29 @@
 #!/bin/bash
-SE="$(echo -e "DuckDuckGo\nGoogle\nGithub\n" \
-    | dmenu -fn "Misc Tamsyn:pixelsize=17" -p "Select search engine")"
+
+SE="$(echo -e "DuckDuckGo\nGoogle\nGithub\nYouTube\n" \
+    | dmenu -i -fn "$DMENU_FONT" -p "Select search engine")"
 if [ -z "$SE" ]; then
     exit
 fi
 
-Q="$(printf "" | dmenu -fn "Misc Tamsyn:pixelsize=17" -p "Search Query")"
+Q="$(printf "" | dmenu -fn "$DMENU_FONT" -p "Search query")"
 if [ -z "$Q" ]; then
     exit
 fi
 case $SE in
     "DuckDuckGo")
-        chromium "https://duckduckgo.com/?q=$Q&ia=web"
+        $BROWSER "https://duckduckgo.com/?q=$Q&ia=web"
+        # surf "https://duckduckgo.com/?q=$Q&ia=web"
         ;;
     "Google")
-        chromium "https://www.google.com/search?q=$Q"
+        $BROWSER "https://www.google.com/search?q=$Q"
+        # surf "https://www.google.com/search?q=$Q"
         ;;
     "Github")
-        chromium "https://github.com/search?q=$Q"
+        $BROWSER "https://github.com/search?q=$Q"
+        # surf "https://github.com/search?q=$Q"
+        ;;
+    "YouTube")
+        $BROWSER "https://www.youtube.com/results?search_query=$Q"
         ;;
 esac

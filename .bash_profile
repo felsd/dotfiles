@@ -10,6 +10,9 @@ export WINDOWMANAGER=dwm
 export IMAGEVIEWER=feh
 export VIDEOPLAYER=vlc
 export LANG=en_US.UTF-8
+# dmenu
+export DMENU_FONT="Misc Tamsyn:pixelsize=17"
+export DMENU_XFONT="-*-tamsyn-medium-r-*-*-20-*-*-*-*-*-*-*"
 
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 
