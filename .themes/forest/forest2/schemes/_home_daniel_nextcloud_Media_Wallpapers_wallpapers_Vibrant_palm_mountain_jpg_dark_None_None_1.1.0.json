@@ -1,0 +1,27 @@
+{
+    "wallpaper": "/home/daniel/nextcloud/Media/Wallpapers/wallpapers/Vibrant/palm_mountain.jpg",
+    "alpha": "70",
+    "special": {
+        "background": "#0d0911",
+        "foreground": "#edc3ee",
+        "cursor": "#edc3ee"
+    },
+    "colors": {
+        "color0": "#0d0911",
+        "color1": "#62329E",
+        "color2": "#4846B7",
+        "color3": "#734BC6",
+        "color4": "#9151CE",
+        "color5": "#B15BC5",
+        "color6": "#AA5BD5",
+        "color7": "#edc3ee",
+        "color8": "#a588a6",
+        "color9": "#62329E",
+        "color10": "#4846B7",
+        "color11": "#734BC6",
+        "color12": "#9151CE",
+        "color13": "#B15BC5",
+        "color14": "#AA5BD5",
+        "color15": "#edc3ee"
+    }
+}

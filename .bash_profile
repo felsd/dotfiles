@@ -7,7 +7,7 @@ export EDITOR=/usr/bin/vim
 export VISUAL=/usr/bin/vim
 export BROWSER=chromium
 export WINDOWMANAGER=dwm
-export IMAGEVIEWER=feh
+export IMAGEVIEWER=viewnior
 export VIDEOPLAYER=vlc
 export LANG=en_US.UTF-8
 # dmenu

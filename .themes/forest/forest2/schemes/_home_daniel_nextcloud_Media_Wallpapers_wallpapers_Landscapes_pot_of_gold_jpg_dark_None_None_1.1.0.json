@@ -1,0 +1,27 @@
+{
+    "wallpaper": "/home/daniel/nextcloud/Media/Wallpapers/wallpapers/Landscapes/pot_of_gold.jpg",
+    "alpha": "70",
+    "special": {
+        "background": "#0f1619",
+        "foreground": "#cabebe",
+        "cursor": "#cabebe"
+    },
+    "colors": {
+        "color0": "#0f1619",
+        "color1": "#8D7671",
+        "color2": "#509865",
+        "color3": "#9C8F7B",
+        "color4": "#3F4C80",
+        "color5": "#606789",
+        "color6": "#7E858F",
+        "color7": "#cabebe",
+        "color8": "#8d8585",
+        "color9": "#8D7671",
+        "color10": "#509865",
+        "color11": "#9C8F7B",
+        "color12": "#3F4C80",
+        "color13": "#606789",
+        "color14": "#7E858F",
+        "color15": "#cabebe"
+    }
+}

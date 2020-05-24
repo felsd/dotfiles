@@ -1,5 +1,5 @@
 # applications
-super + c
+super + b
   chromium
 super + p
   chromium --incognito
@@ -16,4 +16,4 @@ super + s
 super + t
   thunderbird
 super + v
-  virtualbox
+  virtualbox_dmenu

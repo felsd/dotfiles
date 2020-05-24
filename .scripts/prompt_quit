@@ -1,7 +1,7 @@
 #!/bin/bash
 # a handler for dwm's MOD+SHIFT+Q
 
-choice=$(echo -e "Nothing\nKill DWM\nReboot\nShutdown" | dmenu -fn "Misc Tamsyn:pixelsize=17" -p "What do you want to do?")
+choice=$(echo -e "Nothing\nKill DWM\nReboot\nShutdown" | dmenu -fn "$DMENU_FONT" -p "What do you want to do?")
 
 case $choice in
   "Kill DWM")

@@ -1,5 +1,5 @@
 #!/bin/bash
-brightness=$(echo -e "10%\n20%\n30%\n40%\n50%\n60%\n70%\n80%\n90%\n100%" | dmenu -i -fn "Misc Tamsyn:pixelsize=17" -p "Display brightness")
+brightness=$(echo -e "10%\n20%\n30%\n40%\n50%\n60%\n70%\n80%\n90%\n100%" | dmenu -i -fn "$DMENU_FONT"  -p "Display brightness")
 case $brightness in
   10%)
     xbacklight -set 10
@@ -33,3 +33,4 @@ case $brightness in
     ;;
 esac
 pkill -RTMIN+4 dwmblocks
+
