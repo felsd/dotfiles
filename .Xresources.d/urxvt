@@ -1,0 +1,64 @@
+URxvt*font: -*-tamsyn-medium-r-*-*-20-*-*-*-*-*-*-*
+
+URxvt.intensityStyles: false
+URxvt.background:      [60]#000000
+URxvt.depth:           32
+URxvt.foreground:      #ffffff
+URxvt.foreground_bold: #a8a19f
+URxvt.cursor:          #a8a19f
+URxvt.scrollBar:       false
+URxvt.cursorColor:     white
+URxvt.geometry:        80x24
+URxvt.cursorBlink:     false
+URxvt.copyCommand:     xclip -i -selection clipboard
+URxvt.pasteCommand:    xclip -o -selection clipboard
+URxvt*dynamicColors:   on
+
+!! Common Keybinds for Navigations
+URxvt.keysym.M-k: command:\033]720;1\007
+URxvt.keysym.M-j: command:\033]721;1\007
+! URxvt.keysym.M-u: command:\033]720;5\007
+! URxvt.keysym.M-d: command:\033]721;25\007
+URxvt.keysym.M-l: \033[1;5C
+URxvt.keysym.M-h: \033[1;5D
+
+!! Disable ISO 14755 unicode input so we can use Ctrl-Shift bindings
+URxvt.iso14755:    false
+URxvt.iso14755_52: false
+
+!! Disable Ctrl-Alt-c & Ctrl-Alt-v bindings (optional)
+URxvt.keysym.C-M-c: builtin-string:
+URxvt.keysym.C-M-v: builtin-string:
+
+! Bind Ctrl-Shift-c & Ctrl-Shift-v to copy and paste
+URxvt.keysym.C-S-0x43: eval:selection_to_clipboard
+URxvt.keysym.C-S-0x56: eval:paste_clipboard
+
+!! Extensions
+URxvt.perl-ext-common: default,matcher,tabbedex,resize-font,url-select,keyboard-select
+URxvt.colorUL:         #4682B4
+!! url-select
+URxvt.keysym.M-u:           perl:url-select:select_next
+URxvt.url-select.launcher:  chromium
+URxvt.url-select.underline: true
+!! keyboard-select:
+URxvt.keysym.M-a:                perl:keyboard-select:activate
+URxvt.keyboard-select.clipboard: true
+!! resize-font
+URxvt.resize-font.smaller: C-minus
+URxvt.resize-font.bigger:  C-equal
+URxvt.resize-font.reset:   C-0
+!! Matcher
+URxvt.url-launcher:   linkhandler
+URxvt.matcher.button: 1
+!! tabbedex
+URxvt.tabbedex.autohide:    true
+URxvt.tabbedex.tabbar-fg:   15
+URxvt.tabbedex.tabbar-bg:   0
+URxvt.tabbedex.tab-fg:      3
+URxvt.tabbedex.tab-bg:      0
+URxvt.tabbedex.title:       no
+URxvt.tabbedex.new-button:  no
+URxvt.keysym.Control-t:     perl:tabbedex:new_tab
+URxvt.keysym.Control-Tab:   perl:tabbedex:next_tab
+URxvt.keysym.Control-Shift-ISO_Left_Tab: perl:tabbedex:prev_tab

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-SE="$(echo -e "DuckDuckGo\nGoogle\nGithub\nYouTube\n" \
+SE="$(echo -e "DuckDuckGo\nGoogle\nGithub\nYouTube\nIMDb\nTorrent (1337x.to)\n" \
     | dmenu -i -fn "$DMENU_FONT" -p "Select search engine")"
 if [ -z "$SE" ]; then
     exit
@@ -25,5 +25,11 @@ case $SE in
         ;;
     "YouTube")
         $BROWSER "https://www.youtube.com/results?search_query=$Q"
+        ;;
+    "IMDb")
+        $BROWSER "https://www.imdb.com/find?q=$Q"
+        ;;
+    "Torrent (1337x.to)")
+        $BROWSER "https://1337x.to/search/$Q/1/"
         ;;
 esac

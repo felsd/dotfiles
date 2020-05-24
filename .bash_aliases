@@ -47,6 +47,11 @@ alias gdiff="git diff"
 alias gchk="git checkout"
 alias glog="git log --graph --pretty=format:'%Cred%h%Creset %ad %s %C(yellow)%d%Creset %C(bold blue)<%an>%Creset' --date=short"
 
+# tmux
+alias tmuxn="tmux new -s"
+alias tmuxa="tmux a -t"
+alias tmuxk="tmux kill-session -t"
+
 # emacs
 alias emacs="emacsclient -nw -s instance1"
 alias em=emacs

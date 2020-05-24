@@ -9,6 +9,8 @@ cp ~/.tmux.conf ~/.dotfiles/
 cp ~/.vimrc ~/.dotfiles/
 cp ~/.xinitrc ~/.dotfiles/
 cp ~/.Xresources ~/.dotfiles/
+rm -rf ~/.dotfiles/.Xresources.d
+cp -R ~/.Xresources.d ~/.dotfiles/.Xresources.d
 
 # .dwm directory
 mkdir -p ~/.dotfiles/.dwm
