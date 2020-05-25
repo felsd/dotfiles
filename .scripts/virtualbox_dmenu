@@ -1,10 +1,14 @@
 #!/bin/bash
+
 mapfile -t VMS < <( find ~/virtualbox_vms/ -maxdepth 1 -type d | awk -F "/" '{ print $5 }' )
 
 DMENU_STR=""
+LAST="${VMS[${#VMS[*]} - 1]}"
 for VM in "${VMS[@]}"
 do
-    if [ -n "$VM" ]; then
+    if [ "$VM" == "$LAST" ]; then
+        DMENU_STR="$DMENU_STR$VM"
+    elif [ -n "$VM" ]; then
         DMENU_STR="$DMENU_STR$VM\n"
     fi
 done

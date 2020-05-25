@@ -34,6 +34,7 @@ cp ~/.config/dunst/dunstrc ~/.dotfiles/.config/dunst/
 # ranger
 mkdir -p ~/.dotfiles/.config/ranger
 cp ~/.config/ranger/rc.conf ~/.dotfiles/.config/ranger/
+cp ~/.config/ranger/rifle.conf ~/.dotfiles/.config/ranger/
 # sxhkd
 mkdir -p ~/.dotfiles/.config/sxhkd
 cp ~/.config/sxhkd/sxhkdrc ~/.dotfiles/.config/sxhkd/

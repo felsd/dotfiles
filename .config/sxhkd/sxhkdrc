@@ -17,3 +17,5 @@ super + t
   thunderbird
 super + v
   virtualbox_dmenu
+super + r
+  remmina

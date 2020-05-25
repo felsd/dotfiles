@@ -1,0 +1,20 @@
+#!/bin/bash
+
+mapfile -t CONS < <( find ~/.local/share/remmina/*.remmina -maxdepth 1 -type f )
+DMENU_STR=""
+LAST="${CONS[${#CONS[*]} - 1]}"
+for C in "${CONS[@]}";
+do
+    BN=$(basename "$C")
+    if [ "$C" == "$LAST" ]; then
+        DMENU_STR="$DMENU_STR$BN"
+    elif [ -n "$VM" ]; then
+        DMENU_STR="$DMENU_STR$BN\n"
+    fi
+done
+echo "$DMENU_STR"
+
+CHOICE=$(echo "$DMENU_STR" | dmenu -i -fn "$DMENU_FONT" -p "RDP connect")
+if [ -n "$CHOICE" ]; then
+    remmina --protocol=rdp -f ~/.local/share/remmina/"$CHOICE"
+fi
