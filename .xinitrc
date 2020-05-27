@@ -84,7 +84,8 @@ do
 done
 
 # background
-bash ~/.themes/active_theme/.fehbg
+# bash ~/.themes/active_theme/.fehbg
+bash ~/.fehbg
 
 # keyboard layout
 setxkbmap us altgr-intl
