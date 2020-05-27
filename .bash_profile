@@ -3,8 +3,8 @@
 #
 
 # envs
-export EDITOR=/usr/bin/vim
-export VISUAL=/usr/bin/vim
+export EDITOR="/usr/bin/emacsclient -nw -s instance1"
+export VISUAL="/usr/bin/emacsclient -nw -s instance1"
 export BROWSER=chromium
 export WINDOWMANAGER=dwm
 export IMAGEVIEWER=viewnior
