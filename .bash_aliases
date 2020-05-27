@@ -48,15 +48,20 @@ alias gchk="git checkout"
 alias glog="git log --graph --pretty=format:'%Cred%h%Creset %ad %s %C(yellow)%d%Creset %C(bold blue)<%an>%Creset' --date=short"
 
 # tmux
-alias tmuxn="tmux new -s"
-alias tmuxa="tmux a -t"
-alias tmuxk="tmux kill-session -t"
+alias tn="tmux new -s"
+alias ta="tmux a -t"
+alias tk="tmux kill-session -t"
 
 # emacs
 alias emacs="emacsclient -nw -s instance1"
 alias em=emacs
 alias e=em
 alias e.="em ."
+alias eba="e ~/.bash_aliases"
+alias ebrc="e ~/.bashrc"
+alias exr="e ~/.Xresources"
+alias evrc="e ~/.vimrc"
+alias esx="e ~/.config/sxhkd/sxhkdrc"
 
 # vim
 alias v=vim
