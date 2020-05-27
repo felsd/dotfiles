@@ -46,6 +46,14 @@ set shiftwidth=4
 " 4 spaces indent
 autocmd FileType python setlocal shiftwidth=4 softtabstop=2 expandtab
 
+" hybrid line numbers
+:set number relativenumber
+:augroup numbertoggle
+:  autocmd!
+:  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+:  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+:augroup END
+
 
 " Xresources files
 autocmd BufReadPost ~/.Xresources.d/* setf xdefaults
