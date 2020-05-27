@@ -1,7 +1,7 @@
 #!/bin/bash
-THEME_DIR=~/.themes/$@
-if [ -e $THEME_DIR ]; then
-  ln -snf $THEME_DIR ~/.themes/active_theme
+THEME_DIR=~/.themes/$1
+if [ -e "$THEME_DIR" ]; then
+  ln -snf "$THEME_DIR" ~/.themes/active_theme
   bash ~/.themes/active_theme/.fehbg
   cat ~/.themes/active_theme/sequences
 fi

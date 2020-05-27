@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 SE="$(echo -e "DuckDuckGo\nGoogle\nGithub\nYouTube\nIMDb\nTorrent (1337x.to)" \
     | dmenu -i -fn "$DMENU_FONT" -p "Select search engine")"
