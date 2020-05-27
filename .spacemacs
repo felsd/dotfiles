@@ -30,7 +30,9 @@ values."
    dotspacemacs-configuration-layer-path '()
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(javascript
+   '(vimscript
+     javascript
+     shell-scripts
      yaml
      go
      csv
@@ -276,7 +278,7 @@ values."
    ;;                       text-mode
    ;;   :size-limit-kb 1000)
    ;; (default nil)
-   dotspacemacs-line-numbers t
+   dotspacemacs-line-numbers 'relative
    ;; Code folding method. Possible values are `evil' and `origami'.
    ;; (default 'evil)
    dotspacemacs-folding-method 'evil
@@ -326,6 +328,16 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
+
+  ;; set scratch as initial buffer
+  (setq inhibit-startup-screen t)
+  (when (string= "*scratch*" (buffer-name))
+    (spacemacs/switch-to-scratch-buffer))
+  (setq initial-buffer-choice (lambda () (get-buffer "*scratch*")))
+
+  ;; disable blinking cursor
+  (setq visible-cursor nil)
+
   (require 'drag-stuff)
   (drag-stuff-mode t)
   (global-set-key (kbd "<M-up>") 'drag-stuff-up)
@@ -347,12 +359,32 @@ you should place your code here."
   (add-to-list 'comint-output-filter-functions 'ansi-color-process-output)
   (ansi-color-for-comint-mode-on)
 
+  ;; enable xclip
   (xclip-mode 1)
 
+  ;; workaround for git submodules
   (setq projectile-git-submodule-command "git submodule --quiet foreach 'echo $path' 2>/dev/null | tr '\\n' '\\0'")
 
+  ;; kill frame instead of emacs (for emacsclient)
   (evil-leader/set-key
     "q q" 'spacemacs/frame-killer)
+
+  ;; (add-to-list 'auto-mode-alist '("\\~/Xresources.d/*\\'" . conf-mode))
+  (add-to-list 'auto-mode-alist '("\\.bash_aliases\\'" . shell-script-mode))
+
+  ;; set transparent background
+  (defun on-frame-open (frame)
+    (if (not (display-graphic-p frame))
+        (set-face-background 'default "unspecified-bg" frame)))
+  (on-frame-open (selected-frame))
+  (add-hook 'after-make-frame-functions 'on-frame-open)
+  (set-frame-parameter (selected-frame) 'alpha '(85 50))
+  (defun on-after-init ()
+    (unless (display-graphic-p (selected-frame))
+      (set-face-background 'default "unspecified-bg" (selected-frame))))
+  (add-hook 'window-setup-hook 'on-after-init)
+
+
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -462,7 +494,7 @@ This function is called at the very end of Spacemacs initialization."
  '(objed-cursor-color "#D16969")
  '(package-selected-packages
    (quote
-    (xresources-theme vscdark-theme vs-dark-theme darkmine-theme dark-mint-theme darkokai-theme flatui-dark-theme gruber-darker-theme idea-darkula-theme arc-dark-theme darkburn-theme phoenix-dark-mono-theme atom-dark-theme zerodark-theme tide typescript-mode tern nodejs-repl import-js grizzl helm-gtags ggtags dap-mode lsp-treemacs bui lsp-mode counsel-gtags counsel swiper ivy add-node-modules-path yapfify xterm-color web-mode web-beautify vmd-mode unfill tagedit systemd sql-indent smeargle slim-mode shell-pop scss-mode sass-mode pyvenv pytest pyenv-mode py-isort pug-mode pony-mode pip-requirements phpunit phpcbf php-extras php-auto-yasnippets orgit org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download mwim multi-term mmm-mode markdown-toc markdown-mode magit-gitflow magit-popup livid-mode skewer-mode simple-httpd live-py-mode json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc lv hy-mode dash-functional htmlize parent-mode helm-pydoc projectile helm-gitignore helm-css-scss helm-company helm-c-yasnippet haml-mode go-guru go-eldoc gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md fuzzy flycheck-pos-tip pos-tip flycheck pkg-info epl flx highlight evil-magit magit git-commit with-editor transient eshell-z eshell-prompt-extras esh-help engine-mode emmet-mode drupal-mode php-mode drag-stuff cython-mode csv-mode company-web web-completion-data company-statistics company-go go-mode company-anaconda company coffee-mode auto-yasnippet yasnippet packed anaconda-mode pythonic f dash s helm avy helm-core async ac-ispell auto-complete popup spinner evil-visualstar evil-visual-mark-mode evil-tutor evil-surround evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state iedit evil-exchange evil-ediff evil-args evil-anzu anzu evil undo-tree adaptive-wrap ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline smartparens restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox org-plus-contrib goto-chg org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hydra hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-unimpaired evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-escape eval-sexp-fu elisp-slime-nav dumb-jump diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile aggressive-indent ace-window ace-link ace-jump-helm-line)))
+    (vimrc-mode helm-gtags ggtags dactyl-mode counsel-gtags counsel swiper ivy yapfify xterm-color web-mode web-beautify vmd-mode unfill tagedit systemd sql-indent smeargle slim-mode shell-pop scss-mode sass-mode pyvenv pytest pyenv-mode py-isort pug-mode pony-mode pip-requirements phpunit phpcbf php-extras php-auto-yasnippets orgit org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download mwim multi-term mmm-mode markdown-toc markdown-mode magit-gitflow magit-popup livid-mode skewer-mode simple-httpd live-py-mode json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc lv hy-mode dash-functional htmlize parent-mode helm-pydoc projectile helm-gitignore helm-css-scss helm-company helm-c-yasnippet haml-mode go-guru go-eldoc gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md fuzzy flycheck-pos-tip pos-tip flycheck pkg-info epl flx highlight evil-magit magit git-commit with-editor transient eshell-z eshell-prompt-extras esh-help engine-mode emmet-mode drupal-mode php-mode drag-stuff cython-mode csv-mode company-web web-completion-data company-statistics company-go go-mode company-anaconda company coffee-mode auto-yasnippet yasnippet packed anaconda-mode pythonic f dash s helm avy helm-core async ac-ispell auto-complete popup spinner evil-visualstar evil-visual-mark-mode evil-tutor evil-surround evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state iedit evil-exchange evil-ediff evil-args evil-anzu anzu evil undo-tree adaptive-wrap ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline smartparens restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox org-plus-contrib goto-chg org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hydra hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-unimpaired evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-escape eval-sexp-fu elisp-slime-nav dumb-jump diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile aggressive-indent ace-window ace-link ace-jump-helm-line)))
  '(pdf-view-midnight-colors (quote ("#b2b2b2" . "#292b2e")))
  '(pos-tip-background-color "#4F4F4F")
  '(pos-tip-foreground-color "#FFFFEF")
