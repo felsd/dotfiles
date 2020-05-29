@@ -12,6 +12,10 @@ cp ~/.Xresources ~/.dotfiles/
 rm -rf ~/.dotfiles/.Xresources.d
 cp -R ~/.Xresources.d ~/.dotfiles/.Xresources.d
 
+# /usr/local/bin
+mkdir -p ~/.dotfiles/usr/local/bin
+cp /usr/local/bin/dwm_* ~/.dotfiles/usr/local/bin
+
 # .dwm directory
 mkdir -p ~/.dotfiles/.dwm
 cp ~/.dwm/autostart_blocking.sh ~/.dotfiles/.dwm
