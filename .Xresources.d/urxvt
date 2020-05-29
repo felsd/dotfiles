@@ -1,7 +1,7 @@
 URxvt*font: -*-tamsyn-medium-r-*-*-20-*-*-*-*-*-*-*
 
 URxvt.intensityStyles: false
-URxvt.background:      [60]#000000
+URxvt.background:      [65]#000000
 URxvt.depth:           32
 URxvt.foreground:      #ffffff
 URxvt.foreground_bold: #a8a19f
@@ -13,6 +13,8 @@ URxvt.cursorBlink:     false
 URxvt.copyCommand:     xclip -i -selection clipboard
 URxvt.pasteCommand:    xclip -o -selection clipboard
 URxvt*dynamicColors:   on
+URxvt.scrollStyle:     plain
+URxvt.secondaryScroll: on
 
 !! Common Keybinds for Navigations
 URxvt.keysym.M-k: command:\033]720;1\007

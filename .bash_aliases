@@ -77,6 +77,7 @@ alias vsx="vim ~/.config/sxhkd/sxhkdrc"
 alias py=python
 alias p=python
 alias pe=pipenv
+alias pq="clear && python -q"
 
 # other programs and scripts
 function cheat() {

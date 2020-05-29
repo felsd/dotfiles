@@ -90,6 +90,9 @@ bash ~/.fehbg
 # keyboard layout
 setxkbmap us altgr-intl
 
+# Increase key speed
+xset r rate 300 50
+
 # add local fonts
 xset +fp ~/.local/share/fonts
 xset fp rehash

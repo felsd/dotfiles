@@ -1,6 +1,6 @@
 #!/bin/sh
 
-SE="$(echo -e "DuckDuckGo\nGoogle\nGithub\nYouTube\nIMDb\nTorrent (1337x.to)" \
+SE="$(echo -e "DuckDuckGo\nGoogle\nGitHub\nYouTube\nIMDb\nTorrent (1337x.to)" \
     | dmenu -i -fn "$DMENU_FONT" -p "Select search engine")"
 if [ -z "$SE" ]; then
     exit
@@ -19,7 +19,7 @@ case $SE in
         $BROWSER "https://www.google.com/search?q=$Q"
         # surf "https://www.google.com/search?q=$Q"
         ;;
-    "Github")
+    "GitHub")
         $BROWSER "https://github.com/search?q=$Q"
         # surf "https://github.com/search?q=$Q"
         ;;
