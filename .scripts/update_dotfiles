@@ -16,6 +16,9 @@ cp -R ~/.Xresources.d ~/.dotfiles/.Xresources.d
 mkdir -p ~/.dotfiles/usr/local/bin
 cp /usr/local/bin/dwm_* ~/.dotfiles/usr/local/bin
 
+# dwmblocks config
+cp ~/suckless/dwmblocks/config.h ~/.dotfiles/dwmblocks_config.h
+
 # .dwm directory
 mkdir -p ~/.dotfiles/.dwm
 cp ~/.dwm/autostart_blocking.sh ~/.dotfiles/.dwm
