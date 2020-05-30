@@ -4,13 +4,14 @@ import re
 import subprocess
 import sys
 
-# BAT_100_ICON = ""
-# BAT_75_ICON = ""
-# BAT_50_ICON = ""
-# BAT_25_ICON = ""
-# BAT_0_ICON = ""
-BATTERY_ICON = "🔋"
-EXCLAMATION_ICON = "❗"
+BAT_100_ICON = ""
+BAT_75_ICON = ""
+BAT_50_ICON = ""
+BAT_25_ICON = ""
+BAT_0_ICON = ""
+EXCLAMATION_ICON = ""
+# BATTERY_ICON = "🔋"
+# EXCLAMATION_ICON = "❗"
 
 if __name__ == "__main__":
     pressed_button = os.environ.get("BLOCK_BUTTON")
@@ -22,7 +23,7 @@ if __name__ == "__main__":
             stdin=subprocess.DEVNULL,
             stderr=subprocess.DEVNULL,
         ).decode("utf-8")
-        if bat_status != "Discharging":
+        if "arging" not in bat_status:
             os._exit(0)
 
         bat_capacity = subprocess.check_output(
@@ -31,16 +32,15 @@ if __name__ == "__main__":
             stderr=subprocess.DEVNULL,
         ).decode("utf-8")
         perc = int(bat_capacity)
-        # icon = BAT_0_ICON
-        # if perc >= 75:
-        #     icon = BAT_100_ICON
-        # elif perc >= 50:
-        #     icon = BAT_75_ICON
-        # elif perc >= 25:
-        #     icon = BAT_50_ICON
-        # elif perc >= 10:
-        #     icon = BAT_25_ICON
-        icon = BATTERY_ICON
+        icon = BAT_0_ICON
+        if perc >= 75:
+            icon = BAT_100_ICON
+        elif perc >= 50:
+            icon = BAT_75_ICON
+        elif perc >= 25:
+            icon = BAT_50_ICON
+        elif perc >= 10:
+            icon = BAT_25_ICON
         if perc <= 10:
             icon = EXCLAMATION_ICON
-        sys.stdout.write(f"{icon}{perc}% ")
+        sys.stdout.write(f"{icon}{perc}% | ")
