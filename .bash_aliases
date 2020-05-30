@@ -93,4 +93,3 @@ alias rn=ranger
 alias dc="bash ~/python_projects/dict_cc/dict_cc $@"
 alias myip="curl https://api.ipify.org"
 alias ntka="python -m nuitka --follow-imports"
-alias torrent=qbittorrent-nox

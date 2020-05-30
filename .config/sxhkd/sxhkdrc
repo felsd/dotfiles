@@ -1,6 +1,6 @@
 # applications
 super + b
-  chromium
+  qutebrowser
 super + p
   chromium --incognito
 super + f

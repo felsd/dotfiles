@@ -1,0 +1,19 @@
+#!/bin/bash
+# launch, add torrents to qbittorrent-nox via cli
+
+# launch in tmux session if not already running
+pidof qbittorrent-nox > /dev/null || \
+    (tmux new-session -dA -s qbittorrent "qbittorrent-nox" && \
+         echo "launching a new session..." && sleep 5)
+
+case "$1" in
+    "ui")
+        $BROWSER "http://localhost:8080/" > /dev/null 2>&1 &
+        ;;
+    "add")
+        URL="http://localhost:8080/api/v2/torrents/add"
+        API_RESULT="$(curl -q -X POST -F "urls=$2" "$URL" 2> /dev/null)"
+        [ "$API_RESULT" = "Ok." ] && echo "torrent added" || \
+                echo "could not add torrent: \"$API_RESULT\""
+        ;;
+esac

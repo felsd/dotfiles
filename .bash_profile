@@ -5,7 +5,7 @@
 # envs
 export EDITOR="/usr/bin/emacsclient -nw -s instance1"
 export VISUAL="/usr/bin/emacsclient -nw -s instance1"
-export BROWSER=chromium
+export BROWSER=qutebrowser
 export WINDOWMANAGER=dwm
 export IMAGEVIEWER=viewnior
 export VIDEOPLAYER=vlc

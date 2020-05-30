@@ -90,6 +90,10 @@ bash ~/.fehbg
 # keyboard layout
 setxkbmap us altgr-intl
 
+# map CAPS to ESC
+xmodmap -e 'clear Lock' # ensures you're not stuck in CAPS on mode
+xmodmap -e 'keycode 0x42=Escape'
+
 # Increase key speed
 xset r rate 300 50
 
