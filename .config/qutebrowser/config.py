@@ -5,7 +5,7 @@
 
 ## This is here so configs done via the GUI are still loaded.
 ## Remove it to not load settings done via the GUI.
-# config.load_autoconfig()
+config.load_autoconfig()
 
 ## Aliases for commands. The keys of the given dictionary are the
 ## aliases, while the values are the commands they map to.
@@ -434,11 +434,11 @@
 ## Background color for webpages if unset (or empty to use the theme's
 ## color).
 ## Type: QtColor
-# c.colors.webpage.bg = 'white'
+c.colors.webpage.bg = "black"
 
 ## Force `prefers-color-scheme: dark` colors for websites.
 ## Type: Bool
-# c.colors.webpage.prefers_color_scheme_dark = False
+c.colors.webpage.prefers_color_scheme_dark = True
 
 ## Number of commands to save in the command history. 0: no history / -1:
 ## unlimited
@@ -568,7 +568,7 @@
 ## Store cookies. Note this option needs a restart with QtWebEngine on Qt
 ## < 5.9.
 ## Type: Bool
-# c.content.cookies.store = True
+c.content.cookies.store = False
 
 ## Default encoding to use for websites. The encoding must be a string
 ## describing an encoding such as _utf-8_, _iso-8859-1_, etc.
@@ -1230,7 +1230,7 @@ c.fonts.default_size = "17px"
 ## https://peter.sh/experiments/chromium-command-line-switches/ for a
 ## list) will work.
 ## Type: List of String
-# c.qt.args = []
+c.qt.args = ["blink-settings=darkMode=4"]
 
 ## Force a Qt platform to use. This sets the `QT_QPA_PLATFORM`
 ## environment variable and is useful to force using the XCB plugin when
@@ -1426,7 +1426,7 @@ c.scrolling.smooth = False
 ## Scaling factor for favicons in the tab bar. The tab size is unchanged,
 ## so big favicons also require extra `tabs.padding`.
 ## Type: Float
-# c.tabs.favicons.scale = 1.0
+c.tabs.favicons.scale = 1.0
 
 ## When to show favicons in the tab bar.
 ## Type: String
@@ -1434,7 +1434,7 @@ c.scrolling.smooth = False
 ##   - always: Always show favicons.
 ##   - never: Always hide favicons.
 ##   - pinned: Show favicons only on pinned tabs.
-# c.tabs.favicons.show = 'always'
+c.tabs.favicons.show = "always"
 
 ## Maximum stack size to remember for tab switches (-1 for no maximum).
 ## Type: Int
@@ -1442,7 +1442,7 @@ c.scrolling.smooth = False
 
 ## Padding (in pixels) for tab indicators.
 ## Type: Padding
-# c.tabs.indicator.padding = {'top': 2, 'bottom': 2, 'left': 0, 'right': 4}
+# c.tabs.indicator.padding = {"top": 2, "bottom": 0, "left": 0, "right": 4}
 
 ## Width (in pixels) of the progress indicator (0 to disable).
 ## Type: Int
@@ -1513,7 +1513,7 @@ c.tabs.max_width = 300
 
 ## Padding (in pixels) around text for tabs.
 ## Type: Padding
-# c.tabs.padding = {'top': 0, 'bottom': 0, 'left': 5, 'right': 5}
+# c.tabs.padding = {"top": 0, "bottom": 2, "left": 5, "right": 5}
 
 ## Force pinned tabs to stay at fixed URL.
 ## Type: Bool

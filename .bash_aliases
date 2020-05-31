@@ -51,6 +51,7 @@ alias glog="git log --graph --pretty=format:'%Cred%h%Creset %ad %s %C(yellow)%d%
 alias tn="tmux new -s"
 alias ta="tmux a -t"
 alias tk="tmux kill-session -t"
+alias tls="tmux ls"
 
 # emacs
 alias emacs="emacsclient -nw -s instance1"

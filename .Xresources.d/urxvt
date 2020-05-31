@@ -41,7 +41,7 @@ URxvt.perl-ext-common: default,matcher,tabbedex,resize-font,url-select,keyboard-
 URxvt.colorUL:         #4682B4
 !! url-select
 URxvt.keysym.M-u:           perl:url-select:select_next
-URxvt.url-select.launcher:  chromium
+URxvt.url-select.launcher:  qutebrowser
 URxvt.url-select.underline: true
 !! keyboard-select:
 URxvt.keysym.M-a:                perl:keyboard-select:activate
