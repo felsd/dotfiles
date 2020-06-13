@@ -1,0 +1,11 @@
+#!/bin/bash
+
+RATE=$(curl https://fred.stlouisfed.org/series/DEXUSEU 2>/dev/null | \
+    grep series-meta-observation-value | \
+    cut -d'>' -f 2 | cut -d'<' -f 1 | \
+    head -1
+)
+
+USD=$(printf %.2f "$(echo "$1 * $RATE" | bc -l)")
+echo "EUR: $1"
+echo "USD: $USD"

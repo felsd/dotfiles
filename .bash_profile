@@ -8,7 +8,7 @@ export VISUAL="/usr/bin/emacsclient -nw -s instance1"
 export BROWSER=qutebrowser
 export WINDOWMANAGER=dwm
 export IMAGEVIEWER=viewnior
-export VIDEOPLAYER=vlc
+export VIDEOPLAYER=mpv
 export LANG=en_US.UTF-8
 # dmenu
 export DMENU_FONT="Misc Tamsyn:pixelsize=17"

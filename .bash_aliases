@@ -1,24 +1,7 @@
-# Colorize commands
+# General aliases
 alias ls="ls --color=auto"
 alias grep="grep --color=auto"
-alias fgrep="fgrep --color=auto"
-alias egrep="egrep --color=auto"
 alias diff="diff --color=auto"
-
-# Add an "alert" alias for long running commands.
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-
-# Directories
-alias gh="cd ~"
-alias gt="cd /tmp"
-alias gp="cd ~/python_projects"
-alias gn="cd ~/nextcloud"
-alias gs="cd ~/.scripts"
-alias gx="cd ~/.Xresources.d/"
-alias ..="cd .."
-alias notes="ranger ~/notes/"
-
-# General commands
 alias pm="sudo pacman"
 alias rmr="rm -rf"
 alias cpr="cp -R"
@@ -26,7 +9,6 @@ alias ex=exit
 alias x=ex
 alias so=source
 alias pk=pkill
-alias pkf="pkill -f"
 alias cx="chmod +x"
 alias pgrep="ps aux | grep"
 alias soba="source ~/.bash_aliases"
@@ -35,6 +17,41 @@ alias ll="ls -alF"
 alias la="ls -A"
 alias l="ls -CF"
 alias dush="du -sh"
+alias pkf="pkill -f"
+
+# Directories
+alias gh="cd ~"
+alias gt="cd /tmp"
+alias gn="cd ~/nextcloud"
+alias gs="cd ~/.scripts"
+alias gx="cd ~/.Xresources.d/"
+alias gd="cd ~/Downloads"
+alias gb="cd ~/nextcloud/Business"
+alias gc="cd ~/.config"
+alias ..="cd .."
+alias notes="ranger ~/notes/"
+function gp() {
+    DIR="$(find ~/projects/ -maxdepth 2 -type d | fzy)"
+    if [ -n "$DIR" ]; then cd "$DIR" ; fi
+}
+
+# ranger/rifle
+alias r=ranger
+alias o=rifle
+function od() {
+    F="$(find ~/Downloads -type f | fzy)"
+    if [ -n "$F" ]; then o "$F"; fi
+}
+function ob() {
+    F="$(find ~/nextcloud/Business -type f | fzy)"
+    if [ -n "$F" ]; then o "$F"; fi
+}
+
+# tmux
+alias tn="tmux new -s"
+alias ta="tmux a -t"
+alias tk="tmux kill-session -t"
+alias tls="tmux ls"
 
 # git
 alias gsa="git status"
@@ -44,14 +61,11 @@ alias gpu="git push"
 alias gcl="git clone"
 alias gpl="git pull"
 alias gdiff="git diff"
-alias gchk="git checkout"
 alias glog="git log --graph --pretty=format:'%Cred%h%Creset %ad %s %C(yellow)%d%Creset %C(bold blue)<%an>%Creset' --date=short"
-
-# tmux
-alias tn="tmux new -s"
-alias ta="tmux a -t"
-alias tk="tmux kill-session -t"
-alias tls="tmux ls"
+function gck() {
+    BRANCH="$(git branch | cut -c 3- | fzy)"
+    if [ -n "$BRANCH" ]; then git checkout "$BRANCH"; fi
+}
 
 # emacs
 alias emacs="emacsclient -nw -s instance1"
@@ -87,10 +101,9 @@ function cheat() {
 function walt() {
     wal -a "$1" -i "$2"
 }
-colour() {
-    printf '\e]11;%s\a' $@
+function colour() {
+    printf '\e]11;%s\a' "$@"
 }
-alias rn=ranger
-alias dc="bash ~/python_projects/dict_cc/dict_cc $@"
+alias dc="bash ~/projects/python/dict_cc/dict_cc $@"
 alias myip="curl https://api.ipify.org"
 alias ntka="python -m nuitka --follow-imports"

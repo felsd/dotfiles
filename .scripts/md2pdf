@@ -1,0 +1,12 @@
+#!/bin/bash
+
+pandoc "$1" \
+    -V linkcolor:blue \
+    -V geometry:a4paper \
+    -V geometry:margin=2cm \
+    -V mainfont="Roboto" \
+    -V monofont="Source Code Pro" \
+    --highlight-style="$HOME/.config/pandoc/tango.theme" \
+    --pdf-engine=xelatex \
+    -H "$HOME/.config/pandoc/header.tex" \
+    -o "$2"

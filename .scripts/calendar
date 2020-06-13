@@ -1,12 +1,12 @@
 #!/bin/bash
-# show a calendar via `when`
 # called on click from dwm_date
 
 # no prompt
 PS1=
 
-when c --calendar_today_style=fgred
+# when c --calendar_today_style=fgred
+# # exit on mouse click or enter
+# echo -e "\e[?1000h"
+# while read -n 6; do clear;exit; done
 
-# exit on mouse click or enter
-echo -e "\e[?1000h"
-while read -n 6; do clear;exit; done
+khal interactive

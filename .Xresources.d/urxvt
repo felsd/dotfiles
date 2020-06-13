@@ -13,22 +13,20 @@ URxvt.cursorBlink:     false
 URxvt.copyCommand:     xclip -i -selection clipboard
 URxvt.pasteCommand:    xclip -o -selection clipboard
 URxvt*dynamicColors:   on
-URxvt.scrollStyle:     plain
-URxvt.secondaryScroll: on
-
-!! Common Keybinds for Navigations
-URxvt.keysym.M-k: command:\033]720;1\007
-URxvt.keysym.M-j: command:\033]721;1\007
-! URxvt.keysym.M-u: command:\033]720;5\007
-! URxvt.keysym.M-d: command:\033]721;25\007
-URxvt.keysym.M-l: \033[1;5C
-URxvt.keysym.M-h: \033[1;5D
 
 !! Disable ISO 14755 unicode input so we can use Ctrl-Shift bindings
 URxvt.iso14755:    false
 URxvt.iso14755_52: false
 
-!! Disable Ctrl-Alt-c & Ctrl-Alt-v bindings (optional)
+!! Ctrl-Shift-k and Ctrl-Shift-j for scrolling up/down
+URxvt.keysym.C-S-0x4b: command:\033]720;1\007
+URxvt.keysym.C-S-0x4a: command:\033]721;1\007
+
+!! Ctrl-Shift-u and Ctrl-Shift-d for page up/down
+URxvt.keysym.C-S-0x55: command:\033]720;5\007
+URxvt.keysym.C-S-0x44: command:\033]721;5\007
+
+!! Disable Ctrl-Alt-c & Ctrl-Alt-v bindings
 URxvt.keysym.C-M-c: builtin-string:
 URxvt.keysym.C-M-v: builtin-string:
 
