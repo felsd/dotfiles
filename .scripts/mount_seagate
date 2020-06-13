@@ -1,3 +1,6 @@
 #!/bin/bash
-sudo cryptsetup open /dev/sdb1 seagate
+HDD="$(lsblk -o name,uuid | \
+    awk '/53455f48-439c-42da-ba54-a1b366cae044/ { print $1 }' | \
+    tr -cd '\11\12\15\40-\176')"
+sudo cryptsetup open "/dev/$HDD" seagate
 sudo mount /dev/mapper/seagate /mnt/seagate
