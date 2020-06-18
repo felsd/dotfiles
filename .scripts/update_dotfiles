@@ -8,6 +8,7 @@ cp ~/.spacemacs ~/.dotfiles/
 cp ~/.tmux.conf ~/.dotfiles/
 cp ~/.vimrc ~/.dotfiles/
 cp ~/.xinitrc ~/.dotfiles/
+cp ~/.inputrc ~/.dotfiles/
 cp ~/.Xresources ~/.dotfiles/
 rm -rf ~/.dotfiles/.Xresources.d
 cp -R ~/.Xresources.d ~/.dotfiles/.Xresources.d

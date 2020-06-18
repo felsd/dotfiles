@@ -1,4 +1,8 @@
 #!/bin/bash
+OUT="$2"
+if [ -z "$OUT" ]; then
+    OUT="/tmp/$(random_string).pdf"
+fi
 
 pandoc "$1" \
     -V linkcolor:blue \
@@ -9,4 +13,11 @@ pandoc "$1" \
     --highlight-style="$HOME/.config/pandoc/tango.theme" \
     --pdf-engine=xelatex \
     -H "$HOME/.config/pandoc/header.tex" \
-    -o "$2"
+    -o "$OUT" \
+    && echo "PDF written to $OUT."
+
+if [ -e "$OUT" ]; then
+    read -rp "Open? (Y/n)" ANSWER
+    if [ "$ANSWER" = "n" ]; then exit; fi
+    rifle "$OUT"
+fi

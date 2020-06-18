@@ -1,7 +1,6 @@
 #!/bin/bash
-
-RATE=$(curl https://fred.stlouisfed.org/series/DEXUSEU 2>/dev/null | \
-    grep series-meta-observation-value | \
+RATE=$(curl https://transferwise.com/us/currency-converter/eur-to-usd-rate 2>/dev/null | \
+    grep "text-success" | \
     cut -d'>' -f 2 | cut -d'<' -f 1 | \
     head -1
 )
