@@ -30,6 +30,20 @@ set wildmode=longest,list,full
 set number
 highlight LineNr ctermfg=darkGray
 
+" change cursor depending on mode
+if exists('$TMUX')
+  let &t_SI = "\ePtmux;\e\e[6 q\e\\"
+  let &t_SR = "\ePtmux;\e\e[4 q\e\\"
+  let &t_EI = "\ePtmux;\e\e[2 q\e\\"
+  autocmd VimEnter * silent !echo -ne "\ePtmux;\e\e[2 q\e\\"
+else
+  let &t_SI = "\<Esc>[6 q"
+  let &t_SR = "\<Esc>[4 q"
+  let &t_EI = "\<Esc>[2 q"
+  autocmd VimEnter * silent !echo -ne "\e[2 q"
+endif
+set ttimeoutlen=0
+
 " set default indent to 2 spaces
 set shiftwidth=2
 set softtabstop=2
