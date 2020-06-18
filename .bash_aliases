@@ -26,10 +26,13 @@ alias gn="cd ~/nextcloud"
 alias gs="cd ~/.scripts"
 alias gx="cd ~/.Xresources.d/"
 alias gd="cd ~/Downloads"
-alias gb="cd ~/nextcloud/Business"
 alias gc="cd ~/.config"
 alias ..="cd .."
 alias notes="ranger ~/notes/"
+function gb() {
+    DIR="$(find ~/nextcloud/Business -type d | fzy)"
+    if [ -n "$DIR" ]; then cd "$DIR" ; fi
+}
 function gp() {
     DIR="$(find ~/projects/ -maxdepth 2 -type d | fzy)"
     if [ -n "$DIR" ]; then cd "$DIR" ; fi
@@ -54,13 +57,8 @@ alias tk="tmux kill-session -t"
 alias tls="tmux ls"
 
 # git
-alias gsa="git status"
-alias gadd="git add"
-alias gco="git commit -m "
-alias gpu="git push"
-alias gcl="git clone"
-alias gpl="git pull"
-alias gdiff="git diff"
+alias g="git"
+alias gcm="git commit -m "
 alias glog="git log --graph --pretty=format:'%Cred%h%Creset %ad %s %C(yellow)%d%Creset %C(bold blue)<%an>%Creset' --date=short"
 function gck() {
     BRANCH="$(git branch | cut -c 3- | fzy)"
