@@ -98,3 +98,7 @@ bind Space:magic-space
 # color theme
 #cat ~/.themes/active_theme/sequences
 clear
+
+# vi mode
+set -o vi
+bind -m vi-insert "\C-l":clear-screen
