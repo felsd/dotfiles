@@ -21,7 +21,7 @@ function apply_scripts {
     cp ~/.dotfiles/.scripts/git2ssh ~/.scripts/
     cp ~/.dotfiles/.scripts/set_ssh_banner ~/.scripts/
     cp ~/.dotfiles/.scripts/random_banner ~/.scripts/
-    cp ~/.dotfiles/.scripts/random_password ~/.scripts/
+    cp ~/.dotfiles/.scripts/random_string ~/.scripts/
     chmod +x ~/.scripts/*
 }
 
