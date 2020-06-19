@@ -9,9 +9,8 @@ static const Block blocks[] = {
 	{"",	    "dwm_brightness", 15,                   4},
 	{"",	    "dwm_date",       10,                   6},
 	{"",	    "dwm_time",       0,                    7},
-	{"",	    "dwm_skype",      60,                   8},
+	// {"",	    "dwm_skype",      60,                   8},
 	// {"",	    "dwm_slack",      60,                   10},
-	{"",	    "printf ' '",     0,                    0},
 };
 
 //sets delimeter between status commands. NULL character ('\0') means no delimeter.
