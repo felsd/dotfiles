@@ -1,21 +1,25 @@
 # applications
 super + b
-  qutebrowser
+  xdo activate -N qutebrowser || qutebrowser
 super + p
   chromium --incognito
 super + f
   search_dmenu
-super + g
-  galculator
 super + e
   urxvtc -e /bin/bash -c "xrdb ~/.Xresources && ranger ~/" 
 super + k
-  keepassxc
+  xdo activate -N keepassxc || keepassxc
 super + s
   ssh_dmenu
 super + t
-  thunderbird
+  xdo activate -N thunderbird || thunderbird
 super + v
   virtualbox_dmenu
 super + r
-  remmina
+  xdo activate -N remmina || remmina
+super + l
+  xdo activate -N slack || slack
+super + m
+  xdo activate -N skypeforlinux || skypeforlinux
+super + c
+  xdo activate -N URxvt || urxvtc
