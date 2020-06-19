@@ -45,7 +45,6 @@ def nc_signal_handler(*args, **kwargs):
     for arg in args:
         if isinstance(arg, dbus.Dictionary) and "StatusDetails" in arg:
             status = arg["StatusDetails"]
-            print(arg["StatusDetails"])
             if "Connected -" in status:
                 if "Syncing" in status or "Checking for changes" in status:
                     update_state(STATE_SYNCING)
