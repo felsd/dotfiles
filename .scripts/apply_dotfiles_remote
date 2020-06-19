@@ -7,6 +7,7 @@ function apply_dotfiles {
     cp ~/.dotfiles/.bash_profile ~/
     cp ~/.dotfiles/.tmux.conf ~/
     cp ~/.dotfiles/.vimrc ~/
+    cp ~/.dotfiles/.inputrc ~/
 }
 
 function apply_vim_plugins {
