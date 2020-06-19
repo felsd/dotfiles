@@ -1,0 +1,14 @@
+#!/bin/bash
+
+notify-send "CNX Rain Radar" "Loading..." -t 3000
+
+OUT="/tmp/$(date +%s).gif"
+convert -delay 100 -loop 0 -dispose previous \
+    https://weather.tmd.go.th/cri/cri01.jpg \
+    https://weather.tmd.go.th/cri/cri02.jpg \
+    https://weather.tmd.go.th/cri/cri03.jpg \
+    https://weather.tmd.go.th/cri/cri04.jpg \
+    https://weather.tmd.go.th/cri/cri05.jpg \
+    https://weather.tmd.go.th/cri/cri06.jpg \
+    "$OUT"
+rifle "$OUT"
