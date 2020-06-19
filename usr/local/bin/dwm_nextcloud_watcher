@@ -12,12 +12,16 @@ current_state = None
 STATE_INITIAL = "initial"
 STATE_DISCONNECTED = "disconnected"
 STATE_CONNECTED = "connected"
-STATE_SYNCINC = "syncing"
+STATE_SYNCING = "syncing"
 
 
-def update_state(new_state):
+def update_state(new_state, msg=None):
     global current_state
     if new_state != current_state:
+        # notification if disconnected
+        if new_state == STATE_DISCONNECTED:
+            subprocess.call(["notify-send", "-i", "Nextcloud", "Nextcloud", msg])
+        # notification on reconnect
         if new_state == STATE_CONNECTED and current_state == STATE_DISCONNECTED:
             subprocess.call(
                 [
@@ -28,11 +32,8 @@ def update_state(new_state):
                     "Connection established",
                 ]
             )
-        if new_state == STATE_DISCONNECTED:
-            subprocess.call(
-                ["notify-send", "-i", "Nextcloud", "Nextcloud", "Connection lost"]
-            )
         current_state = new_state
+        # write current status and notify dwmblocks
         with open(
             os.path.join(os.getenv("HOME"), ".dwm", "nextcloud_status.txt"), "w"
         ) as f:
@@ -44,14 +45,15 @@ def nc_signal_handler(*args, **kwargs):
     for arg in args:
         if isinstance(arg, dbus.Dictionary) and "StatusDetails" in arg:
             status = arg["StatusDetails"]
+            print(arg["StatusDetails"])
             if "Connected -" in status:
-                if "Syncing" in status:
-                    update_state(STATE_SYNCINC)
+                if "Syncing" in status or "Checking for changes" in status:
+                    update_state(STATE_SYNCING)
                     return
                 elif "Success" in status:
                     update_state(STATE_CONNECTED)
                     return
-            update_state(STATE_DISCONNECTED)
+            update_state(STATE_DISCONNECTED, status)
 
 
 if __name__ == "__main__":
