@@ -16,5 +16,5 @@ echo "$DMENU_STR"
 
 CHOICE=$(echo "$DMENU_STR" | dmenu -i -fn "$DMENU_FONT" -p "RDP connect")
 if [ -n "$CHOICE" ]; then
-    remmina --protocol=rdp -f ~/.local/share/remmina/"$CHOICE"
+    remmina --protocol=rdp ~/.local/share/remmina/"$CHOICE"
 fi

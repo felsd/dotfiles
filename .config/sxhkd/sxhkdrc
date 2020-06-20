@@ -16,7 +16,7 @@ super + t
 super + v
   virtualbox_dmenu
 super + r
-  xdo activate -N remmina || remmina
+  remmina_dmenu
 super + l
   xdo activate -N slack || slack
 super + m
