@@ -18,6 +18,8 @@ alias la="ls -A"
 alias l="ls -CF"
 alias dush="du -sh"
 alias pkf="pkill -f"
+alias sctl="systemctl"
+alias ssctl="sudo systemctl"
 
 # Directories
 alias gh="cd ~"
@@ -85,6 +87,7 @@ alias vbrc="vim ~/.bashrc"
 alias vxr="vim ~/.Xresources"
 alias vvrc="vim ~/.vimrc"
 alias vsx="vim ~/.config/sxhkd/sxhkdrc"
+alias vsf="vim ~/.sfeed/sfeedrc"
 
 # python
 alias py=python
@@ -102,6 +105,12 @@ function walt() {
 function colour() {
     printf '\e]11;%s\a' "$@"
 }
+function yt2rss() {
+    CHANNEL_ID="$(curl "$1" 2>/dev/null | \
+                       grep 'itemprop="channelId"' | cut -d'"' -f 4 )"
+    echo "https://www.youtube.com/feeds/videos.xml?channel_id=$CHANNEL_ID"
+}
 alias dc="bash ~/projects/python/dict_cc/dict_cc $@"
 alias myip="curl https://api.ipify.org"
 alias ntka="python -m nuitka --follow-imports"
+
