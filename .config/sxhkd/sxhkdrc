@@ -5,10 +5,6 @@ super + p
   chromium --incognito
 super + f
   search_dmenu
-super + e
-  urxvtc -e /bin/bash -c "xrdb ~/.Xresources && ranger ~/" 
-super + k
-  xdo activate -N keepassxc || keepassxc
 super + s
   ssh_dmenu
 super + t
@@ -19,7 +15,9 @@ super + r
   remmina_dmenu
 super + l
   xdo activate -N slack || slack
-super + m
+super + k
   xdo activate -N skypeforlinux || skypeforlinux
 super + c
   xdo activate -N URxvt || urxvtc
+super + n
+  rss
