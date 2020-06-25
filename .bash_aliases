@@ -20,6 +20,7 @@ alias dush="du -sh"
 alias pkf="pkill -f"
 alias sctl="systemctl"
 alias ssctl="sudo systemctl"
+alias h=bash_history
 
 # Directories
 alias gh="cd ~"
