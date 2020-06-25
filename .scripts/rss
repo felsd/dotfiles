@@ -9,7 +9,7 @@ URL=$(sfeed_plain "$HOME/.sfeed/feeds/"* | sort -r | dmenu -l 35 -i | \
 if [ -n "$URL" ]; then
     # prompt to open youtube links with mpv
     if [ "${URL#*youtube.com}" != "$URL" ]; then
-        MPV="$(printf 'No\nYes' | dmenu -i -p 'Open with mpv?')"
+        MPV="$(printf 'Yes\nNo' | dmenu -i -p 'Open with mpv?')"
         if [ "Yes" = "$MPV" ]; then
             notify-send "YouTube" "Loading video..." -t 3000
             mpv "$URL"
