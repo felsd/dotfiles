@@ -21,3 +21,5 @@ super + c
   xdo activate -N URxvt || urxvtc
 super + n
   rss
+super + Print
+  rmd-helper
