@@ -2,11 +2,12 @@
 static const Block blocks[] = {
 	/*Icon*/	/*Command*/       /*Update Interval*/	/*Update Signal*/
 	{"",	    "dwm_nextcloud",  0,                    9},
-	{"",	    "dwm_wifi",	      10,	                1},
+	{"",	    "dwm_wifi",	      10,                   1},
 	{"",	    "dwm_ram",        10,                   2},
 	{"",	    "dwm_battery",    15,                   5},
 	{"",	    "dwm_audio",      0,                    3},
 	{"",	    "dwm_brightness", 15,                   4},
+	{"",	    "dwm_bitcoin",   900,                   8},
 	{"",	    "dwm_date",       10,                   6},
 	{"",	    "dwm_time",       0,                    7},
 	// {"",	    "dwm_skype",      60,                   8},
