@@ -23,3 +23,5 @@ super + n
   rss
 super + Print
   rmd-helper
+super + m
+  man_dmenu
