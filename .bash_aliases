@@ -21,6 +21,9 @@ alias pkf="pkill -f"
 alias sctl="systemctl"
 alias ssctl="sudo systemctl"
 alias h=bash_history
+function cd {
+    builtin cd "$@" && ls
+}
 
 # Directories
 alias gh="cd ~"
@@ -114,4 +117,3 @@ function yt2rss() {
 alias dc="bash ~/projects/python/dict_cc/dict_cc $@"
 alias myip="curl https://api.ipify.org"
 alias ntka="python -m nuitka --follow-imports"
-
