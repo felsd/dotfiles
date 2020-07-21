@@ -7,7 +7,7 @@ export EDITOR="/usr/bin/emacsclient -nw -s instance1"
 export VISUAL="/usr/bin/emacsclient -nw -s instance1"
 export BROWSER=qutebrowser
 export WINDOWMANAGER=dwm
-export IMAGEVIEWER=viewnior
+export IMAGEVIEWER=sxiv
 export VIDEOPLAYER=mpv
 export LANG=en_US.UTF-8
 # dmenu
