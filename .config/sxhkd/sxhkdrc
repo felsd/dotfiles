@@ -25,3 +25,5 @@ super + Print
   rmd-helper
 super + m
   man_dmenu
+super + i
+  xdo activate -N LBRY || lbry
