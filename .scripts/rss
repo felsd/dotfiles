@@ -15,6 +15,9 @@ if [ -n "$URL" ]; then
             mpv "$URL"
             exit
         fi
+    elif [ "${URL#lbry}" != "$URL" ]; then
+        lbry "$URL"
+        exit
     fi
     qutebrowser "$URL"
 fi
