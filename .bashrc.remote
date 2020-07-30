@@ -95,3 +95,7 @@ function vterm_printf(){
 
 export EDITOR=/usr/bin/vim
 
+# vi mode
+set -o vi
+bind -m vi-insert "\C-l":clear-screen
+
