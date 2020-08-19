@@ -24,6 +24,9 @@ printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
 print_center " Europe/Vienna:\t$(TZ=':Europe/Vienna' date +'%H:%M')\n"
 
 printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
+print_center " Europe/London:\t$(TZ=':Europe/London' date +'%H:%M')\n"
+
+printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
 
 # exit on mouse click or enter
 echo -e "\e[?1000h"
