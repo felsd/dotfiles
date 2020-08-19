@@ -1,0 +1,13 @@
+#!/bin/sh
+CHROMIUM_VERSION=$(chromium --version | awk '{print $2}')
+DOWNLOAD_URL="https://clients2.google.com/service/update2/crx?response=redirect&acceptformat=crx2,crx3&prodversion=$CHROMIUM_VERSION&x=id%3D$1%26installsource%3Dondemand%26uc"
+OUT_FILE=/tmp/extension.crx
+
+rm $OUT_FILE
+wget $DOWNLOAD_URL -O $OUT_FILE
+if [ -e $OUT_FILE ]; then
+    chromium "file://$OUT_FILE"
+else
+    echo "ERROR: Could not download CRX file."
+fi
+
