@@ -64,6 +64,11 @@ alias tls="tmux ls"
 
 # git
 alias g="git"
+alias gst="git status"
+alias gad="git add -A"
+alias gada="git add -A"
+alias gpl="git pull"
+alias gpu="git push"
 alias gcm="git commit -m "
 alias glog="git log --graph --pretty=format:'%Cred%h%Creset %ad %s %C(yellow)%d%Creset %C(bold blue)<%an>%Creset' --date=short"
 function gck() {
