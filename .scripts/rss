@@ -4,7 +4,7 @@ notify-send "RSS" "Updating feeds..." -t 3000
 rm "$HOME/.sfeed/feeds/"*
 sfeed_update 2>/dev/null
 
-URL=$(sfeed_plain "$HOME/.sfeed/feeds/"* | sort -r | dmenu -l 35 -i | \
+URL=$(sfeed_plain "$HOME/.sfeed/feeds/"* | sort -r | dmenu -l 35 -i -fn "$DMENU_FONT" | \
 	sed -n 's@^.* \([a-zA-Z]*://\)\(.*\)$@\1\2@p')
 if [ -n "$URL" ]; then
     # prompt to open youtube links with mpv
