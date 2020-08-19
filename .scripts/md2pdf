@@ -8,6 +8,7 @@ pandoc "$1" \
     -V linkcolor:blue \
     -V geometry:a4paper \
     -V geometry:margin=2cm \
+    -f markdown \
     -V mainfont="Roboto" \
     -V monofont="Source Code Pro" \
     --highlight-style="$HOME/.config/pandoc/tango.theme" \
@@ -17,7 +18,7 @@ pandoc "$1" \
     && echo "PDF written to $OUT."
 
 if [ -e "$OUT" ]; then
-    read -rp "Open? (Y/n)" ANSWER
+    read -rp "Open? (Y/n) " ANSWER
     if [ "$ANSWER" = "n" ]; then exit; fi
     rifle "$OUT"
 fi
