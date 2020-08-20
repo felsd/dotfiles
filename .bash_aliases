@@ -72,8 +72,10 @@ alias gpu="git push"
 alias gcm="git commit -m "
 alias glog="git log --graph --pretty=format:'%Cred%h%Creset %ad %s %C(yellow)%d%Creset %C(bold blue)<%an>%Creset' --date=short"
 function gck() {
-    BRANCH="$(git branch | cut -c 3- | fzy)"
-    if [ -n "$BRANCH" ]; then git checkout "$BRANCH"; fi
+    BRANCH="$(git branch -av | awk '{print $1}' | fzy)"
+    if [ -n "$BRANCH" ]; then
+        git checkout $(echo $BRANCH | sed -e 's/remotes\/origin\///');
+    fi
 }
 
 # emacs
