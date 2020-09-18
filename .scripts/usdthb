@@ -2,7 +2,7 @@
 RATE=$(curl https://transferwise.com/us/currency-converter/usd-to-thb-rate 2>/dev/null | \
     grep "text-success" | \
     cut -d'>' -f 2 | cut -d'<' -f 1 | \
-    head -1
+    tail -1
 )
 
 THB=$(printf %.2f "$(echo "$1 * $RATE" | bc -l)")

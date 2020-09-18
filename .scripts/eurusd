@@ -2,8 +2,9 @@
 RATE=$(curl https://transferwise.com/us/currency-converter/eur-to-usd-rate 2>/dev/null | \
     grep "text-success" | \
     cut -d'>' -f 2 | cut -d'<' -f 1 | \
-    head -1
+    tail -1
 )
+echo $RATE
 
 USD=$(printf %.2f "$(echo "$1 * $RATE" | bc -l)")
 echo "EUR: $1"
