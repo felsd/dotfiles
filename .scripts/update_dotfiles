@@ -20,11 +20,6 @@ cp /usr/local/bin/dwm_* ~/.dotfiles/usr/local/bin
 # dwmblocks config
 cp ~/projects/suckless/dwmblocks/config.h ~/.dotfiles/dwmblocks_config.h
 
-# .dwm directory
-mkdir -p ~/.dotfiles/.dwm
-cp ~/.dwm/autostart_blocking.sh ~/.dotfiles/.dwm
-cp ~/.dwm/autostart.sh ~/.dotfiles/.dwm/
-
 # .scripts directory
 mkdir -p ~/.dotfiles/.scripts
 cp ~/.scripts/* ~/.dotfiles/.scripts/
