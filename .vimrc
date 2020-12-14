@@ -82,12 +82,12 @@ if exists('$TMUX')
   let &t_SI = "\ePtmux;\e\e[6 q\e\\"
   let &t_SR = "\ePtmux;\e\e[4 q\e\\"
   let &t_EI = "\ePtmux;\e\e[2 q\e\\"
-  autocmd VimEnter * silent !echo -ne "\ePtmux;\e\e[2 q\e\\"
+  autocmd VimEnter * silent !echo -ne "\ePtmux;\e\e[2 q\e\\"|echo ""
 else
   let &t_SI = "\<Esc>[6 q"
   let &t_SR = "\<Esc>[4 q"
   let &t_EI = "\<Esc>[2 q"
-  autocmd VimEnter * silent !echo -ne "\e[2 q"
+  autocmd VimEnter * silent !echo -ne "\e[2 q"|echo ""
 endif
 set ttimeoutlen=0
 
