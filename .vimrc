@@ -1,6 +1,7 @@
 call plug#begin('~/.vim/plugged')
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'mileszs/ack.vim'
+Plug 'psf/black', { 'branch': 'stable' }
 Plug 'dylanaraps/wal.vim'
 Plug 'neomake/neomake'
 Plug 'vim-python/python-syntax'
@@ -113,6 +114,9 @@ autocmd BufReadPost ~/.Xresources.d/* setf xdefaults
 " Run xrdb automatically
 autocmd BufWritePost ~/.Xresources,~/.Xdefaults !xrdb %
 autocmd BufWritePost ~/.Xresources.d/* !xrdb ~/.Xresources
+
+" Run black before saving .py files
+autocmd BufWritePre *.py execute ':Black'
 
 " Restart sxhkd after changing the bindings
 autocmd BufWritePost *sxhkdrc !pkill sxhkd && sxhkd &
