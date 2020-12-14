@@ -1,4 +1,6 @@
 call plug#begin('~/.vim/plugged')
+Plug 'chankaward/vim-railscasts-theme'
+Plug 'jreybert/vimagit'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'mileszs/ack.vim'
 Plug 'psf/black', { 'branch': 'stable' }
@@ -11,6 +13,10 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-commentary'
 Plug 'itchyny/lightline.vim'
 call plug#end()
+
+colorscheme railscasts
+set background=light
+hi Normal ctermbg=none
 
 " KEYBINDING
 " Set leaderkey to space
@@ -49,6 +55,8 @@ command! -nargs=1 Ag execute "Ack! <args> " . Find_git_root()
 nnoremap <Leader>/ :Ag<Space>
 nnoremap <silent> [q :cprevious<CR>
 nnoremap <silent> ]q :cnext<CR>
+" Magit
+map <Leader>gs :Magit<CR>
 """ SPACEMACS LIKE KEYBINDINGS END
 
 " Exit insert mode with fd
