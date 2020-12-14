@@ -1,4 +1,6 @@
 call plug#begin('~/.vim/plugged')
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'mileszs/ack.vim'
 Plug 'dylanaraps/wal.vim'
 Plug 'neomake/neomake'
 Plug 'vim-python/python-syntax'
@@ -11,7 +13,43 @@ call plug#end()
 
 " KEYBINDING
 " Set leaderkey to space
-let mapleader = " "
+nnoremap <SPACE> <Nop>
+let mapleader = "\<Space>"
+
+""" SPACEMACS LIKE KEYBINDINGS START
+" Save file
+map <Leader>fs :w<CR>
+" Window splits
+map <Leader>wv <C-w>v
+map <Leader>wn <C-w>n
+" Navigate through open buffers
+map <Leader>wh <C-w><Left>
+map <Leader>wl <C-w><Right>
+map <Leader>wj <C-w><Down>
+map <Leader>wk <C-w><Up>
+" Quit current buffer
+map <Leader>wx :q<CR>
+" Quit all buffers
+map <Leader>qq :qa<CR>
+" Open nerdtree
+map <Leader>pt <C-o>
+" Fuzzy search in project dir files
+let g:ctrlp_map = '<Leader>pf'
+let g:ctrlp_working_path_mode = 'ra'
+" Fuzzy search in project dir file contents
+let g:ackprg = 'rg --vimgrep --type-not sql --smart-case'
+let g:ack_autoclose = 1
+let g:ack_use_cword_for_empty_search = 1
+cnoreabbrev Ack Ack!
+function! Find_git_root()
+  return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
+endfunction
+command! -nargs=1 Ag execute "Ack! <args> " . Find_git_root()
+nnoremap <Leader>/ :Ag<Space>
+nnoremap <silent> [q :cprevious<CR>
+nnoremap <silent> ]q :cnext<CR>
+""" SPACEMACS LIKE KEYBINDINGS END
+
 " Exit insert mode with fd
 imap fd <Esc>
 " Reload syntax highlighting
