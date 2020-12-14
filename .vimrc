@@ -4,16 +4,18 @@ Plug 'jreybert/vimagit'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'mileszs/ack.vim'
 Plug 'psf/black', { 'branch': 'stable' }
-Plug 'fisadev/vim-isort'
+Plug 'brentyi/isort.vim'
 Plug 'dylanaraps/wal.vim'
 Plug 'neomake/neomake'
-Plug 'vim-python/python-syntax'
+Plug 'sheerun/vim-polyglot'
 Plug 'davidhalter/jedi-vim'
 Plug 'gko/vim-coloresque'
 Plug 'preservim/nerdtree'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-commentary'
 Plug 'itchyny/lightline.vim'
+Plug 'jiangmiao/auto-pairs'
+Plug 'airblade/vim-gitgutter'
 call plug#end()
 
 " Color scheme
@@ -38,9 +40,9 @@ map <Leader>wl <C-w><Right>
 map <Leader>wj <C-w><Down>
 map <Leader>wk <C-w><Up>
 " Quit current buffer
-map <Leader>wx :q<CR>
+map <Leader>wx :q!<CR>
 " Quit all buffers
-map <Leader>qq :qa<CR>
+map <Leader>qq :qa!<CR>
 " Open nerdtree
 map <Leader>pt <C-o>
 " Fuzzy search in project dir files
@@ -85,12 +87,21 @@ if exists('$TMUX')
   let &t_SI = "\ePtmux;\e\e[6 q\e\\"
   let &t_SR = "\ePtmux;\e\e[4 q\e\\"
   let &t_EI = "\ePtmux;\e\e[2 q\e\\"
-  autocmd VimEnter * silent !echo -ne "\ePtmux;\e\e[2 q\e\\"|echo ""
+  augroup setCursor
+      au!
+      autocmd VimEnter * silent !echo -ne "\ePtmux;\e\e[2 q\e\\"
+      autocmd VimEnter * redraw!
+  augroup end
 else
   let &t_SI = "\<Esc>[6 q"
   let &t_SR = "\<Esc>[4 q"
   let &t_EI = "\<Esc>[2 q"
-  autocmd VimEnter * silent !echo -ne "\e[2 q"|echo ""
+  augroup setCursor
+      au!
+      autocmd VimEnter * silent !echo -ne "\e[2 q"
+      autocmd VimEnter * redraw!
+  augroup end
+
 endif
 set ttimeoutlen=0
 
@@ -144,10 +155,10 @@ autocmd BufReadPost ~/.Xresources.d/* setf xdefaults
 autocmd BufWritePost ~/.Xresources,~/.Xdefaults !xrdb %
 autocmd BufWritePost ~/.Xresources.d/* !xrdb ~/.Xresources
 
+" Run isort before saving .py files
+autocmd BufWritePost *.py execute ':Isort'
 " Run black before saving .py files
 autocmd BufWritePre *.py execute ':Black'
-" Run isort before saving .py files
-autocmd BufWritePre *.py execute ':Isort'
 
 " Restart sxhkd after changing the bindings
 autocmd BufWritePost *sxhkdrc !pkill sxhkd && sxhkd &
@@ -161,5 +172,10 @@ map <C-o> :NERDTreeToggle<CR>
 " Neomake
 call neomake#configure#automake('wn', 200)
 
+" Gitgutter
+" vim-gitgutter used to do this by default:
+highlight! link SignColumn LineNr
+" or you could do this:
+highlight SignColumn guibg=NONE ctermbg=NONE
 
 set laststatus=2
