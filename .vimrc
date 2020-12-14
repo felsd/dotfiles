@@ -4,9 +4,11 @@ Plug 'jreybert/vimagit'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'mileszs/ack.vim'
 Plug 'psf/black', { 'branch': 'stable' }
+Plug 'fisadev/vim-isort'
 Plug 'dylanaraps/wal.vim'
 Plug 'neomake/neomake'
 Plug 'vim-python/python-syntax'
+Plug 'davidhalter/jedi-vim'
 Plug 'gko/vim-coloresque'
 Plug 'preservim/nerdtree'
 Plug 'editorconfig/editorconfig-vim'
@@ -14,6 +16,7 @@ Plug 'tpope/vim-commentary'
 Plug 'itchyny/lightline.vim'
 call plug#end()
 
+" Color scheme
 colorscheme railscasts
 set background=light
 hi Normal ctermbg=none
@@ -115,6 +118,24 @@ autocmd FileType python setlocal shiftwidth=4 softtabstop=2 expandtab
 :  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 :augroup END
 
+" Python syntax highlighting
+let g:python_highlight_builtins=1
+let g:python_highlight_builtin_objs=1
+let g:python_highlight_builtin_types=1
+let g:python_highlight_builtin_funcs=1
+let g:python_highlight_builtin_funcs_kwarg=1
+let g:python_highlight_exceptions=1
+let g:python_highlight_string_formatting=1
+let g:python_highlight_string_format=1
+let g:python_highlight_string_templates=0
+let g:python_highlight_indent_errors=1
+let g:python_highlight_space_errors=1
+let g:python_highlight_doctests=1
+let g:python_highlight_func_calls=0
+let g:python_highlight_class_vars=1
+let g:python_highlight_operators=1
+let g:python_highlight_file_headers_as_comments=1
+let g:python_slow_sync=1
 
 " Xresources files
 autocmd BufReadPost ~/.Xresources.d/* setf xdefaults
@@ -125,6 +146,8 @@ autocmd BufWritePost ~/.Xresources.d/* !xrdb ~/.Xresources
 
 " Run black before saving .py files
 autocmd BufWritePre *.py execute ':Black'
+" Run isort before saving .py files
+autocmd BufWritePre *.py execute ':Isort'
 
 " Restart sxhkd after changing the bindings
 autocmd BufWritePost *sxhkdrc !pkill sxhkd && sxhkd &
