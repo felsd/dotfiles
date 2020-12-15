@@ -39,6 +39,8 @@ map <Leader>wh <C-w><Left>
 map <Leader>wl <C-w><Right>
 map <Leader>wj <C-w><Down>
 map <Leader>wk <C-w><Up>
+" Go to previous buffer
+map <Leader><Tab> :bp<CR>
 " Quit current buffer
 map <Leader>wx :q!<CR>
 " Quit all buffers
