@@ -62,6 +62,8 @@ nnoremap <silent> [q :cprevious<CR>
 nnoremap <silent> ]q :cnext<CR>
 " Magit
 map <Leader>gs :Magit<CR>
+" Refresh GitGutter in all buffers
+map <Leader>gg :bufdo execute ":GitGutter"<CR>
 """ SPACEMACS LIKE KEYBINDINGS END
 
 " Exit insert mode with fd
