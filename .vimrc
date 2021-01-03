@@ -1,6 +1,6 @@
 call plug#begin('~/.vim/plugged')
 Plug 'chankaward/vim-railscasts-theme'
-Plug 'jreybert/vimagit'
+Plug 'tpope/vim-fugitive'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'mileszs/ack.vim'
 Plug 'psf/black', { 'branch': 'stable' }
@@ -16,12 +16,18 @@ Plug 'tpope/vim-commentary'
 Plug 'itchyny/lightline.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'airblade/vim-gitgutter'
+Plug 'gregsexton/MatchTag'
+Plug 'jceb/vim-orgmode'
 call plug#end()
 
 " Color scheme
 colorscheme railscasts
 set background=light
 hi Normal ctermbg=none
+
+" Colors of folded sections
+hi Folded ctermbg=darkgray
+hi Folded ctermfg=white
 
 " KEYBINDING
 " Set leaderkey to space
@@ -39,10 +45,14 @@ map <Leader>wh <C-w><Left>
 map <Leader>wl <C-w><Right>
 map <Leader>wj <C-w><Down>
 map <Leader>wk <C-w><Up>
-" Go to previous buffer
+" Navigate through buffers
 map <Leader><Tab> :bp<CR>
+map <Leader>bp :bp<CR>
+map <Leader>bn :bn<CR>
+" Kill current buffer
+map <Leader>wx :bd<CR>
 " Quit current buffer
-map <Leader>wx :q!<CR>
+map <Leader>wq :q!<CR>
 " Quit all buffers
 map <Leader>qq :qa!<CR>
 " Open nerdtree
@@ -62,8 +72,14 @@ command! -nargs=1 Ag execute "Ack! <args> " . Find_git_root()
 nnoremap <Leader>/ :Ag<Space>
 nnoremap <silent> [q :cprevious<CR>
 nnoremap <silent> ]q :cnext<CR>
-" Magit
-map <Leader>gs :Magit<CR>
+" Git
+map <Leader>gs :Git<CR>
+map <Leader>gc :Git commit<CR>
+map <Leader>gpu :Git push<CR>
+map <Leader>gpl :Git pull<CR>
+map <Leader>glog :Gclog<CR>
+map <Leader>gm :Git merge<CR>
+map <Leader>gf :Git fetch<CR>
 " Refresh GitGutter in all buffers
 map <Leader>gg :bufdo execute ":GitGutter"<CR>
 """ SPACEMACS LIKE KEYBINDINGS END
@@ -124,6 +140,9 @@ set shiftwidth=4
 
 " 4 spaces indent
 autocmd FileType python setlocal shiftwidth=4 softtabstop=2 expandtab
+
+" Don't treat underscore as keyword
+set iskeyword-=_
 
 " hybrid line numbers
 :set number relativenumber
