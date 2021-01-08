@@ -103,7 +103,7 @@ alias vsf="vim ~/.sfeed/sfeedrc"
 # python
 alias py=python
 alias p=python
-alias pe=pipenv
+alias pe=poetry
 alias pq="clear && python -q"
 
 # other programs and scripts
