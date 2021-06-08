@@ -18,6 +18,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'airblade/vim-gitgutter'
 Plug 'gregsexton/MatchTag'
 Plug 'jceb/vim-orgmode'
+Plug 'mattn/emmet-vim'
 call plug#end()
 
 " Color scheme
@@ -29,12 +30,12 @@ hi Normal ctermbg=none
 hi Folded ctermbg=darkgray
 hi Folded ctermfg=white
 
-" KEYBINDING
+" KEYBINDINGS
 " Set leaderkey to space
 nnoremap <SPACE> <Nop>
 let mapleader = "\<Space>"
-
-""" SPACEMACS LIKE KEYBINDINGS START
+" Set localleader to ;
+let maplocalleader = ";"
 " Save file
 map <Leader>fs :w<CR>
 " Window splits
@@ -46,6 +47,7 @@ map <Leader>wl <C-w><Right>
 map <Leader>wj <C-w><Down>
 map <Leader>wk <C-w><Up>
 " Navigate through buffers
+map <Leader>bb :buffers<CR>:b 
 map <Leader><Tab> :bp<CR>
 map <Leader>bp :bp<CR>
 map <Leader>bn :bn<CR>
@@ -82,8 +84,8 @@ map <Leader>gm :Git merge<CR>
 map <Leader>gf :Git fetch<CR>
 " Refresh GitGutter in all buffers
 map <Leader>gg :bufdo execute ":GitGutter"<CR>
-""" SPACEMACS LIKE KEYBINDINGS END
-
+" Emmet
+map <Leader>ee <c-y>,i
 " Exit insert mode with fd
 imap fd <Esc>
 " Reload syntax highlighting
@@ -140,6 +142,7 @@ set shiftwidth=4
 
 " 4 spaces indent
 autocmd FileType python setlocal shiftwidth=4 softtabstop=2 expandtab
+autocmd FileType javascript setlocal shiftwidth=2 softtabstop=2 expandtab
 
 " Don't treat underscore as keyword
 set iskeyword-=_
