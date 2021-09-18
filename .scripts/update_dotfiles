@@ -13,13 +13,6 @@ cp ~/.Xresources ~/.dotfiles/
 rm -rf ~/.dotfiles/.Xresources.d
 cp -R ~/.Xresources.d ~/.dotfiles/.Xresources.d
 
-# /usr/local/bin
-mkdir -p ~/.dotfiles/usr/local/bin
-cp /usr/local/bin/dwm_* ~/.dotfiles/usr/local/bin
-
-# dwmblocks config
-cp ~/projects/suckless/dwmblocks/config.h ~/.dotfiles/dwmblocks_config.h
-
 # .scripts directory
 mkdir -p ~/.dotfiles/.scripts
 cp ~/.scripts/* ~/.dotfiles/.scripts/
