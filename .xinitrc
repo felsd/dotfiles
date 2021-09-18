@@ -36,12 +36,12 @@ xset -dpms
 xset s off
 
 # enable dual-monitor if external screen is present
-LAPTOP=LVDS-1
-EXTERNAL=DP-1-1
+LAPTOP=LVDS-0
+EXTERNAL=$(xrandr | awk '/^DP.* connected/ {print $1}')
 if xrandr | grep -q $EXTERNAL; then
 	# RESOLUTION SETTINGS
 	xrandr --output $LAPTOP --mode 1920x1080 --rate 60
-	xrandr --output $EXTERNAL --mode 1920x1080 --rate 120
+	xrandr --output $EXTERNAL --mode 2560x1440 --rate 120
 
 	# MONITOR ORDER
 	xrandr --output $LAPTOP --left-of $EXTERNAL
