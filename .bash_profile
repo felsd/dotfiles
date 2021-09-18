@@ -5,7 +5,7 @@
 # envs
 export EDITOR=vim
 export VISUAL=vim
-export BROWSER=qutebrowser
+export BROWSER=brave
 export WINDOWMANAGER=dwm
 export IMAGEVIEWER=sxiv
 export VIDEOPLAYER=mpv
