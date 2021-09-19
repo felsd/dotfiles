@@ -12,13 +12,16 @@ Plug 'davidhalter/jedi-vim'
 Plug 'gko/vim-coloresque'
 Plug 'preservim/nerdtree'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'tpope/vim-commentary'
+Plug 'tomtom/tcomment_vim'
 Plug 'itchyny/lightline.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'airblade/vim-gitgutter'
 Plug 'gregsexton/MatchTag'
 Plug 'jceb/vim-orgmode'
 Plug 'mattn/emmet-vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'ap/vim-buftabline'
+Plug 'machakann/vim-highlightedyank'
 call plug#end()
 
 " Color scheme
@@ -51,8 +54,11 @@ map <Leader>bb :buffers<CR>:b
 map <Leader><Tab> :bp<CR>
 map <Leader>bp :bp<CR>
 map <Leader>bn :bn<CR>
-" Kill current buffer
-map <Leader>wx :bd<CR>
+map <Leader>bc :bd<CR>
+" Kill current buffer and focus last buffer
+map <Leader>wx :bd<CR><Plug>BufTabLine.Go(-1)
+" Kill all buffers except the current one
+map <Leader>wo :execute "%bd\|e#"<CR>
 " Quit current buffer
 map <Leader>wq :q!<CR>
 " Quit all buffers
@@ -86,10 +92,16 @@ map <Leader>gf :Git fetch<CR>
 map <Leader>gg :bufdo execute ":GitGutter"<CR>
 " Emmet
 map <Leader>ee <c-y>,i
+map <Leader>en <c-y>,i<CR><Esc>ko
 " Exit insert mode with fd
-imap fd <Esc>
+" imap fd <Esc>
 " Reload syntax highlighting
 noremap <F5> <Esc>:filetype detect<CR>
+" js-beautify
+map <Leader>ff :'<,'>!js-beautify -s 2 -f -<CR>
+map <Leader>fa mp:%!js-beautify -s 2 -f -<CR>'p
+" imap shortcuts
+imap cll console.log();<Esc>==f(a
 
 " Enable clipboard
 set clipboard=unnamedplus
@@ -99,6 +111,9 @@ set splitbelow splitright
 
 " Enable autocompletion
 set wildmode=longest,list,full
+
+" Automatically show search result count
+set shortmess-=S
 
 " show line numbers
 set number
@@ -181,7 +196,7 @@ autocmd BufReadPost ~/.Xresources.d/* setf xdefaults
 autocmd BufWritePost ~/.Xresources,~/.Xdefaults !xrdb %
 autocmd BufWritePost ~/.Xresources.d/* !xrdb ~/.Xresources
 
-" Run isort before saving .py files
+" Run isort after saving .py files
 autocmd BufWritePost *.py execute ':Isort'
 " Run black before saving .py files
 autocmd BufWritePre *.py execute ':Black'
@@ -203,5 +218,53 @@ call neomake#configure#automake('wn', 200)
 highlight! link SignColumn LineNr
 " or you could do this:
 highlight SignColumn guibg=NONE ctermbg=NONE
+
+" vim-buftabline
+hi BufTabLineCurrent ctermbg=0 ctermfg=15 gui=underline
+hi BufTabLineActive ctermbg=0 ctermfg=15
+hi BufTabLineHidden ctermbg=250 ctermfg=0
+hi BufTabLineFill ctermbg=0 ctermfg=0
+nmap <leader>1 <Plug>BufTabLine.Go(1)
+nmap <leader>2 <Plug>BufTabLine.Go(2)
+nmap <leader>3 <Plug>BufTabLine.Go(3)
+nmap <leader>4 <Plug>BufTabLine.Go(4)
+nmap <leader>5 <Plug>BufTabLine.Go(5)
+nmap <leader>6 <Plug>BufTabLine.Go(6)
+nmap <leader>7 <Plug>BufTabLine.Go(7)
+nmap <leader>8 <Plug>BufTabLine.Go(8)
+nmap <leader>9 <Plug>BufTabLine.Go(9)
+nmap <leader>0 <Plug>BufTabLine.Go(10)
+
+" vim-highlightedyank
+let g:highlightedyank_highlight_duration = 300
+" highlight HighlightedyankRegion cterm=reverse gui=reverse
+highlight HighlightedyankRegion ctermbg=66 gui=reverse
+
+" coc-vim
+set hidden
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+" Use <c-space> to trigger completion.
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  " inoremap <silent><expr> <C-@> coc#refresh()
+  imap <C-@> <Down><CR>
+endif
+" Make <CR> auto-select the first completion item and notify coc.nvim to
+" format on enter, <cr> could be remapped by other vim plugin
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 set laststatus=2
