@@ -73,6 +73,7 @@ redis
 remmina
 ripgrep
 rsync
+rxvt-unicode
 seahorse
 siji-git
 skypeforlinux-stable-bin
