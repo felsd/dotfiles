@@ -1,0 +1,15 @@
+#!/bin/sh
+# Toggle pulseaudio's default output sink
+# between $HEADSET and $SPEAKERS (defined in ~/.bash_profile)
+
+get_sink_number() {
+    echo "$(pactl list short sinks | grep "$1" | cut -d$'\t' -f 1)"
+}
+
+if [ "$(pactl get-default-sink)" = "$HEADSET" ]; then
+    pacmd set-default-sink "$(get_sink_number $SPEAKERS)"
+else
+    pacmd set-default-sink "$(get_sink_number $HEADSET)"
+fi
+
+pkill -RTMIN+3 dwmblocks

@@ -29,3 +29,9 @@ super + i
   xdo activate -N LBRY || lbry
 ~button2
   echo -n | xsel -n -i && click 2
+alt + F10
+  bash ~/.scripts/toggle_audio_output
+alt + F11
+  pactl -- set-sink-volume "$(pactl list short sinks | grep $(pactl get-default-sink) | cut -d$'\t' -f 1)" -5%
+alt + F12
+  pactl -- set-sink-volume "$(pactl list short sinks | grep $(pactl get-default-sink) | cut -d$'\t' -f 1)" +5%
