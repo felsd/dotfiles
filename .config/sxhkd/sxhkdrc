@@ -1,6 +1,6 @@
 # applications
 super + b
-  xdo activate -N qutebrowser || qutebrowser
+  xdo activate -N Brave-browser || brave
 super + p
   chromium --incognito
 super + f
@@ -27,3 +27,5 @@ super + m
   man_dmenu
 super + i
   xdo activate -N LBRY || lbry
+~button2
+  echo -n | xsel -n -i && click 2
