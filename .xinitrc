@@ -23,7 +23,6 @@ if [ -f "$usermodmap" ]; then
     xmodmap "$usermodmap"
 fi
 
-
 if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  for f in /etc/X11/xinit/xinitrc.d/?*.sh ; do
   [ -x "$f" ] && . "$f"
@@ -31,24 +30,24 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
-# disable DPMS
+# disable DPMS (Display Power Management Signaling)
 xset -dpms
 xset s off
 
 # enable dual-monitor if external screen is present
-LAPTOP=LVDS-0
-EXTERNAL=$(xrandr | awk '/^DP.* connected/ {print $1}')
-if xrandr | grep -q $EXTERNAL; then
-	# RESOLUTION SETTINGS
-	xrandr --output $LAPTOP --mode 1920x1080 --rate 60
-	xrandr --output $EXTERNAL --mode 2560x1440 --rate 120
-
-	# MONITOR ORDER
-	xrandr --output $LAPTOP --left-of $EXTERNAL
-
-	# PRIMARY MONITOR
-	xrandr --output $EXTERNAL --primary
-fi
+# LAPTOP=LVDS-0
+# EXTERNAL=$(xrandr | awk '/^DP.* connected/ {print $1}')
+# if xrandr | grep -q $EXTERNAL; then
+# 	# RESOLUTION SETTINGS
+# 	xrandr --output $LAPTOP --mode 1920x1080 --rate 60
+# 	xrandr --output $EXTERNAL --mode 2560x1440 --rate 120
+#
+# 	# MONITOR ORDER
+# 	xrandr --output $LAPTOP --left-of $EXTERNAL
+#
+# 	# PRIMARY MONITOR
+# 	xrandr --output $EXTERNAL --primary
+# fi
 
 # keyring
 eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
@@ -87,19 +86,10 @@ done
 # bash ~/.themes/active_theme/.fehbg
 bash ~/.fehbg
 
-# keyboard layout
-setxkbmap us altgr-intl
-
-# map CAPS to ESC
-xmodmap -e 'clear Lock' # ensures you're not stuck in CAPS on mode
-xmodmap -e 'keycode 0x42=Escape'
-
-# Increase key speed
-xset r rate 300 50
-
 # add local fonts
-xset +fp ~/.local/share/fonts
-xset fp rehash
+# xset +fp ~/.local/share/fonts
+# xset +fp /usr/share/fonts/misc
+# xset fp rehash
 
 # exec dwm
 dwm > ~/.dwm/dwm.log 2>&1

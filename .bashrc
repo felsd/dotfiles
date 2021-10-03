@@ -90,15 +90,18 @@ function vterm_printf(){
 
 # autocompletion
 source /usr/share/git/completion/git-completion.bash
-source /etc/bash_completion.d/ssh
+if [ -f /etc/bash_completion.d/ssh ]; then
+    source /etc/bash_completion.d/ssh
+fi
 
 # magic-space
 bind Space:magic-space
 
 # color theme
 #cat ~/.themes/active_theme/sequences
-clear
+# clear
 
 # vi mode
 set -o vi
 bind -m vi-insert "\C-l":clear-screen
+
