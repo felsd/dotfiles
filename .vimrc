@@ -58,7 +58,7 @@ map <Leader>bc :bd<CR>
 " Kill current buffer and focus last buffer
 map <Leader>wx :bd<CR><Plug>BufTabLine.Go(-1)
 " Kill all buffers except the current one
-map <Leader>wo :execute "%bd\|e#"<CR>
+map <Leader>wo :execute "%bd\|e#\|bd#"<CR>
 " Quit current buffer
 map <Leader>wq :q!<CR>
 " Quit all buffers
