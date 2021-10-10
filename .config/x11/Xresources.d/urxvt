@@ -1,4 +1,4 @@
-URxvt*font: -*-tamsyn-medium-r-*-*-20-*-*-*-*-*-*-*
+URxvt*font: xft:Misc Tamsyn:pixelsize=20
 
 URxvt.intensityStyles: false
 URxvt.background:      [65]#000000

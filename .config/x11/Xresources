@@ -1,0 +1,4 @@
+! #include ".Xresources.d/color_schemes/coral_reef"
+! #include ".Xresources.d/color_schemes/nice_neony_colors"
+#include "Xresources.d/color_schemes/nqyuil"
+#include "Xresources.d/urxvt"

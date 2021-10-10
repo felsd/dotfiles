@@ -1,0 +1,5 @@
+#!/bin/sh
+CMD="$(cat "$HOME/.cache/shell_history" | fzy -l 15)"
+if [ -n "$CMD" ]; then
+    xdotool type --delay 0 "$CMD" &
+fi

@@ -11,7 +11,6 @@ alias so=source
 alias pk=pkill
 alias cx="chmod +x"
 alias pgrep="ps aux | grep"
-alias soba="source ~/.bash_aliases"
 alias dfh="df -H"
 alias ll="ls -alF"
 alias la="ls -A"
@@ -20,7 +19,7 @@ alias dush="du -sh"
 alias pkf="pkill -f"
 alias sctl="systemctl"
 alias ssctl="sudo systemctl"
-alias h=bash_history
+alias h=shell_history
 function cd {
     builtin cd "$@" && ls
 }
@@ -57,6 +56,7 @@ function ob() {
 }
 
 # tmux
+alias tmux="tmux -f ~/.config/tmux.conf"
 alias tn="tmux new -s"
 alias ta="tmux a -t"
 alias tk="tmux kill-session -t"
@@ -78,27 +78,16 @@ function gck() {
     fi
 }
 
-# emacs
-alias emacs="emacsclient -nw -s instance1"
-alias em=emacs
-alias e=em
-alias e.="em ."
-alias eba="e ~/.bash_aliases"
-alias ebrc="e ~/.bashrc"
-alias exr="e ~/.Xresources"
-alias evrc="e ~/.vimrc"
-alias esx="e ~/.config/sxhkd/sxhkdrc"
+# svn
+alias svn="svn --config-dir \"$XDG_CONFIG_HOME\"/subversion"
 
 # vim
 alias v=vim
 alias sv=svim
 alias svim="sudo vim"
-alias vba="vim ~/.bash_aliases"
-alias vbrc="vim ~/.bashrc"
-alias vxr="vim ~/.Xresources"
-alias vvrc="vim ~/.vimrc"
+alias vvrc="vim ~/.vim/vimrc"
 alias vsx="vim ~/.config/sxhkd/sxhkdrc"
-alias vsf="vim ~/.sfeed/sfeedrc"
+# alias vsf="vim ~/.sfeed/sfeedrc"
 
 # python
 alias py=python
@@ -121,6 +110,5 @@ function yt2rss() {
                        grep 'itemprop="channelId"' | cut -d'"' -f 4 )"
     echo "https://www.youtube.com/feeds/videos.xml?channel_id=$CHANNEL_ID"
 }
-alias dc="bash ~/projects/python/dict_cc/dict_cc $@"
 alias myip="curl https://api.ipify.org"
 alias ntka="python -m nuitka --follow-imports"
