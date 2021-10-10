@@ -9,6 +9,7 @@ alias ex=exit
 alias x=ex
 alias so=source
 alias pk=pkill
+alias pkf="pkill -f"
 alias cx="chmod +x"
 alias pgrep="ps aux | grep"
 alias dfh="df -H"
@@ -16,7 +17,6 @@ alias ll="ls -alF"
 alias la="ls -A"
 alias l="ls -CF"
 alias dush="du -sh"
-alias pkf="pkill -f"
 alias sctl="systemctl"
 alias ssctl="sudo systemctl"
 alias h=shell_history
@@ -33,7 +33,7 @@ alias gx="cd ~/.Xresources.d/"
 alias gd="cd ~/Downloads"
 alias gc="cd ~/.config"
 alias ..="cd .."
-alias notes="ranger ~/notes/"
+alias notes="ranger ~/nextcloud/Notes/"
 function gb() {
     DIR="$(find ~/nextcloud/Business -type d | fzy)"
     if [ -n "$DIR" ]; then cd "$DIR" ; fi
