@@ -58,13 +58,13 @@ export SSH_AUTH_SOCK
 # autostart
 urxvtd -q &
 xcompmgr &
-dwmblocks &
 dunst &
 unclutter &
 numlockx &
-sxhkd &
 pactl subscribe | grep --line-buffered "sink" | xargs -n1 pulse_notify &
 dwm_nextcloud_watcher &
+dwmblocks &
+sxhkd &
 
 disabled=(remmina)
 for f in ~/.config/autostart/*.desktop 
