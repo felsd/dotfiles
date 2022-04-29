@@ -4,15 +4,15 @@ super + b
 super + p
   chromium --incognito
 super + f
-  search_dmenu
+  ~/.scripts/search_dmenu
 super + s
-  ssh_dmenu
+  ~/.scripts/ssh_dmenu
 super + t
   xdo activate -N thunderbird || thunderbird
 super + v
-  virtualbox_dmenu
+  ~/.scripts/virtualbox_dmenu
 super + r
-  remmina_dmenu
+  ~/.scripts/remmina_dmenu
 super + l
   xdo activate -N slack || slack
 super + k
@@ -20,18 +20,20 @@ super + k
 super + c
   xdo activate -N URxvt || urxvtc
 super + n
-  rss
+  ~/.scripts/rss
+super + d
+  xdo activate -N DBeaver || dbeaver
 super + Print
   rmd-helper
 super + m
-  man_dmenu
+  ~/.scripts/man_dmenu
 super + i
   xdo activate -N LBRY || lbry
-~button2
-  echo -n | xsel -n -i && click 2
 alt + F10
   bash ~/.scripts/toggle_audio_output
 alt + F11
-  pactl -- set-sink-volume "$(pactl list short sinks | grep $(pactl get-default-sink) | cut -d$'\t' -f 1)" -5%
+  pactl -- set-sink-volume "$(pactl list short sinks | grep $(pactl get-default-sink) | cut -d$'\t' -f 1)" -5% \
+    && pkill -RTMIN+3 dwmblocks
 alt + F12
-  pactl -- set-sink-volume "$(pactl list short sinks | grep $(pactl get-default-sink) | cut -d$'\t' -f 1)" +5%
+  pactl -- set-sink-volume "$(pactl list short sinks | grep $(pactl get-default-sink) | cut -d$'\t' -f 1)" +5% \
+    && pkill -RTMIN+3 dwmblocks
