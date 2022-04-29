@@ -89,6 +89,9 @@ ctrlz() {
 zle -N ctrlz
 bindkey '^Z' ctrlz
 
+# DEL key
+bindkey "^[[3~" delete-char
+
 rcd () {
     tmp="$(mktemp)"
     ranger --choosedir="$tmp" "$@"
