@@ -1,0 +1,12 @@
+bkp  /data/backups
+c    ~/.config
+d    /data
+D    ~/Downloads
+h    ~/
+m    /data/media
+n    ~/nextcloud
+N    /data/nextcloud/Notes
+ph   /data/photos
+t    /tmp
+w    /data/media/www
+s    ~/.scripts

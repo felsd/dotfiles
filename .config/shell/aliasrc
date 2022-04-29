@@ -1,5 +1,5 @@
 # General aliases
-alias ls="ls --color=auto"
+alias ls="ls --color=auto --group-directories-first"
 alias grep="grep --color=auto"
 alias diff="diff --color=auto"
 alias pm="sudo pacman"
@@ -25,42 +25,39 @@ function cd {
 }
 
 # Directories
-alias gh="cd ~"
-alias gt="cd /tmp"
-alias gn="cd ~/nextcloud"
-alias gs="cd ~/.scripts"
-alias gx="cd ~/.Xresources.d/"
-alias gd="cd ~/Downloads"
-alias gc="cd ~/.config"
-alias ..="cd .."
-alias notes="ranger ~/nextcloud/Notes/"
+[ -f "$HOME/.config/shell/dir_aliases" ] && source "$HOME/.config/shell/dir_aliases"
 function gb() {
-    DIR="$(find ~/nextcloud/Business -type d | fzy)"
+    DIR="$(find /data/business -type d | fzy)"
     if [ -n "$DIR" ]; then cd "$DIR" ; fi
 }
 function gp() {
-    DIR="$(find ~/projects/ -maxdepth 2 -type d | fzy)"
+    DIR="$(find /data/projects/ -maxdepth 2 -type d | fzy)"
     if [ -n "$DIR" ]; then cd "$DIR" ; fi
 }
 
-# ranger/rifle
-alias r=ranger
-alias o=rifle
-function od() {
-    F="$(find ~/Downloads -type f | fzy)"
-    if [ -n "$F" ]; then o "$F"; fi
-}
-function ob() {
-    F="$(find ~/nextcloud/Business -type f | fzy)"
-    if [ -n "$F" ]; then o "$F"; fi
+# vim
+alias v=vim
+alias svim="sudo vim"
+alias sv=svim
+alias vv="vim ~/.vim/vimrc"
+alias vr="vim ~/.config/ranger/rc.conf"
+alias vsx="vim ~/.config/sxhkd/sxhkdrc"
+alias vssh="vim ~/.ssh/config"
+function va() {
+    FILE="$(echo 'aliasrc\ndir_aliases' | fzy)"
+    case $FILE in 
+        "aliasrc") vim ~/.config/shell/aliasrc;;
+        "dir_aliases") vim ~/.config/shell/shortcuts/directories && sh ~/.config/shell/shortcuts/update_configs.sh;;
+    esac
 }
 
-# tmux
-alias tmux="tmux -f ~/.config/tmux.conf"
-alias tn="tmux new -s"
-alias ta="tmux a -t"
-alias tk="tmux kill-session -t"
-alias tls="tmux ls"
+# python
+alias py=python
+alias p=python
+alias pe=poetry
+alias pq="clear && python -q"
+alias prp="poetry run python"
+alias prpm="poetry run python manage.py"
 
 # git
 alias g="git"
@@ -81,21 +78,32 @@ function gck() {
 # svn
 alias svn="svn --config-dir \"$XDG_CONFIG_HOME\"/subversion"
 
-# vim
-alias v=vim
-alias sv=svim
-alias svim="sudo vim"
-alias vvrc="vim ~/.vim/vimrc"
-alias vsx="vim ~/.config/sxhkd/sxhkdrc"
-# alias vsf="vim ~/.sfeed/sfeedrc"
+# ranger/rifle
+alias r=ranger
+alias o=rifle
+function od() {
+    F="$(find ~/Downloads -type f | fzy)"
+    if [ -n "$F" ]; then o "$F"; fi
+}
+function ob() {
+    F="$(find ~/nextcloud/Business -type f | fzy)"
+    if [ -n "$F" ]; then o "$F"; fi
+}
 
-# python
-alias py=python
-alias p=python
-alias pe=poetry
-alias pq="clear && python -q"
+# tmux
+alias tmux="tmux -f ~/.config/tmux.conf"
+alias tn="tmux new -s"
+alias ta="tmux a -t"
+alias tk="tmux kill-session -t"
+alias tls="tmux ls"
 
 # other programs and scripts
+function json() {
+    echo $1 | python -m json.tool
+}
+function pdict {
+    python -c "import ast; import json; print(json.dumps(ast.literal_eval(\"\"\"$1\"\"\"), indent=4))"
+}
 function cheat() {
     curl "https://cheat.sh/$@"
 }
