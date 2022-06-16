@@ -1,0 +1,20 @@
+{
+    "vue": {
+        "snippets": {
+            "ts": "<script lang=\"ts\">\n|\n</script>",
+            "scss": "<style lang=\"scss\">\n|\n</style>",
+            "comp": "<template>\n</template>\n\n<script lang=\"ts\">\nimport { Component, Prop, Vue } from 'vue-property-decorator'\n\n@Component({})\nexport default class | extends Vue {\n}\n</script>\n\n<style lang=\"scss\">\n</style>",
+            "v-col-right": "<v-col align=\"right\">|</v-col>",
+            "v-tabs": "<v-tabs v-model=\"tab\">\n\t<v-tab href=\"#|\">\n\t</v-tab>\n</v-tabs>\n<v-tabs-items v-model=\"tab\">\n\t<v-tab-item value=\"changeme\">\n\t</v-tab-item>\n</v-tabs-items>",
+            "modal": "<template>\n\t<v-dialog v-model=\"modal\" max-width=\"450\">\n\t\t<v-card>\n\t\t\t<v-card-title>\n\t\t\t\t<v-row>\n\t\t\t\t\t<v-col>\n\t\t\t\t\t\tModal Title\n\t\t\t\t\t</v-col>\n\t\t\t\t\t<v-col align=\"right\" cols=\"1\">\n\t\t\t\t\t\t<a href=\"#\" @click=\"cancel\">\n\t\t\t\t\t\t\t<v-icon>mdi-close</v-icon>\n\t\t\t\t\t\t</a>\n\t\t\t\t\t</v-col>\n\t\t\t\t</v-row>\n\t\t\t</v-card-title>\n\t\t\t<v-row no-gutters>\n\t\t\t\t<v-col>\n\t\t\t\t\t<v-divider />\n\t\t\t\t</v-col>\n\t\t\t</v-row>\n\t\t\t<v-card-text>\n\t\t\t\t<v-row class=\"pt-3\">\n\t\t\t\t\t<v-col>\n\t\t\t\t\t</v-col>\n\t\t\t\t</v-row>\n\t\t\t</v-card-text>\n\t\t\t<v-card-actions>\n\t\t\t\t<v-spacer></v-spacer>\n\t\t\t\t<v-btn color=\"secondary\" @click=\"cancel\">\n\t\t\t\t\t<v-icon class=\"pr-2\">\n\t\t\t\t\t\tmdi-cancel\n\t\t\t\t\t</v-icon>\n\t\t\t\t\tCancel\n\t\t\t\t</v-btn>\n\t\t\t\t<v-btn color=\"primary\" @click=\"save\">\n\t\t\t\t\t<v-icon class=\"pr-2\">\n\t\t\t\t\t\tmdi-content-save-outline\n\t\t\t\t\t</v-icon>\n\t\t\t\t\tSave\n\t\t\t\t</v-btn>\n\t\t\t</v-card-actions>\n\t\t</v-card>\n\t</v-dialog>\n</template>\n<script lang=\"ts\">\nimport { Vue, Component } from 'vue-property-decorator'\n\n@Component({})\nexport default class |Modal extends Vue {\n\tmodal = false;\n\n\tshow() {\n\t\tthis.modal = true;\n\t}\n\n\tcancel() {\n\t\tthis.modal = false;\n\t}\n\n\tasync save() {\n\t}\n}\n</script>\n"
+        }
+    },
+
+    "html": {
+        "snippets": {
+            "row": "<div class=\"row\">|</div>",
+            "col": "<div class=\"col\">|</div>"
+        }
+    }
+
+}

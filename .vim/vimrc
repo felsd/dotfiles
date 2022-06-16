@@ -3,7 +3,7 @@ Plug 'chankaward/vim-railscasts-theme'
 Plug 'tpope/vim-fugitive'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'mileszs/ack.vim'
-Plug 'psf/black', { 'branch': 'stable' }
+Plug 'psf/black', { 'branch': 'main' }
 Plug 'brentyi/isort.vim'
 Plug 'dylanaraps/wal.vim'
 Plug 'neomake/neomake'
@@ -22,6 +22,7 @@ Plug 'mattn/emmet-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'ap/vim-buftabline'
 Plug 'machakann/vim-highlightedyank'
+Plug 'mattn/webapi-vim'
 call plug#end()
 
 " Color scheme
@@ -58,13 +59,14 @@ map <Leader>bc :bd<CR>
 " Kill current buffer and focus last buffer
 map <Leader>wx :bd<CR><Plug>BufTabLine.Go(-1)
 " Kill all buffers except the current one
-map <Leader>wo :execute "%bd\|e#\|bd#"<CR>
+"map <Leader>wo :execute "%bd\|e#\|bd#"<CR>
+map <Leader>wo :call OnlyAndNerdtree('', '')<CR>
 " Quit current buffer
 map <Leader>wq :q!<CR>
 " Quit all buffers
 map <Leader>qq :qa!<CR>
 " Open nerdtree
-map <Leader>pt <C-o>
+map <Leader>pt :NERDTreeToggle<CR>
 " Fuzzy search in project dir files
 let g:ctrlp_map = '<Leader>pf'
 let g:ctrlp_working_path_mode = 'ra'
@@ -88,6 +90,8 @@ map <Leader>gpl :Git pull<CR>
 map <Leader>glog :Gclog<CR>
 map <Leader>gm :Git merge<CR>
 map <Leader>gf :Git fetch<CR>
+map <Leader>gh :diffget //2<CR>
+map <Leader>gl :diffget //3<CR>
 " Refresh GitGutter in all buffers
 map <Leader>gg :bufdo execute ":GitGutter"<CR>
 " Emmet
@@ -100,8 +104,11 @@ noremap <F5> <Esc>:filetype detect<CR>
 " js-beautify
 map <Leader>ff :'<,'>!js-beautify -s 2 -f -<CR>
 map <Leader>fa mp:%!js-beautify -s 2 -f -<CR>'p
+" markdown-pdf + open in zathura
+map <Leader>md :!markdown-pdf %:p && zathura --synctex-forward :: %:p:r.pdf & <Enter><Enter>
 " imap shortcuts
 imap cll console.log();<Esc>==f(a
+
 
 " Enable clipboard
 set clipboard=unnamedplus
@@ -120,26 +127,25 @@ set number
 highlight LineNr ctermfg=darkGray
 
 " change cursor depending on mode
-if exists('$TMUX')
-  let &t_SI = "\ePtmux;\e\e[6 q\e\\"
-  let &t_SR = "\ePtmux;\e\e[4 q\e\\"
-  let &t_EI = "\ePtmux;\e\e[2 q\e\\"
-  augroup setCursor
-      au!
-      autocmd VimEnter * silent !echo -ne "\ePtmux;\e\e[2 q\e\\"
-      autocmd VimEnter * redraw!
-  augroup end
-else
-  let &t_SI = "\<Esc>[6 q"
-  let &t_SR = "\<Esc>[4 q"
-  let &t_EI = "\<Esc>[2 q"
-  augroup setCursor
-      au!
-      autocmd VimEnter * silent !echo -ne "\e[2 q"
-      autocmd VimEnter * redraw!
-  augroup end
-
-endif
+" if exists('$TMUX')
+"   let &t_SI = "\ePtmux;\e\e[6 q\e\\"
+"   let &t_SR = "\ePtmux;\e\e[4 q\e\\"
+"   let &t_EI = "\ePtmux;\e\e[2 q\e\\"
+"   augroup setCursor
+"       au!
+"       autocmd VimEnter * silent !echo -ne "\ePtmux;\e\e[2 q\e\\"
+"       autocmd VimEnter * redraw!
+"   augroup end
+" else
+let &t_SI = "\<Esc>[6 q"
+let &t_SR = "\<Esc>[4 q"
+let &t_EI = "\<Esc>[2 q"
+augroup setCursor
+  au!
+  autocmd VimEnter * silent !echo -ne "\e[2 q"
+  autocmd VimEnter * redraw!
+augroup end
+" endif
 set ttimeoutlen=0
 
 " set default indent to 2 spaces
@@ -155,9 +161,11 @@ set expandtab
 " size of an "indent"
 set shiftwidth=4
 
-" 4 spaces indent
+" indents
 autocmd FileType python setlocal shiftwidth=4 softtabstop=2 expandtab
 autocmd FileType javascript setlocal shiftwidth=2 softtabstop=2 expandtab
+autocmd FileType vue setlocal shiftwidth=2 softtabstop=2 expandtab
+autocmd FileType html setlocal shiftwidth=2 softtabstop=2 expandtab
 
 " Don't treat underscore as keyword
 set iskeyword-=_
@@ -169,6 +177,12 @@ set iskeyword-=_
 :  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
 :  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 :augroup END
+
+" Undo break points
+inoremap , ,<c-g>u
+inoremap . .<c-g>u
+inoremap ! !<c-g>u
+inoremap ? ?<c-g>u
 
 " Python syntax highlighting
 let g:python_highlight_builtins=1
@@ -207,9 +221,6 @@ autocmd BufWritePost *sxhkdrc !pkill sxhkd && sxhkd &
 " Set colors of highlighted text
 hi Visual ctermbg=0 ctermfg=15 cterm=reverse term=reverse
 
-" nerdtree
-map <C-o> :NERDTreeToggle<CR>
-
 " Neomake
 call neomake#configure#automake('wn', 200)
 
@@ -221,7 +232,7 @@ highlight SignColumn guibg=NONE ctermbg=NONE
 
 " vim-buftabline
 hi BufTabLineCurrent ctermbg=0 ctermfg=15 gui=underline
-hi BufTabLineActive ctermbg=0 ctermfg=15
+"hi BufTabLineActive ctermbg=0 ctermfg=15
 hi BufTabLineHidden ctermbg=250 ctermfg=0
 hi BufTabLineFill ctermbg=0 ctermfg=0
 nmap <leader>1 <Plug>BufTabLine.Go(1)
@@ -240,6 +251,9 @@ let g:buftabline_numbers=2
 let g:highlightedyank_highlight_duration = 300
 " highlight HighlightedyankRegion cterm=reverse gui=reverse
 highlight HighlightedyankRegion ctermbg=66 gui=reverse
+
+" emmet snippets
+let g:user_emmet_settings = webapi#json#decode(join(readfile(expand('~/.vim/emmet_snippets.json')), "\n"))
 
 " coc-vim
 set hidden
@@ -267,5 +281,56 @@ endif
 " format on enter, <cr> could be remapped by other vim plugin
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+" Jump to definition etc
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gD <Plug>(coc-implementation)
+
+" Function that closes all windows except the current one and NERDtree
+function! OnlyAndNerdtree(buffer, bang)
+  if a:buffer == ''
+      " No buffer provided, use the current buffer.
+		let buffer = bufnr('%')
+	elseif (a:buffer + 0) > 0
+		" A buffer number was provided.
+		let buffer = bufnr(a:buffer + 0)
+	else
+		" A buffer name was provided.
+		let buffer = bufnr(a:buffer)
+	endif
+
+	if buffer == -1
+		echohl ErrorMsg
+		echomsg "No matching buffer for" a:buffer
+		echohl None
+		return
+	endif
+
+	let last_buffer = bufnr('$')
+
+	let delete_count = 0
+	let n = 1
+	while n <= last_buffer
+		if n != buffer && buflisted(n)
+			if a:bang == '' && getbufvar(n, '&modified')
+				echohl ErrorMsg
+				echomsg 'No write since last change for buffer'
+							\ n '(add ! to override)'
+				echohl None
+			else
+				silent exe 'bdel' . a:bang . ' ' . n
+				if ! buflisted(n)
+					let delete_count = delete_count+1
+				endif
+			endif
+		endif
+		let n = n+1
+	endwhile
+
+	if delete_count == 1
+		echomsg delete_count "buffer deleted"
+	elseif delete_count > 1
+		echomsg delete_count "buffers deleted"
+	endif
+endfunction
 
 set laststatus=2
