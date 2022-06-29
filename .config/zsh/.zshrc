@@ -4,6 +4,7 @@
 # Colors and prompt
 autoload -U colors && colors
 PS1=""
+# https://robotmoon.com/256-colors/
 PS1="[%B%F{112}%n%f%b@%B%F{220}%m%f%b][%F{75}%~%f]: "
 
 # History

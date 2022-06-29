@@ -3,4 +3,15 @@
 ## Cloning
 `git clone https://github.com/felsd/dotfiles.git ~/.dotfiles`
 
-Scripts like `apply_dotfiles_remote` or `update_dotfiles` expect it to be at this location.
+## zsh
+```
+mkdir -p ~/.config/zsh
+cp ~/.dotfiles/.config/zsh/.zshrc ~/.config/zsh/
+cp ~/.dotfiles/.config/zsh/zsh-syntax-highlighting-custom.zsh ~/.config/zsh/
+mkdir -p ~/.config/shell
+cp ~/.dotfiles/.config/shell/aliasrc ~/.config/shell/
+cp ~/.dotfiles/.config/shell/inputrc ~/.config/shell/
+cp ~/.dotfiles/.config/shell/profile ~/.config/shell/
+ln -s ~/.config/shell/profile ~/.zprofile
+chsh -s $(which zsh)
+```
