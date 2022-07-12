@@ -1,0 +1,17 @@
+#!/bin/sh
+NUMBER=$1
+UNIT=$2
+
+if [[ ${NUMBER:0:1} == "+" ]]; then
+    future_date=$(date -d "$current_date + `echo $NUMBER | cut -d'+' -f2` $UNIT" +"%d.%m.%Y %H:%M:%S")
+    echo $future_date
+elif [[ ${NUMBER:0:1} == "-" ]]; then
+    past_date=$(date -d "$current_date - `echo $NUMBER | cut -d'-' -f2` $UNIT" +"%d.%m.%Y %H:%M:%S")
+    echo $past_date
+else
+    echo "[X] Invalid input";
+    echo "Examples:  today +1 day"
+    echo "           today -10 weeks"
+    echo "           today +5 years"
+
+fi
