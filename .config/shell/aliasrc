@@ -31,7 +31,7 @@ function gb() {
     if [ -n "$DIR" ]; then cd "$DIR" ; fi
 }
 function gp() {
-    DIR="$(find /data/projects/ -maxdepth 2 -type d | fzy)"
+    DIR="$(find /home/daniel/projects/ -maxdepth 2 -type d | fzy)"
     if [ -n "$DIR" ]; then cd "$DIR" ; fi
 }
 
