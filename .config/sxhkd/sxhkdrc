@@ -38,13 +38,13 @@ alt + F12
   pactl -- set-sink-volume "$(pactl list short sinks | grep $(pactl get-default-sink) | cut -d$'\t' -f 1)" +5% \
     && pkill -RTMIN+3 dwmblocks
 ctrl + super + l
-  xdotool mousemove_relative -- 25 0
+  xdotool mousemove_relative -- 20 0
 ctrl + super + h
-  xdotool mousemove_relative -- -25 0
+  xdotool mousemove_relative -- -20 0
 ctrl + super + j
-  xdotool mousemove_relative -- 0 25
+  xdotool mousemove_relative -- 0 20
 ctrl + super + k
-  xdotool mousemove_relative -- 0 -25
+  xdotool mousemove_relative -- 0 -20
 ctrl + super + space
   xdotool click 1
 ctrl + super + m
