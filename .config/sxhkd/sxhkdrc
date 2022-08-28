@@ -49,3 +49,7 @@ ctrl + super + space
   xdotool click 1
 ctrl + super + m
   xdotool click 3
+super + alt + j
+  xdotool click 5
+super + alt + k
+  xdotool click 4
