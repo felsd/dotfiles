@@ -45,6 +45,8 @@ super + alt + j
   xdotool mousemove_relative -- 0 20
 super + alt + k
   xdotool mousemove_relative -- 0 -20
+super + space
+  xdotool click 1
 super + alt + space
   xdotool click 1
 super + alt + m
