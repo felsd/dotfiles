@@ -1,0 +1,98 @@
+#!/bin/bash
+# wifi-menu — fuzzel-based Wi-Fi picker for NetworkManager.
+# Bound to left-click on waybar's network module.
+#
+# Behaviour:
+#   - Wi-Fi radio off → offers Enable + nmtui
+#   - Wi-Fi on        → scan, list networks (sorted by signal), pick to connect
+#   - Connected       → adds "Disconnect from <ssid>" entry
+#   - Unknown SSID    → prompts password via fuzzel (--password mode)
+#   - Known SSID      → just `nmcli c up <ssid>` (no re-prompt)
+
+set -uo pipefail
+
+notify() { notify-send -a wifi-menu "${1:-Wi-Fi}" "${2:-}"; }
+
+# ── Wi-Fi radio off → minimal menu ─────────────────────────────────────────
+if [ "$(nmcli radio wifi)" = "disabled" ]; then
+    CHOICE=$(printf '󰖩  Enable Wi-Fi\n  Edit connections (nmtui)' \
+        | fuzzel --dmenu --prompt='Wi-Fi (off): ' --lines 5)
+    case "$CHOICE" in
+        *"Enable Wi-Fi"*)    nmcli radio wifi on && notify "Wi-Fi" "Enabled" ;;
+        *"Edit connections"*) alacritty --class floating -e nmtui ;;
+    esac
+    exit 0
+fi
+
+# ── Currently active wifi connection (empty if none) ───────────────────────
+ACTIVE=$(nmcli -t -f NAME,TYPE c show --active \
+    | awk -F: '$2 == "802-11-wireless" {print $1; exit}')
+
+# ── Trigger rescan (non-blocking, results still load below) ────────────────
+nmcli device wifi rescan 2>/dev/null || true
+
+# ── Network list: sorted by signal desc, dedup by SSID, skip empty SSIDs ───
+# Drop IN-USE col (unreliable when same SSID has multiple BSSIDs); use $ACTIVE
+# computed above to mark the connected network.
+# The SSID is at the end of the line, separated by "  " (two spaces) — that's
+# what we parse on click via bash ${CHOICE##*  } (UTF-8 safe, unlike sed .{2}).
+NETS=$(nmcli --terse --fields SIGNAL,SECURITY,SSID device wifi list \
+    | awk -F: -v active="$ACTIVE" '
+        $3 != "" && !seen[$3]++ {
+            check = ($3 == active) ? "✓ " : "  "
+            sec   = ($2 != "" && $2 != "--") ? "" : " "
+            printf "%s%3d%% %s  %s\n", check, $1, sec, $3
+        }
+    ' | sort -k2 -rn)
+
+# ── Build menu ─────────────────────────────────────────────────────────────
+MENU=""
+[ -n "$ACTIVE" ] && MENU+="󰤭  Disconnect from $ACTIVE"$'\n'
+MENU+="󰖪  Disable Wi-Fi"$'\n'
+MENU+="  Edit connections (nmtui)"$'\n'
+MENU+="── Available networks ──"$'\n'
+MENU+="$NETS"
+
+CHOICE=$(printf '%s' "$MENU" | fuzzel --dmenu --prompt='Wi-Fi: ' --lines 15 --width 50)
+[ -z "$CHOICE" ] && exit 0
+
+case "$CHOICE" in
+    "── "*) exit 0 ;;
+
+    *"Disconnect from "*)
+        nmcli c down "$ACTIVE" && notify "Wi-Fi" "Disconnected from $ACTIVE"
+        ;;
+
+    *"Disable Wi-Fi"*)
+        nmcli radio wifi off && notify "Wi-Fi" "Disabled"
+        ;;
+
+    *"Edit connections"*)
+        alacritty --class floating -e nmtui
+        ;;
+
+    *)
+        # SSID = everything after the last "  " (two-space separator).
+        # Bash parameter expansion is UTF-8 safe; sed .{2} would corrupt the
+        # multi-byte ✓/icon prefix.
+        SSID="${CHOICE##*  }"
+
+        # Known profile? Just `up` it. Else `device wifi connect` (with password if needed).
+        if nmcli -t -f NAME c show | grep -qxF "$SSID"; then
+            nmcli c up "$SSID" \
+                && notify "Wi-Fi" "Connected to $SSID" \
+                || notify "Wi-Fi" "Failed to connect to $SSID"
+        else
+            PASS=$(printf '' | fuzzel --dmenu --password --prompt="Password for $SSID: ")
+            if [ -n "$PASS" ]; then
+                nmcli device wifi connect "$SSID" password "$PASS" \
+                    && notify "Wi-Fi" "Connected to $SSID" \
+                    || notify "Wi-Fi" "Failed: wrong password or hidden auth?"
+            else
+                nmcli device wifi connect "$SSID" \
+                    && notify "Wi-Fi" "Connected to $SSID" \
+                    || notify "Wi-Fi" "Failed (open network or needs password)"
+            fi
+        fi
+        ;;
+esac

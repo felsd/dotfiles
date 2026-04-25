@@ -1,0 +1,36 @@
+# matugen — generates Material You color palettes from wallpapers
+# and writes them into our niri/waybar/mako configs.
+#
+# Trigger via the `rice` script (~/.local/bin/rice <wallpaper>) which:
+#   1. Sets the wallpaper (updates niri spawn-at-startup, restarts swaybg)
+#   2. Runs `matugen image <wallpaper>` (this file controls what gets written)
+#   3. Reloads niri / restarts waybar / reloads mako
+
+[config]
+# scheme-fidelity = preserve actual wallpaper colors as much as possible.
+# Other options: scheme-vibrant (boosted), scheme-tonal-spot (default Material You),
+# scheme-content (subtle), scheme-monochrome (grayscale).
+# Override per-run with: matugen image <wp> -t scheme-vibrant
+
+[templates.niri]
+input_path  = "~/.dotfiles/.config/matugen/templates/niri.kdl"
+output_path = "~/.config/niri/config.kdl"
+post_hook   = "/home/daniel/.local/bin/rice-post-niri"
+
+[templates.waybar]
+input_path  = "~/.dotfiles/.config/matugen/templates/waybar.css"
+output_path = "~/.config/waybar/style.css"
+# setsid detaches waybar from matugen's process group so it survives.
+post_hook   = "pkill waybar; sleep 1; setsid -f waybar >/tmp/waybar.log 2>&1"
+
+[templates.mako]
+input_path  = "~/.dotfiles/.config/matugen/templates/mako"
+output_path = "~/.config/mako/config"
+post_hook   = "makoctl reload"
+
+[templates.gtkgreet]
+# Login screen (greetd + gtkgreet). The CSS file is in /etc/greetd but
+# chowned to daniel so matugen can write without sudo. greetd reads it
+# fresh on each login, so no reload hook needed.
+input_path  = "~/.dotfiles/.config/matugen/templates/gtkgreet.css"
+output_path = "/etc/greetd/gtkgreet.css"

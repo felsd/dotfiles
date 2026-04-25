@@ -1,0 +1,80 @@
+#!/bin/bash
+# rice — apply a wallpaper AND retheme niri/waybar/mako to match.
+#
+# Usage:
+#   rice <wallpaper-path> [matugen-scheme]
+#
+# Examples:
+#   rice ~/.local/share/backgrounds/red-sea-2.png
+#   rice ~/Pictures/sunset.jpg scheme-vibrant
+#
+# Schemes (matugen):
+#   scheme-fidelity   — preserve actual wallpaper colors (default here)
+#   scheme-vibrant    — boosted saturation
+#   scheme-tonal-spot — Material You default (muted)
+#   scheme-content    — subtle
+#   scheme-monochrome — grayscale
+#
+# Workflow:
+#   1. Validate wallpaper exists.
+#   2. Save wallpaper path to /tmp/rice-current-wallpaper (read by post-hook).
+#   3. Restart swaybg with the new wallpaper.
+#   4. Run matugen → templates regenerated → post-hooks reload apps.
+
+set -euo pipefail
+
+WALLPAPER="${1:-}"
+SCHEME="${2:-scheme-fidelity}"
+
+if [ -z "$WALLPAPER" ]; then
+    cat <<EOF >&2
+Usage: rice <wallpaper-path> [matugen-scheme]
+
+Available schemes:
+  scheme-fidelity (default)  — close to wallpaper colors
+  scheme-vibrant             — boosted saturation
+  scheme-tonal-spot          — Material You default
+  scheme-content             — subtle
+  scheme-monochrome          — grayscale
+EOF
+    exit 1
+fi
+
+# Resolve to absolute path
+WALLPAPER=$(realpath "$WALLPAPER")
+if [ ! -f "$WALLPAPER" ]; then
+    echo "rice: wallpaper not found: $WALLPAPER" >&2
+    exit 1
+fi
+
+echo "→ wallpaper: $WALLPAPER"
+echo "→ scheme:    $SCHEME"
+
+# 1. Save wallpaper path for the niri post-hook to pick up
+echo "$WALLPAPER" > /tmp/rice-current-wallpaper
+
+# 2. Restart swaybg
+pkill swaybg 2>/dev/null || true
+sleep 0.3
+nohup swaybg -i "$WALLPAPER" -m fill >/tmp/swaybg.log 2>&1 &
+disown
+
+# 3. matugen can't read all formats (e.g. AVIF). If wallpaper isn't a format
+#    matugen handles, convert to PNG in /tmp just for color extraction. swaybg
+#    still uses the original.
+ext="${WALLPAPER##*.}"
+case "${ext,,}" in
+    png|jpg|jpeg|webp|tiff|tif|bmp|gif)
+        MATUGEN_INPUT="$WALLPAPER"
+        ;;
+    *)
+        MATUGEN_INPUT="/tmp/rice-matugen-input.png"
+        echo "→ converting $ext to png for matugen color extraction"
+        magick "$WALLPAPER" "$MATUGEN_INPUT"
+        ;;
+esac
+
+# Run matugen — generates templates + runs post-hooks (which reload apps)
+matugen image "$MATUGEN_INPUT" -t "$SCHEME" --prefer saturation 2>&1 | tail -20
+
+echo "✓ rice done"

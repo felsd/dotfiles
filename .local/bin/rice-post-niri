@@ -1,0 +1,17 @@
+#!/bin/sh
+# matugen post-hook for the niri template:
+#   1. Substitute __WALLPAPER_PATH__ with the path saved by `rice` in /tmp/rice-current-wallpaper
+#   2. Tell niri to reload its config
+#
+# Reading the wallpaper path from a side file (rather than from matugen) keeps
+# the wallpaper concern separate from the color concern — matugen only deals
+# with palette generation; `rice` handles wallpaper plumbing.
+
+WALLPAPER_PATH_FILE="/tmp/rice-current-wallpaper"
+
+if [ -f "$WALLPAPER_PATH_FILE" ]; then
+    WALLPAPER=$(cat "$WALLPAPER_PATH_FILE")
+    sed -i "s|__WALLPAPER_PATH__|${WALLPAPER}|g" ~/.config/niri/config.kdl
+fi
+
+niri msg action load-config-file >/dev/null 2>&1 || true
