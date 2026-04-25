@@ -1,0 +1,139 @@
+// Waybar — niri, Surface Pro 9. Floating bar, GNOME-style workspace dots,
+// nf-md (Material Design) icons, thoughtful click actions.
+// Click philosophy: left = inspect (read-only), right = control (mutate),
+// middle = power-user, scroll = adjust. Detail panes open in floating
+// alacritty (niri window-rule app-id="floating" pins them as floating).
+{
+    "layer": "top",
+    "position": "top",
+    "height": 30,
+    "spacing": 0,
+
+    "modules-left":   ["niri/workspaces", "niri/window"],
+    "modules-center": ["clock"],
+    "modules-right":  ["cpu", "memory", "backlight", "pulseaudio", "network", "battery"],
+
+    // ── Workspaces: GNOME-style dots, focused = pill ───────────────────────
+    // Empty format string → no label text inside buttons → CSS sizing wins.
+    "niri/workspaces": {
+        "format": "",
+        "all-outputs": false,
+        "disable-scroll": false
+    },
+
+    // ── Focused window title (italic, dimmed) ──────────────────────────────
+    "niri/window": {
+        "format": "{title}",
+        "max-length": 50,
+        "rewrite": {
+            "(.*) — LibreWolf":     "$1",
+            "(.*) - Brave":         "$1",
+            "(.*) - Slack":         "$1"
+        },
+        "separate-outputs": true
+    },
+
+    // ── Clock — tight, no seconds ──────────────────────────────────────────
+    "clock": {
+        "format": "{:%H:%M · %a %d}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "calendar": {
+            "mode": "month",
+            "weeks-pos": "right",
+            "format": {
+                "today": "<span color='#7aa2f7'><b>{}</b></span>"
+            }
+        },
+        "on-click":       "gnome-calendar",
+        "on-click-right": "alacritty --class floating -e bash -c 'cal -3; read -n1'"
+    },
+
+// ── Idle inhibitor: coffee on/off ──────────────────────────────────────
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated":   "󰅶",
+            "deactivated": "󰾪"
+        },
+        "tooltip-format-activated":   "Stay-awake: ON",
+        "tooltip-format-deactivated": "Stay-awake: OFF (normal idle)"
+    },
+
+    // ── CPU 󰍛 ──────────────────────────────────────────────────────────────
+    "cpu": {
+        "interval": 2,
+        "format": "{usage}% 󰍛",
+        "tooltip-format": "CPU {usage}%\nLoad: {load}",
+        "on-click":       "alacritty --class floating -e btop --preset 0",
+        "on-click-right": "alacritty --class floating -e btop --preset 1"
+    },
+
+    // ── Memory 󰘚 ───────────────────────────────────────────────────────────
+    "memory": {
+        "interval": 5,
+        "format": "{percentage}% 󰘚",
+        "tooltip-format": "RAM {used:0.1f}G / {total:0.1f}G\nSwap {swapUsed:0.1f}G",
+        "on-click":       "alacritty --class floating -e btop --preset 2",
+        "on-click-right": "alacritty --class floating -e bash -c 'ps -eo pid,user,pcpu,pmem,comm --sort=-pmem | head -25; read -n1'"
+    },
+
+    // ── Backlight 󰃟 (scroll to adjust) ─────────────────────────────────────
+    "backlight": {
+        "device": "intel_backlight",
+        "format": "{percent}% {icon}",
+        "format-icons": ["󰃞", "󰃟", "󰃠"],
+        "on-scroll-up":   "brightnessctl set 5%+",
+        "on-scroll-down": "brightnessctl set 5%-",
+        "on-click":       "brightnessctl set 50%",
+        "tooltip-format": "Brightness {percent}%"
+    },
+
+    // ── Audio 󰕾 (scroll = vol, click = mute, right = mixer) ────────────────
+    "pulseaudio": {
+        "format": "{volume}% {icon}",
+        "format-bluetooth": "{volume}% {icon} ",
+        "format-muted": "󰝟",
+        "format-icons": {
+            "headphone":  "󰋋",
+            "hands-free": "󰋎",
+            "headset":    "󰋎",
+            "phone":      "",
+            "portable":   "",
+            "default":    ["󰕿", "󰖀", "󰕾"]
+        },
+        "scroll-step": 5,
+        "on-click":       "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+        "on-click-right": "pavucontrol",
+        "tooltip-format": "{desc} — {volume}%"
+    },
+
+    // ── Network 󰖩 ──────────────────────────────────────────────────────────
+    // Left  → fuzzel wifi picker (~/.local/bin/wifi-menu)
+    // Right → debug pane (ip + sockets)
+    "network": {
+        "format-wifi":         "{essid} 󰖩",
+        "format-ethernet":     "󰈁",
+        "format-disconnected": "󰖪",
+        "tooltip-format-wifi":         "{essid} ({signalStrength}%)\n{ifname}: {ipaddr}/{cidr}\n{frequency} MHz",
+        "tooltip-format-ethernet":     "{ifname}: {ipaddr}/{cidr}\n{gwaddr}",
+        "tooltip-format-disconnected": "Not connected\nClick to pick a network",
+        "on-click":        "/home/daniel/.local/bin/wifi-menu",
+        "on-click-right":  "alacritty --class floating -e bash -c 'ip -c a; echo; ss -tunap; read -n1'"
+    },
+
+    // ── Battery — full nf-md ramp ──────────────────────────────────────────
+    "battery": {
+        "bat":      "BAT1",
+        "interval": 30,
+        "format":          "{capacity}% {icon}",
+        "format-charging": "{capacity}% 󰂄",
+        "format-plugged":  "{capacity}% 󰂄",
+        "format-icons":    ["󰂎","󰁺","󰁻","󰁼","󰁽","󰁾","󰁿","󰂀","󰂁","󰂂","󰁹"],
+        "states": {
+            "warning":  30,
+            "critical": 15
+        },
+        "tooltip-format": "{capacity}% — {timeTo}\n{power:0.1f}W",
+        "on-click-right": "alacritty --class floating -e bash -c 'upower -i $(upower -e | grep BAT); read -n1'"
+    }
+}
