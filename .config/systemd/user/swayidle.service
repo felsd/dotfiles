@@ -1,0 +1,16 @@
+[Unit]
+Description=swayidle
+PartOf=graphical-session.target
+After=graphical-session.target
+
+[Service]
+Environment=PATH=%h/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/bin
+ExecStart=/usr/bin/swayidle -w \
+  timeout 600 'lock-session' \
+       resume 'niri msg action power-on-monitors' \
+  before-sleep 'lock-session' \
+  lock 'lock-session'
+Restart=on-failure
+
+[Install]
+WantedBy=graphical-session.target

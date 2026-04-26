@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# lock-session — lock the KeePassXC database(s) and start swaylock.
+#
+# Used by swayidle's `lock`, `before-sleep`, and idle timeout hooks.
+# Safe to run when KeePassXC isn't on DBus or swaylock is already up.
+
+busctl --user call \
+    org.keepassxc.KeePassXC.MainWindow /keepassxc \
+    org.keepassxc.KeePassXC.MainWindow lockAllDatabases 2>/dev/null || true
+
+pkill -TERM -x kpmenu 2>/dev/null || true
+
+pgrep -x swaylock >/dev/null || exec swaylock -f -c 1a1b26

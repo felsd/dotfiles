@@ -1,2 +1,17 @@
 *.build/
 *.dist/
+
+# Secrets — never commit
+**/.env
+**/.env.*
+**/*.kdbx
+**/*.kdb
+**/id_rsa*
+**/id_ed25519*
+**/id_ecdsa*
+**/*.pem
+**/*.key
+**/.netrc
+**/credentials*
+**/.ssh/
+**/.gnupg/
