@@ -1,0 +1,49 @@
+#!/bin/bash
+# screenshot — capture a region or full screen, play snap sound, open in satty
+# for annotation. Bound to Print / Ctrl+Print in niri.
+#
+# Usage:
+#   screenshot region   (default — slurp rectangle select)
+#   screenshot screen   (whole focused output)
+
+set -uo pipefail
+
+MODE="${1:-region}"
+SOUND="/usr/share/sounds/freedesktop/stereo/screen-capture.oga"
+OUTDIR="$HOME/Pictures/Screenshots"
+mkdir -p "$OUTDIR"
+OUT="$OUTDIR/screenshot-$(date +%Y-%m-%d-%H-%M-%S).png"
+
+case "$MODE" in
+    region)
+        # slurp -d = draw the selection rect; cancel (Esc) → empty → exit clean
+        REGION=$(slurp -d) || exit 0
+        [ -z "$REGION" ] && exit 0
+        GRIM_ARGS=(-g "$REGION")
+        ;;
+    screen)
+        GRIM_ARGS=()
+        ;;
+    *)
+        echo "screenshot: unknown mode '$MODE' (use: region | screen)" >&2
+        exit 2
+        ;;
+esac
+
+TMP=$(mktemp --suffix=.png)
+trap 'rm -f "$TMP"' EXIT
+
+# Capture
+grim "${GRIM_ARGS[@]}" "$TMP" || exit 1
+
+# Snap sound — fire-and-forget so satty opens immediately
+paplay "$SOUND" 2>/dev/null &
+
+# Annotate. satty saves to OUT on Save (Ctrl+S) and copies to clipboard on
+# Ctrl+C. --early-exit closes after save; --copy-command pipes via wl-copy.
+satty \
+    --filename "$TMP" \
+    --output-filename "$OUT" \
+    --copy-command 'wl-copy' \
+    --early-exit \
+    --init-tool brush

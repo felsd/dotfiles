@@ -266,8 +266,13 @@ binds {
 
     Mod+Tab                   { toggle-overview; }
 
-    Print                     { screenshot; }
-    Ctrl+Print                { screenshot-screen; }
+    // Screenshot: ~/.local/bin/screenshot pipes grim → snap sound → satty
+    // (annotate, optionally crop, save / clipboard).
+    //   Print       = full screen (most common; crop in satty if needed)
+    //   Shift+Print = region select via slurp (skip satty crop step)
+    //   Alt+Print   = focused window (niri built-in, no satty — fast)
+    Print                     { spawn "/home/daniel/.local/bin/screenshot" "screen"; }
+    Shift+Print               { spawn "/home/daniel/.local/bin/screenshot" "region"; }
     Alt+Print                 { screenshot-window; }
 
     XF86AudioRaiseVolume      allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.05+"; }
