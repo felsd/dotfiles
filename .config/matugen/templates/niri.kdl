@@ -179,7 +179,8 @@ binds {
     Mod+D                     { spawn "fuzzel"; }
     Shift+Alt+Return          { spawn "alacritty"; }
     Super+Alt+L               { spawn "swaylock" "-c" "1a1b26"; }
-    Super+K                   { spawn "sh" "-c" "pgrep -x keepassxc || keepassxc ~/nextcloud.keepass.kdbx"; }
+    Super+K                   { spawn "sh" "-c" "pgrep -x keepassxc || keepassxc ~/nextcloud/keepass.kdbx"; }
+    Super+P                   { spawn "kpmenu"; }
     Super+V                   { spawn "sh" "/home/daniel/projects/whisper.cpp/transcribe.sh"; }
 
     Mod+Shift+E               { quit; }
