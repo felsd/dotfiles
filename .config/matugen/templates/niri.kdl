@@ -3,6 +3,11 @@
 // The wallpaper path is filled in by the `rice` script (sed-replace), not by matugen.
 
 input {
+    // Let logind handle the power key (HandlePowerKey=suspend in
+    // /etc/systemd/logind.conf.d/). Without this, niri also reacts to the
+    // libinput-replayed power key on resume → wake/re-suspend loop on SP9.
+    disable-power-key-handling
+
     keyboard {
         xkb {
             options "caps:escape"
