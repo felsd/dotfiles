@@ -159,10 +159,8 @@ window-rule {
 }
 
 // ── Spawn at startup ────────────────────────────────────────────────────────
-spawn-at-startup "waybar"
-spawn-at-startup "mako"
-spawn-at-startup "swaybg" "-i" "__WALLPAPER_PATH__" "-m" "fill"
-spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
+// DMS handles bar, notifications, lockscreen, polkit, launcher, wallpaper —
+// it spawns via systemctl --user add-wants niri.service dms.service, not here.
 spawn-at-startup "ydotoold"
 spawn-at-startup "xwayland-satellite"
 
@@ -170,6 +168,8 @@ spawn-at-startup "xwayland-satellite"
 environment {
     DISPLAY ":0"
     QT_QPA_PLATFORM "wayland"
+    QT_QPA_PLATFORMTHEME "gtk3"
+    ELECTRON_OZONE_PLATFORM_HINT "auto"
     MOZ_ENABLE_WAYLAND "1"
     GDK_BACKEND "wayland,x11"
     NIXOS_OZONE_WL "1"
@@ -184,9 +184,9 @@ screenshot-path "~/Pictures/Screenshots/screenshot-%Y-%m-%d-%H-%M-%S.png"
 
 // ── Key bindings ────────────────────────────────────────────────────────────
 binds {
-    Mod+D                     { spawn "fuzzel"; }
+    Mod+D                     { spawn "dms" "ipc" "call" "launcher" "toggle"; }
     Shift+Alt+Return          { spawn "alacritty"; }
-    Super+Alt+L               { spawn "swaylock" "-c" "1a1b26"; }
+    Super+Alt+L               { spawn "dms" "ipc" "call" "lock" "lock"; }
     Super+K                   { spawn "sh" "-c" "pgrep -x keepassxc || keepassxc ~/nextcloud/keepass.kdbx"; }
     Super+P                   { spawn "kpmenu"; }
     Super+V                   { spawn "sh" "/home/daniel/projects/whisper.cpp/transcribe.sh"; }
