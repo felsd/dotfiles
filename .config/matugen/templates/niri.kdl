@@ -90,15 +90,17 @@ animations {
 }
 
 // ── Named workspaces ────────────────────────────────────────────────────────
-workspace "1"
-workspace "2"
-workspace "3"
-workspace "4"
-workspace "5"
-workspace "6"
-workspace "7"
-workspace "8"
-workspace "9"
+// Pinned to the Samsung when connected; niri auto-migrates them to eDP-1
+// (and back) on hotplug. Windows survive the move.
+workspace "1" { open-on-output "Samsung Electric Company LC32G7xT H4ZR700071"; }
+workspace "2" { open-on-output "Samsung Electric Company LC32G7xT H4ZR700071"; }
+workspace "3" { open-on-output "Samsung Electric Company LC32G7xT H4ZR700071"; }
+workspace "4" { open-on-output "Samsung Electric Company LC32G7xT H4ZR700071"; }
+workspace "5" { open-on-output "Samsung Electric Company LC32G7xT H4ZR700071"; }
+workspace "6" { open-on-output "Samsung Electric Company LC32G7xT H4ZR700071"; }
+workspace "7" { open-on-output "Samsung Electric Company LC32G7xT H4ZR700071"; }
+workspace "8" { open-on-output "Samsung Electric Company LC32G7xT H4ZR700071"; }
+workspace "9" { open-on-output "Samsung Electric Company LC32G7xT H4ZR700071"; }
 
 // ── Window rules ────────────────────────────────────────────────────────────
 window-rule {
@@ -192,13 +194,17 @@ binds {
     Mod+Shift+P               { power-off-monitors; }
     Shift+Alt+C               { close-window; }
 
-    Alt+H                     { focus-column-left; }
-    Alt+L                     { focus-column-right; }
+    // The -or-monitor- variants act as focus-column at first and fall through
+    // to the next monitor once you hit the workspace edge — multi-monitor
+    // navigation without extra binds (matters on the ZSA Voyager: no arrow
+    // keys, and homerow mods make most other key combos awkward).
+    Alt+H                     { focus-column-or-monitor-left; }
+    Alt+L                     { focus-column-or-monitor-right; }
     Alt+J                     { focus-window-down; }
     Alt+K                     { focus-window-up; }
 
-    Ctrl+Alt+H                { move-column-left; }
-    Ctrl+Alt+L                { move-column-right; }
+    Ctrl+Alt+H                { move-column-left-or-to-monitor-left; }
+    Ctrl+Alt+L                { move-column-right-or-to-monitor-right; }
     Ctrl+Alt+J                { move-window-down; }
     Ctrl+Alt+K                { move-window-up; }
 
