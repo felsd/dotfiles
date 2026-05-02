@@ -46,4 +46,5 @@ satty \
     --output-filename "$OUT" \
     --copy-command 'wl-copy' \
     --early-exit \
+    --disable-notifications \
     --init-tool brush
