@@ -209,8 +209,8 @@ binds {
     Ctrl+Alt+J                { move-window-down; }
     Ctrl+Alt+K                { move-window-up; }
 
-    Mod+BracketLeft           { consume-or-expel-window-left; }
-    Mod+BracketRight          { consume-or-expel-window-right; }
+    Alt+Semicolon             { consume-or-expel-window-left; }
+    Alt+Apostrophe            { consume-or-expel-window-right; }
 
     Alt+M                     { maximize-column; }
     Mod+R                     { switch-preset-column-width; }
