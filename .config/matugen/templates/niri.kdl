@@ -276,6 +276,8 @@ binds {
 
     Mod+Shift+Left            { move-column-to-monitor-left; }
     Mod+Shift+Right           { move-column-to-monitor-right; }
+    Shift+Alt+H               { move-column-to-monitor-left; }
+    Shift+Alt+L               { move-column-to-monitor-right; }
 
     Mod+Tab                   { toggle-overview; }
 
