@@ -489,7 +489,6 @@
       "rightWidgets": [
         "cpuUsage",
         "memUsage",
-        "idleInhibitor",
         "notificationButton",
         "controlCenterButton",
         "battery"
