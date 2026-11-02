@@ -38,11 +38,13 @@ output "eDP-1" {
     variable-refresh-rate
 }
 
-output "Samsung Electric Company LC32G7xT H4ZR700071" {
-    mode "2560x1440@72.000"
-    scale 1
+// MSI MPG 321URX QD-OLED, direct USB-C (DP alt mode + DSC). 4K@240 verified 2026-11-02.
+// Scale 1.5 → 2560x1440 logical, same workspace geometry as the old Samsung G7.
+// VRR left off: OLED VRR flickers in near-black scenes at low frame rates.
+output "Microstep MPG321UX OLED 0x01010101" {
+    mode "3840x2160@239.990"
+    scale 1.5
     position x=0 y=0
-    variable-refresh-rate
 }
 
 // ── Layout ──────────────────────────────────────────────────────────────────
@@ -91,17 +93,17 @@ animations {
 }
 
 // ── Named workspaces ────────────────────────────────────────────────────────
-// Pinned to the Samsung when connected; niri auto-migrates them to eDP-1
+// Pinned to the MSI when connected; niri auto-migrates them to eDP-1
 // (and back) on hotplug. Windows survive the move.
-workspace "1" { open-on-output "Samsung Electric Company LC32G7xT H4ZR700071"; }
-workspace "2" { open-on-output "Samsung Electric Company LC32G7xT H4ZR700071"; }
-workspace "3" { open-on-output "Samsung Electric Company LC32G7xT H4ZR700071"; }
-workspace "4" { open-on-output "Samsung Electric Company LC32G7xT H4ZR700071"; }
-workspace "5" { open-on-output "Samsung Electric Company LC32G7xT H4ZR700071"; }
-workspace "6" { open-on-output "Samsung Electric Company LC32G7xT H4ZR700071"; }
-workspace "7" { open-on-output "Samsung Electric Company LC32G7xT H4ZR700071"; }
-workspace "8" { open-on-output "Samsung Electric Company LC32G7xT H4ZR700071"; }
-workspace "9" { open-on-output "Samsung Electric Company LC32G7xT H4ZR700071"; }
+workspace "1" { open-on-output "Microstep MPG321UX OLED 0x01010101"; }
+workspace "2" { open-on-output "Microstep MPG321UX OLED 0x01010101"; }
+workspace "3" { open-on-output "Microstep MPG321UX OLED 0x01010101"; }
+workspace "4" { open-on-output "Microstep MPG321UX OLED 0x01010101"; }
+workspace "5" { open-on-output "Microstep MPG321UX OLED 0x01010101"; }
+workspace "6" { open-on-output "Microstep MPG321UX OLED 0x01010101"; }
+workspace "7" { open-on-output "Microstep MPG321UX OLED 0x01010101"; }
+workspace "8" { open-on-output "Microstep MPG321UX OLED 0x01010101"; }
+workspace "9" { open-on-output "Microstep MPG321UX OLED 0x01010101"; }
 
 // ── Window rules ────────────────────────────────────────────────────────────
 window-rule {
@@ -171,7 +173,9 @@ environment {
     QT_QPA_PLATFORMTHEME "gtk3"
     ELECTRON_OZONE_PLATFORM_HINT "auto"
     MOZ_ENABLE_WAYLAND "1"
-    GDK_BACKEND "wayland,x11"
+    // GDK_BACKEND intentionally UNSET: forcing it makes xdg-desktop-portal-gnome
+    // report a "non-compatible display server" and expose only the Settings
+    // interface, which kills file-chooser (download) dialogs and screencast.
     NIXOS_OZONE_WL "1"
     XCURSOR_THEME "Adwaita"
     XDG_CURRENT_DESKTOP "niri:GNOME"
